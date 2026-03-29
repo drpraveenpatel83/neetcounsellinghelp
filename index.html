@@ -1,535 +1,940 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEET Counselling Help - Your Guide to Medical Admissions</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEET Counselling Help – Complete Guidance for MBBS, AYUSH & Veterinary</title>
+  <meta name="description" content="Complete NEET counselling guidance for MBBS, AYUSH, and Veterinary admissions. Tools, news, and expert support." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- ========== NAVBAR ========== -->
   <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <div class="nav-brand">
-        <span class="brand-icon">+</span>
-        <span class="brand-text">NEETCounsel</span>
-      </div>
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="10" fill="url(#lg1)"/>
+            <path d="M16 7v18M10 13l6-6 6 6M10 25h12" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <defs><linearGradient id="lg1" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#22c55e"/><stop offset="1" stop-color="#16a34a"/></linearGradient></defs>
+          </svg>
+        </div>
+        <span>NEET Counselling<span class="logo-accent"> Help</span></span>
+      </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
-        <li><a href="#process">Process</a></li>
-        <li><a href="#predictor">Predictor</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#flowchart">Process</a></li>
+        <li><a href="#tools">Tools</a></li>
+        <li><a href="#app">App</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#contact" class="nav-cta">Contact</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- Hero Section -->
+  <!-- ========== HERO ========== -->
   <section class="hero" id="home">
-    <div class="hero-bg"></div>
+    <div class="hero-shapes">
+      <div class="shape s1"></div>
+      <div class="shape s2"></div>
+      <div class="shape s3"></div>
+    </div>
     <div class="container hero-content">
-      <div class="hero-badge">2024-25 Admissions Open</div>
-      <h1 class="hero-title">NEET Counselling<br><span class="highlight">Made Simple</span></h1>
-      <p class="hero-subtitle">
-        Navigate the complex NEET counselling process with confidence.
-        Expert guidance for MCC, State, and Deemed university admissions.
-      </p>
-      <div class="hero-actions">
-        <a href="#process" class="btn btn-primary">Start Your Journey</a>
-        <a href="#predictor" class="btn btn-outline">College Predictor</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">50,000+</span>
-          <span class="stat-label">Students Guided</span>
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          India's #1 NEET Counselling Platform
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">700+</span>
-          <span class="stat-label">Colleges Covered</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-num">98%</span>
-          <span class="stat-label">Success Rate</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-scroll">
-      <span>Scroll to explore</span>
-      <div class="scroll-arrow"></div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">About Counselling</span>
-        <h2 class="section-title">What is NEET Counselling?</h2>
-        <p class="section-subtitle">
-          NEET counselling is the official seat allotment process for MBBS, BDS, and other
-          medical courses across India based on your NEET-UG score.
+        <h1 class="hero-title">
+          NEET Counselling<br />
+          <span class="gradient-text">Help</span>
+        </h1>
+        <p class="hero-subtitle">
+          Complete Guidance for NEET Counselling — MBBS · AYUSH · Veterinary.<br />
+          From result to admission, we've got you covered.
         </p>
-      </div>
-
-      <div class="about-grid">
-        <div class="about-card">
-          <div class="card-icon blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
-          <h3>MCC Counselling</h3>
-          <p>Medical Counselling Committee conducts counselling for 15% All India Quota seats in government colleges and all deemed/central university seats.</p>
+        <div class="hero-btns">
+          <a href="#app" class="btn btn-green">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M3.18 23.4a2 2 0 002.65.75l11.6-6.7-2.35-2.35L3.18 23.4zM20.5 10.5L5.9 2.15a2 2 0 00-2.72 2.7l12.87 7.65-3.5 3.5 2.35 2.35 5.6-5.6a2 2 0 000-2.25zM1 11.88V13a2 2 0 001 1.73l.87.5L1 11.88z"/></svg>
+            Download App
+          </a>
+          <a href="#flowchart" class="btn btn-outline-white">
+            Explore Process
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
-
-        <div class="about-card">
-          <div class="card-icon teal">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <strong>50K+</strong><span>Students</span>
           </div>
-          <h3>State Counselling</h3>
-          <p>Each state conducts its own counselling for 85% State Quota seats. You must register separately with your state's counselling authority.</p>
-        </div>
-
-        <div class="about-card">
-          <div class="card-icon indigo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
-            </svg>
+          <div class="trust-div"></div>
+          <div class="trust-item">
+            <strong>700+</strong><span>Colleges</span>
           </div>
-          <h3>Timeline Matters</h3>
-          <p>Missing a round can cost you your preferred seat. Multiple rounds of counselling take place — stay updated with official MCC and state schedules.</p>
-        </div>
-
-        <div class="about-card">
-          <div class="card-icon purple">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
-            </svg>
+          <div class="trust-div"></div>
+          <div class="trust-item">
+            <strong>4.8★</strong><span>App Rating</span>
           </div>
-          <h3>Documents Ready</h3>
-          <p>Keep all documents verified and ready — NEET scorecard, Class 10 & 12 certificates, ID proof, category certificates, and domicile proof.</p>
         </div>
       </div>
+      <div class="hero-right">
+        <div class="hero-phone">
+          <div class="phone-mockup">
+            <div class="phone-screen">
+              <div class="app-preview">
+                <div class="app-header">
+                  <div class="app-logo-sm">NCH</div>
+                  <span>NEET Help</span>
+                </div>
+                <div class="app-stat-row">
+                  <div class="app-stat-box green">
+                    <span class="app-stat-val">580</span>
+                    <span class="app-stat-lbl">Score</span>
+                  </div>
+                  <div class="app-stat-box blue">
+                    <span class="app-stat-val">22K</span>
+                    <span class="app-stat-lbl">Rank</span>
+                  </div>
+                </div>
+                <div class="app-list">
+                  <div class="app-list-item"><span class="dot g"></span>AIIMS Delhi</div>
+                  <div class="app-list-item"><span class="dot g"></span>MAMC Delhi</div>
+                  <div class="app-list-item"><span class="dot y"></span>Grant MC Mumbai</div>
+                  <div class="app-list-item"><span class="dot y"></span>Bangalore MC</div>
+                </div>
+                <div class="app-bar">
+                  <div class="app-bar-fill"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="phone-glow"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-wave">
+      <svg viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none">
+        <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="#f8fafc"/>
+      </svg>
+    </div>
+  </section>
 
-      <div class="about-highlight">
-        <div class="highlight-icon">i</div>
-        <p><strong>Important:</strong> NEET counselling has strict deadlines. Missing registration windows or document submission can result in loss of admission opportunity even with a good score.</p>
+  <!-- ========== ABOUT STRIP ========== -->
+  <section class="about-strip" id="about">
+    <div class="container">
+      <div class="strip-grid">
+        <div class="strip-item">
+          <div class="strip-icon green">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div>
+            <h4>All India Quota</h4>
+            <p>15% AIQ seats via MCC counselling</p>
+          </div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div>
+            <h4>State Quota</h4>
+            <p>85% seats via state counselling</p>
+          </div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+          </div>
+          <div>
+            <h4>AYUSH Counselling</h4>
+            <p>BAMS, BHMS, BUMS via AACCC</p>
+          </div>
+        </div>
+        <div class="strip-item">
+          <div class="strip-icon purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          </div>
+          <div>
+            <h4>Veterinary</h4>
+            <p>BVSc admissions via VCC</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Step-by-Step Process -->
-  <section class="process" id="process">
+  <!-- ========== FLOWCHART ========== -->
+  <section class="flowchart-section" id="flowchart">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Step-by-Step Guide</span>
-        <h2 class="section-title">How Counselling Works</h2>
-        <p class="section-subtitle">Follow these steps carefully to secure your medical seat</p>
+        <span class="section-tag">Step-by-Step</span>
+        <h2>NEET Counselling Process</h2>
+        <p>From exam to admission — understand the complete pathway</p>
       </div>
 
-      <div class="steps-container">
-        <div class="step" data-step="1">
-          <div class="step-number">01</div>
-          <div class="step-content">
-            <div class="step-badge mcc">MCC</div>
-            <h3>Register on MCC Portal</h3>
-            <p>Visit mcc.nic.in and complete your registration using NEET roll number, date of birth, and mobile number. Pay the registration and security fee online.</p>
-            <ul class="step-checklist">
-              <li>Create account on mcc.nic.in</li>
-              <li>Fill personal and academic details</li>
-              <li>Pay registration fee (Rs. 1000 for General / Rs. 500 for SC/ST)</li>
-              <li>Pay security deposit (Rs. 10,000 / Rs. 5,000)</li>
-            </ul>
+      <div class="flowchart">
+        <!-- Row 1 -->
+        <div class="fc-row">
+          <div class="fc-node start">
+            <div class="fc-icon">📝</div>
+            <div class="fc-label">NEET Exam</div>
+            <div class="fc-sub">Appear & Score</div>
+          </div>
+          <div class="fc-arrow right">
+            <div class="arrow-line"></div>
+            <div class="arrow-head"></div>
+          </div>
+          <div class="fc-node primary">
+            <div class="fc-icon">📊</div>
+            <div class="fc-label">Result</div>
+            <div class="fc-sub">Score & AIR Declared</div>
+          </div>
+          <div class="fc-arrow right">
+            <div class="arrow-line"></div>
+            <div class="arrow-head"></div>
+          </div>
+          <div class="fc-node primary hub">
+            <div class="fc-icon">🎯</div>
+            <div class="fc-label">Counselling</div>
+            <div class="fc-sub">Choose Your Path</div>
           </div>
         </div>
 
-        <div class="step" data-step="2">
-          <div class="step-number">02</div>
-          <div class="step-content">
-            <div class="step-badge choice">Choice</div>
-            <h3>Fill Choice of Colleges</h3>
-            <p>Browse and select your preferred colleges and courses in order of priority. You can add, remove, and rearrange choices before locking.</p>
-            <ul class="step-checklist">
-              <li>Research colleges, fees, and cutoffs</li>
-              <li>Add colleges in order of preference</li>
-              <li>Consider location, infrastructure, faculty</li>
-              <li>Lock choices before the deadline</li>
-            </ul>
+        <!-- Branches connector -->
+        <div class="fc-branch-connector">
+          <div class="connector-line"></div>
+          <div class="branch-dots">
+            <div class="branch-dot"></div>
+            <div class="branch-dot"></div>
+            <div class="branch-dot"></div>
           </div>
         </div>
 
-        <div class="step" data-step="3">
-          <div class="step-number">03</div>
-          <div class="step-content">
-            <div class="step-badge allot">Allotment</div>
-            <h3>Seat Allotment Result</h3>
-            <p>MCC processes all choices and NEET ranks to allot seats. Check your allotment letter on the portal. Three options are available on allotment.</p>
-            <ul class="step-checklist">
-              <li>Accept & join (forfeit upgrades)</li>
-              <li>Accept & wait for upgrade (participate in next round)</li>
-              <li>Reject allotment (continue for better options)</li>
-            </ul>
+        <!-- Row 2 – Branches -->
+        <div class="fc-branches">
+          <div class="fc-branch">
+            <div class="branch-arrow-down"></div>
+            <div class="fc-node branch-node blue-node">
+              <div class="branch-icon">🏥</div>
+              <div class="branch-title">MCC</div>
+              <div class="branch-subtitle">Medical Counselling Committee</div>
+              <div class="branch-courses">
+                <span class="course-tag">MBBS</span>
+                <span class="course-tag">BDS</span>
+                <span class="course-tag">BSc Nursing</span>
+              </div>
+              <div class="branch-note">15% AIQ + Deemed/Central</div>
+            </div>
+          </div>
+
+          <div class="fc-branch">
+            <div class="branch-arrow-down"></div>
+            <div class="fc-node branch-node green-node">
+              <div class="branch-icon">🌿</div>
+              <div class="branch-title">AACCC</div>
+              <div class="branch-subtitle">AYUSH Admissions Central Counselling</div>
+              <div class="branch-courses">
+                <span class="course-tag">BAMS</span>
+                <span class="course-tag">BHMS</span>
+                <span class="course-tag">BUMS</span>
+                <span class="course-tag">BPharma</span>
+              </div>
+              <div class="branch-note">All India Ayush Seats</div>
+            </div>
+          </div>
+
+          <div class="fc-branch">
+            <div class="branch-arrow-down"></div>
+            <div class="fc-node branch-node teal-node">
+              <div class="branch-icon">🐾</div>
+              <div class="branch-title">VCC</div>
+              <div class="branch-subtitle">Veterinary Council Counselling</div>
+              <div class="branch-courses">
+                <span class="course-tag">BVSc</span>
+                <span class="course-tag">AH</span>
+              </div>
+              <div class="branch-note">Veterinary Colleges Nationwide</div>
+            </div>
           </div>
         </div>
 
-        <div class="step" data-step="4">
-          <div class="step-number">04</div>
-          <div class="step-content">
-            <div class="step-badge report">Report</div>
-            <h3>Report to College</h3>
-            <p>If you accept the seat, report to the allotted college within the specified deadline for document verification and fee payment.</p>
-            <ul class="step-checklist">
-              <li>Download allotment letter</li>
-              <li>Carry all original documents</li>
-              <li>Pay first-year tuition fee</li>
-              <li>Complete college enrollment formalities</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="step" data-step="5">
-          <div class="step-number">05</div>
-          <div class="step-content">
-            <div class="step-badge state">State</div>
-            <h3>Participate in State Counselling</h3>
-            <p>Simultaneously register for your home state counselling for 85% state quota seats. State counselling runs in parallel with MCC rounds.</p>
-            <ul class="step-checklist">
-              <li>Register on state counselling portal</li>
-              <li>Submit domicile and category certificates</li>
-              <li>Fill state college preferences</li>
-              <li>Attend document verification if called</li>
-            </ul>
+        <!-- Final step -->
+        <div class="fc-final">
+          <div class="fc-final-arrow"></div>
+          <div class="fc-node final-node">
+            <div class="fc-icon">🎓</div>
+            <div class="fc-label">Admission</div>
+            <div class="fc-sub">Report to College &amp; Begin Studies</div>
           </div>
         </div>
       </div>
 
-      <div class="rounds-info">
-        <h3>Counselling Rounds Overview</h3>
-        <div class="rounds-grid">
-          <div class="round-card">
-            <span class="round-label">Round 1</span>
-            <p>First allotment based on filled choices and NEET rank</p>
+      <!-- State vs AIQ banner -->
+      <div class="quota-banner">
+        <div class="quota-item">
+          <div class="quota-pct blue-pct">15%</div>
+          <div class="quota-info">
+            <strong>All India Quota</strong>
+            <span>MCC / AACCC / VCC conduct centralized counselling for AIQ seats</span>
           </div>
-          <div class="round-card">
-            <span class="round-label">Round 2</span>
-            <p>Upgrade or fresh allotment for students who opted to wait</p>
-          </div>
-          <div class="round-card">
-            <span class="round-label">Mop-Up Round</span>
-            <p>For vacant seats after Rounds 1 and 2 (Deemed/Central only)</p>
-          </div>
-          <div class="round-card">
-            <span class="round-label">Stray Vacancy</span>
-            <p>Final round for any remaining seats after all previous rounds</p>
+        </div>
+        <div class="quota-divider"></div>
+        <div class="quota-item">
+          <div class="quota-pct green-pct">85%</div>
+          <div class="quota-info">
+            <strong>State Quota</strong>
+            <span>State authorities conduct counselling for domicile-based state seats</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- College Predictor Section -->
-  <section class="predictor" id="predictor">
+  <!-- ========== TOOLS ========== -->
+  <section class="tools-section" id="tools">
     <div class="container">
-      <div class="section-header light">
-        <span class="section-tag light">College Predictor</span>
-        <h2 class="section-title light">Find Your Best College Match</h2>
-        <p class="section-subtitle light">Enter your NEET score and category to see which colleges you can expect to get</p>
+      <div class="section-header">
+        <span class="section-tag green-tag">Free Tools</span>
+        <h2>Powerful Counselling Tools</h2>
+        <p>Use our free tools to make smarter decisions about your medical career</p>
       </div>
 
-      <div class="predictor-card">
-        <div class="predictor-form">
-          <h3>Quick Predictor Tool</h3>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="neetScore">NEET Score</label>
-              <input type="number" id="neetScore" placeholder="e.g. 550" min="0" max="720">
-            </div>
-            <div class="form-group">
-              <label for="neetRank">NEET Rank (approx.)</label>
-              <input type="number" id="neetRank" placeholder="e.g. 25000" min="0">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="category">Category</label>
-              <select id="category">
-                <option value="">Select Category</option>
-                <option value="general">General / UR</option>
-                <option value="obc">OBC</option>
-                <option value="sc">SC</option>
-                <option value="st">ST</option>
-                <option value="ews">EWS</option>
-                <option value="pwd">PwD</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="statePreference">Preferred State</label>
-              <select id="statePreference">
-                <option value="">All India</option>
-                <option value="maharashtra">Maharashtra</option>
-                <option value="karnataka">Karnataka</option>
-                <option value="tamilnadu">Tamil Nadu</option>
-                <option value="delhi">Delhi</option>
-                <option value="up">Uttar Pradesh</option>
-                <option value="kerala">Kerala</option>
-                <option value="gujarat">Gujarat</option>
-                <option value="rajasthan">Rajasthan</option>
-              </select>
-            </div>
-          </div>
-          <button class="btn btn-primary btn-full" id="predictBtn">Predict Colleges</button>
-        </div>
+      <div class="tools-grid">
 
-        <div class="predictor-result" id="predictorResult">
-          <div class="result-placeholder">
-            <div class="placeholder-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+        <!-- Tool 1 -->
+        <div class="tool-card" data-delay="0">
+          <div class="tool-header">
+            <div class="tool-icon-wrap blue-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
               </svg>
             </div>
-            <p>Enter your score and category to see college predictions</p>
+            <div class="tool-badge new-badge">Popular</div>
           </div>
+          <h3>Cutoff Checker</h3>
+          <p>Check previous year NEET cutoffs for any college — government, private, and deemed universities across all states.</p>
+          <div class="tool-video">
+            <div class="video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOdP_8GztsuKi9nrraNbKKp4"
+                title="Cutoff Checker Tutorial"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+          <div class="tool-features">
+            <span>✓ All States</span>
+            <span>✓ Category-wise</span>
+            <span>✓ Year-wise</span>
+          </div>
+          <a href="#app" class="btn btn-blue btn-sm">Try Tool →</a>
         </div>
+
+        <!-- Tool 2 -->
+        <div class="tool-card featured-tool" data-delay="100">
+          <div class="tool-header">
+            <div class="tool-icon-wrap green-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 8v4l3 3"/>
+              </svg>
+            </div>
+            <div class="tool-badge hot-badge">⚡ Most Used</div>
+          </div>
+          <h3>Rank Predictor</h3>
+          <p>Enter your NEET score to instantly predict your All India Rank and see which colleges are within your reach.</p>
+          <div class="tool-video">
+            <div class="video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOdP_8GztsuKi9nrraNbKKp4"
+                title="Rank Predictor Tutorial"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+          <div class="tool-features">
+            <span>✓ Score → Rank</span>
+            <span>✓ Category Adjusted</span>
+            <span>✓ Instant Results</span>
+          </div>
+          <a href="#app" class="btn btn-green btn-sm">Try Tool →</a>
+        </div>
+
+        <!-- Tool 3 -->
+        <div class="tool-card" data-delay="200">
+          <div class="tool-header">
+            <div class="tool-icon-wrap purple-wrap">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="26" height="26">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+            <div class="tool-badge info-badge">Detailed</div>
+          </div>
+          <h3>College Information</h3>
+          <p>Explore detailed profiles of 700+ medical colleges — fees, seats, NIRF ranking, facilities, and past cutoffs.</p>
+          <div class="tool-video">
+            <div class="video-wrap">
+              <iframe
+                src="https://www.youtube.com/embed/videoseries?list=PLrAXtmErZgOdP_8GztsuKi9nrraNbKKp4"
+                title="College Information Tutorial"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+          <div class="tool-features">
+            <span>✓ 700+ Colleges</span>
+            <span>✓ Fee Structure</span>
+            <span>✓ NIRF Ranks</span>
+          </div>
+          <a href="#app" class="btn btn-purple btn-sm">Try Tool →</a>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <div class="predictor-info-grid">
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-            </svg>
+  <!-- ========== APP SECTION ========== -->
+  <section class="app-section" id="app">
+    <div class="container">
+      <div class="app-grid">
+        <div class="app-left">
+          <span class="section-tag green-tag">Mobile App</span>
+          <h2>Everything You Need,<br /><span class="gradient-text">In Your Pocket</span></h2>
+          <p class="app-desc">Download the NEET Counselling Help app and get instant access to all tools, live updates, and expert guidance — right from your phone.</p>
+
+          <div class="app-features">
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>Smart Rank Prediction</strong>
+                <p>Enter your score and get accurate rank prediction with college shortlisting</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>Advanced College Filtering</strong>
+                <p>Filter by state, fees, type, specialty, and seats available</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>Live Counselling Updates</strong>
+                <p>Real-time notifications for schedule, seat matrix, and allotment results</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>State &amp; All India Counselling</strong>
+                <p>Complete guidance for both AIQ (MCC) and state quota counselling</p>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <div>
+                <strong>AYUSH &amp; Veterinary Support</strong>
+                <p>Dedicated section for AACCC and VCC counselling with full info</p>
+              </div>
+            </div>
           </div>
-          <h4>Government Colleges</h4>
-          <p>Low fees (Rs. 10,000 - 1 Lakh/year). Highly competitive. AIR under 50,000 usually required for most states.</p>
-          <div class="info-range">
-            <span class="range-label">Score Range:</span>
-            <span class="range-value good">550+ for top govt colleges</span>
+
+          <div class="app-download-btns">
+            <a href="#" class="store-btn playstore">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M3.18 23.4a2 2 0 002.65.75l11.6-6.7-2.35-2.35L3.18 23.4zM20.5 10.5L5.9 2.15a2 2 0 00-2.72 2.7l12.87 7.65-3.5 3.5 2.35 2.35 5.6-5.6a2 2 0 000-2.25zM1 11.88V13a2 2 0 001 1.73l.87.5L1 11.88z"/></svg>
+              <div>
+                <span class="store-small">GET IT ON</span>
+                <span class="store-large">Google Play</span>
+              </div>
+            </a>
+            <div class="app-rating">
+              <div class="stars">★★★★★</div>
+              <span>4.8 · 10K+ Downloads</span>
+            </div>
           </div>
         </div>
 
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
-            </svg>
+        <div class="app-right">
+          <div class="app-screens">
+            <div class="screen main-screen">
+              <div class="screen-inner">
+                <div class="screen-top-bar">
+                  <span class="screen-title">NEET Help</span>
+                  <span class="screen-notif">🔔</span>
+                </div>
+                <div class="screen-score-card">
+                  <div class="score-label">Your Score</div>
+                  <div class="score-val">580 / 720</div>
+                  <div class="score-bar"><div class="score-fill"></div></div>
+                  <div class="score-rank">Predicted AIR: ~22,000</div>
+                </div>
+                <div class="screen-section-title">Top College Matches</div>
+                <div class="screen-college-list">
+                  <div class="sc-item"><span class="sc-dot high"></span>AIIMS Delhi <span class="sc-pct">High</span></div>
+                  <div class="sc-item"><span class="sc-dot high"></span>MAMC Delhi <span class="sc-pct">High</span></div>
+                  <div class="sc-item"><span class="sc-dot med"></span>Grant MC Mumbai <span class="sc-pct">Moderate</span></div>
+                  <div class="sc-item"><span class="sc-dot med"></span>KIMS Hubli <span class="sc-pct">Moderate</span></div>
+                </div>
+                <div class="screen-tab-bar">
+                  <span class="tab active">Home</span>
+                  <span class="tab">Tools</span>
+                  <span class="tab">News</span>
+                  <span class="tab">Profile</span>
+                </div>
+              </div>
+            </div>
+            <div class="screen side-screen">
+              <div class="screen-inner small">
+                <div class="mini-header">Latest Updates</div>
+                <div class="mini-news-list">
+                  <div class="mini-news-item">MCC Round 2 Result Out</div>
+                  <div class="mini-news-item">AYUSH Mop-Up Registration</div>
+                  <div class="mini-news-item">VCC Seat Matrix Released</div>
+                  <div class="mini-news-item">State PG Cutoff Updated</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <h4>Private Colleges</h4>
-          <p>Higher fees (Rs. 5-20 Lakh/year). More seats available. Scores from 400-600 can get admissions.</p>
-          <div class="info-range">
-            <span class="range-label">Score Range:</span>
-            <span class="range-value moderate">400-600 for private colleges</span>
-          </div>
-        </div>
-
-        <div class="info-card">
-          <div class="info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
-            </svg>
-          </div>
-          <h4>Deemed Universities</h4>
-          <p>Premium fees (Rs. 15-25 Lakh/year). Counselling through MCC. Available for a wider score range.</p>
-          <div class="info-range">
-            <span class="range-label">Score Range:</span>
-            <span class="range-value info">350+ (varies by university)</span>
-          </div>
+          <div class="app-glow-bg"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Documents Checklist -->
-  <section class="documents">
+  <!-- ========== NEWS SECTION ========== -->
+  <section class="news-section" id="news">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Be Prepared</span>
-        <h2 class="section-title">Documents Checklist</h2>
-        <p class="section-subtitle">Keep these documents ready before counselling begins</p>
+        <span class="section-tag">Live Updates</span>
+        <h2>Latest News &amp; Updates</h2>
+        <p>Stay informed with real-time updates across all counselling categories</p>
       </div>
 
-      <div class="docs-grid">
-        <div class="doc-category">
-          <h3 class="doc-category-title">Academic Documents</h3>
-          <ul class="doc-list">
-            <li class="doc-item"><span class="check-box"></span>NEET-UG Admit Card</li>
-            <li class="doc-item"><span class="check-box"></span>NEET-UG Result / Scorecard</li>
-            <li class="doc-item"><span class="check-box"></span>Class 10 Mark Sheet & Certificate</li>
-            <li class="doc-item"><span class="check-box"></span>Class 12 Mark Sheet & Certificate</li>
-            <li class="doc-item"><span class="check-box"></span>Class 12 Passing Certificate</li>
-          </ul>
-        </div>
-
-        <div class="doc-category">
-          <h3 class="doc-category-title">Identity Documents</h3>
-          <ul class="doc-list">
-            <li class="doc-item"><span class="check-box"></span>Aadhar Card</li>
-            <li class="doc-item"><span class="check-box"></span>Passport (if applicable)</li>
-            <li class="doc-item"><span class="check-box"></span>Passport Size Photographs (10+)</li>
-            <li class="doc-item"><span class="check-box"></span>Birth Certificate</li>
-          </ul>
-        </div>
-
-        <div class="doc-category">
-          <h3 class="doc-category-title">Category / Special Documents</h3>
-          <ul class="doc-list">
-            <li class="doc-item"><span class="check-box"></span>Caste Certificate (OBC/SC/ST)</li>
-            <li class="doc-item"><span class="check-box"></span>EWS Certificate (if applicable)</li>
-            <li class="doc-item"><span class="check-box"></span>PwD Certificate (if applicable)</li>
-            <li class="doc-item"><span class="check-box"></span>Domicile / Residence Certificate</li>
-            <li class="doc-item"><span class="check-box"></span>Migration Certificate</li>
-          </ul>
-        </div>
-
-        <div class="doc-category">
-          <h3 class="doc-category-title">Financial Documents</h3>
-          <ul class="doc-list">
-            <li class="doc-item"><span class="check-box"></span>Bank Account Details</li>
-            <li class="doc-item"><span class="check-box"></span>Net Banking / UPI / Debit Card</li>
-            <li class="doc-item"><span class="check-box"></span>Income Certificate (for EWS/scholarship)</li>
-          </ul>
-        </div>
+      <!-- Tabs -->
+      <div class="news-tabs" id="newsTabs">
+        <button class="news-tab active" data-tab="neet">
+          <span class="tab-icon">📝</span> NEET Exam News
+        </button>
+        <button class="news-tab" data-tab="mcc">
+          <span class="tab-icon">🏥</span> MCC News
+        </button>
+        <button class="news-tab" data-tab="ayush">
+          <span class="tab-icon">🌿</span> AYUSH News
+        </button>
+        <button class="news-tab" data-tab="vcc">
+          <span class="tab-icon">🐾</span> VCC News
+        </button>
       </div>
 
-      <div class="docs-tip">
-        <span class="tip-icon">Tip</span>
-        <p>Make multiple photocopies of all documents and keep them in a dedicated folder. Also maintain digital scans in a cloud storage for quick access.</p>
+      <!-- Tab Panels -->
+      <div class="news-panels">
+
+        <div class="news-panel active" id="panel-neet">
+          <div class="news-list">
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat neet-cat">NEET UG</span>
+                <h4>NEET UG 2025 Exam Date Announced — Check Schedule &amp; Syllabus</h4>
+                <span class="news-meta">Mar 28, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat neet-cat">Result</span>
+                <h4>NEET 2024 Final Answer Key Released by NTA — Download PDF</h4>
+                <span class="news-meta">Mar 25, 2025 · 2 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item new-item">
+              <div class="news-item-left">
+                <span class="news-cat neet-cat">Admit Card</span>
+                <h4>NEET 2025 Admit Card Download Link — Step-by-Step Guide</h4>
+                <span class="news-meta">Mar 22, 2025 · 4 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat neet-cat">Eligibility</span>
+                <h4>NEET 2025 Eligibility Criteria — Age Limit, Qualification &amp; Attempts</h4>
+                <span class="news-meta">Mar 20, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat neet-cat">Preparation</span>
+                <h4>Top 10 Tips to Score 650+ in NEET 2025 — Expert Strategy</h4>
+                <span class="news-meta">Mar 18, 2025 · 5 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat neet-cat">Registration</span>
+                <h4>NEET 2025 Registration Process — Forms, Fees &amp; Correction Window</h4>
+                <span class="news-meta">Mar 15, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+          </div>
+          <a href="#" class="more-posts-btn">View All NEET News <span>→</span></a>
+        </div>
+
+        <div class="news-panel" id="panel-mcc">
+          <div class="news-list">
+            <a href="#" class="news-item new-item">
+              <div class="news-item-left">
+                <span class="news-cat mcc-cat">Round 2</span>
+                <h4>MCC NEET UG Counselling Round 2 Seat Allotment Result — Download Letter</h4>
+                <span class="news-meta">Mar 27, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat mcc-cat">Schedule</span>
+                <h4>MCC Counselling 2025 Full Schedule — Round 1, 2, Mop-Up &amp; Stray Vacancy</h4>
+                <span class="news-meta">Mar 24, 2025 · 4 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat mcc-cat">Seat Matrix</span>
+                <h4>MCC Seat Matrix 2025 Released — State-wise MBBS &amp; BDS Seats</h4>
+                <span class="news-meta">Mar 21, 2025 · 2 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat mcc-cat">Registration</span>
+                <h4>MCC Counselling Registration 2025 Begins — Direct Link &amp; Steps</h4>
+                <span class="news-meta">Mar 19, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat mcc-cat">Mop-Up</span>
+                <h4>MCC Mop-Up Round 2025 Notification — Dates &amp; Process Explained</h4>
+                <span class="news-meta">Mar 17, 2025 · 2 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat mcc-cat">Cutoff</span>
+                <h4>MCC NEET UG 2024 Final Closing Ranks — All Categories &amp; States</h4>
+                <span class="news-meta">Mar 14, 2025 · 5 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+          </div>
+          <a href="#" class="more-posts-btn">View All MCC News <span>→</span></a>
+        </div>
+
+        <div class="news-panel" id="panel-ayush">
+          <div class="news-list">
+            <a href="#" class="news-item new-item">
+              <div class="news-item-left">
+                <span class="news-cat ayush-cat">AACCC</span>
+                <h4>AYUSH Counselling 2025 Registration Starts — Apply at aaccc.gov.in</h4>
+                <span class="news-meta">Mar 26, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat ayush-cat">BAMS</span>
+                <h4>BAMS Counselling 2025 — Seat Matrix, Cutoff &amp; Registration Process</h4>
+                <span class="news-meta">Mar 23, 2025 · 4 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat ayush-cat">BHMS</span>
+                <h4>BHMS Admission 2025 — Complete Guide to AYUSH Counselling for Homeopathy</h4>
+                <span class="news-meta">Mar 20, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat ayush-cat">BUMS</span>
+                <h4>BUMS Colleges 2025 — Top Unani Medical Colleges with Cutoffs</h4>
+                <span class="news-meta">Mar 17, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat ayush-cat">Result</span>
+                <h4>AACCC AYUSH Round 1 Allotment Result 2025 — How to Check &amp; Next Steps</h4>
+                <span class="news-meta">Mar 15, 2025 · 2 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat ayush-cat">Cutoff</span>
+                <h4>AYUSH 2024 Final Cutoff Ranks — BAMS, BHMS, BUMS, BPharma Category-wise</h4>
+                <span class="news-meta">Mar 12, 2025 · 5 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+          </div>
+          <a href="#" class="more-posts-btn">View All AYUSH News <span>→</span></a>
+        </div>
+
+        <div class="news-panel" id="panel-vcc">
+          <div class="news-list">
+            <a href="#" class="news-item new-item">
+              <div class="news-item-left">
+                <span class="news-cat vcc-cat">VCC</span>
+                <h4>VCC BVSc Counselling 2025 Registration Open — Dates &amp; Process</h4>
+                <span class="news-meta">Mar 25, 2025 · 3 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat vcc-cat">Seat Matrix</span>
+                <h4>VCC Veterinary Seat Matrix 2025 — State-wise BVSc &amp; AH Seats Released</h4>
+                <span class="news-meta">Mar 22, 2025 · 2 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat vcc-cat">Cutoff</span>
+                <h4>VCC NEET 2024 Closing Ranks — All India BVSc Counselling Cutoff List</h4>
+                <span class="news-meta">Mar 19, 2025 · 4 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat vcc-cat">Colleges</span>
+                <h4>Top Veterinary Colleges in India 2025 — Ranking, Fees &amp; Cutoffs</h4>
+                <span class="news-meta">Mar 17, 2025 · 5 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat vcc-cat">Documents</span>
+                <h4>VCC Counselling Documents Checklist 2025 — Complete List</h4>
+                <span class="news-meta">Mar 14, 2025 · 2 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+            <a href="#" class="news-item">
+              <div class="news-item-left">
+                <span class="news-cat vcc-cat">Eligibility</span>
+                <h4>BVSc Admission 2025 — Eligibility, Process &amp; Career After Veterinary</h4>
+                <span class="news-meta">Mar 11, 2025 · 4 min read</span>
+              </div>
+              <div class="news-arrow">→</div>
+            </a>
+          </div>
+          <a href="#" class="more-posts-btn">View All VCC News <span>→</span></a>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
+  <!-- ========== TEAM SECTION ========== -->
+  <section class="team-section" id="team">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Get Help</span>
-        <h2 class="section-title">Contact Our Counsellors</h2>
-        <p class="section-subtitle">Have questions? Our expert counsellors are here to help you navigate every step</p>
+        <span class="section-tag green-tag">Our Team</span>
+        <h2>Meet the Experts Behind NCH</h2>
+        <p>Experienced medical educators and technologists dedicated to your success</p>
       </div>
 
+      <div class="team-grid">
+
+        <div class="team-card head-card">
+          <div class="team-avatar" style="background: linear-gradient(135deg, #2563eb, #1d4ed8);">
+            <span>PP</span>
+          </div>
+          <div class="team-badge-wrap">
+            <span class="team-badge founder-badge">Founder &amp; Head</span>
+          </div>
+          <h3>Dr. Praveen Patel</h3>
+          <p class="team-role">Medical Educator &amp; Counselling Expert</p>
+          <p class="team-bio">Renowned NEET counselling expert with 10+ years of experience guiding thousands of students into top medical colleges across India.</p>
+          <div class="team-stats">
+            <div class="ts-item"><strong>10+</strong><span>Years Exp.</span></div>
+            <div class="ts-item"><strong>25K+</strong><span>Students</span></div>
+          </div>
+          <div class="team-socials">
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2C0 8.1 0 12 0 12s0 3.9.6 5.8a3 3 0 002.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 002.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar" style="background: linear-gradient(135deg, #16a34a, #15803d);">
+            <span>NC</span>
+          </div>
+          <div class="team-badge-wrap">
+            <span class="team-badge ceo-badge">CEO</span>
+          </div>
+          <h3>Neelam Choudhary</h3>
+          <p class="team-role">Chief Executive Officer</p>
+          <p class="team-bio">Leads operations and growth strategy for NEET Counselling Help, ensuring every student gets timely and accurate counselling support.</p>
+          <div class="team-stats">
+            <div class="ts-item"><strong>8+</strong><span>Years Exp.</span></div>
+            <div class="ts-item"><strong>15K+</strong><span>Managed</span></div>
+          </div>
+          <div class="team-socials">
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar" style="background: linear-gradient(135deg, #0891b2, #0e7490);">
+            <span>DN</span>
+          </div>
+          <div class="team-badge-wrap">
+            <span class="team-badge advisor-badge">Medical Advisor</span>
+          </div>
+          <h3>Dr. Nirmal</h3>
+          <p class="team-role">MBBS · Clinical Advisor</p>
+          <p class="team-bio">Provides expert clinical insights and helps students understand college specialties, infrastructure quality, and post-MBBS opportunities.</p>
+          <div class="team-stats">
+            <div class="ts-item"><strong>5+</strong><span>Years Exp.</span></div>
+            <div class="ts-item"><strong>500+</strong><span>Counselled</span></div>
+          </div>
+          <div class="team-socials">
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="team-card">
+          <div class="team-avatar" style="background: linear-gradient(135deg, #9333ea, #7e22ce);">
+            <span>DP</span>
+          </div>
+          <div class="team-badge-wrap">
+            <span class="team-badge advisor-badge">Content Lead</span>
+          </div>
+          <h3>Dr. Pooja</h3>
+          <p class="team-role">MBBS · Content &amp; Research</p>
+          <p class="team-bio">Leads content creation and research for AYUSH counselling guides, ensuring accurate and up-to-date information for BAMS, BHMS, and BUMS students.</p>
+          <div class="team-stats">
+            <div class="ts-item"><strong>4+</strong><span>Years Exp.</span></div>
+            <div class="ts-item"><strong>200+</strong><span>Articles</span></div>
+          </div>
+          <div class="team-socials">
+            <a href="#" class="social-link" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section class="contact-section" id="contact">
+    <div class="container">
       <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Reach Us Directly</h3>
-
-          <div class="contact-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.64A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
-              </svg>
-            </div>
-            <div>
-              <span class="contact-label">Phone / WhatsApp</span>
-              <a href="tel:+911800XXXXXXX" class="contact-value">1800-XXX-XXXX (Toll Free)</a>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </div>
-            <div>
-              <span class="contact-label">Email</span>
-              <a href="mailto:help@neetcounsel.in" class="contact-value">help@neetcounsel.in</a>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
-            <div>
-              <span class="contact-label">Support Hours</span>
-              <span class="contact-value">Mon – Sat: 9 AM – 7 PM IST</span>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div>
-              <span class="contact-label">Office</span>
-              <span class="contact-value">New Delhi, India</span>
-            </div>
-          </div>
-
-          <div class="quick-links">
-            <h4>Quick Links</h4>
-            <a href="https://mcc.nic.in" target="_blank" rel="noopener" class="quick-link">MCC Official Website</a>
-            <a href="https://neet.nta.nic.in" target="_blank" rel="noopener" class="quick-link">NTA NEET Portal</a>
+        <div class="contact-left">
+          <span class="section-tag light-tag">Get in Touch</span>
+          <h2>Have Questions?<br />We're Here to Help</h2>
+          <p>Our counselling experts are available Mon–Sat, 9 AM – 7 PM IST to answer all your NEET counselling queries.</p>
+          <div class="contact-links">
+            <a href="mailto:help@neetcounsellinghelp.com" class="contact-link-item">
+              <div class="cli-icon">📧</div>
+              <span>help@neetcounsellinghelp.com</span>
+            </a>
+            <a href="https://wa.me/91XXXXXXXXXX" class="contact-link-item">
+              <div class="cli-icon">💬</div>
+              <span>WhatsApp Helpline</span>
+            </a>
+            <a href="https://www.youtube.com/@NEETCounsellingHelp" class="contact-link-item" target="_blank" rel="noopener">
+              <div class="cli-icon">▶️</div>
+              <span>YouTube Channel</span>
+            </a>
           </div>
         </div>
-
-        <div class="contact-form-wrapper">
+        <div class="contact-right">
           <form class="contact-form" id="contactForm" novalidate>
-            <h3>Send a Message</h3>
-
-            <div class="form-group">
-              <label for="fullName">Full Name *</label>
-              <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
-              <span class="field-error" id="nameError"></span>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" name="email" placeholder="your@email.com" required>
-                <span class="field-error" id="emailError"></span>
+            <div class="form-row-2">
+              <div class="fg">
+                <label>Your Name *</label>
+                <input type="text" id="cName" placeholder="Full name" required />
+                <span class="ferr" id="cNameErr"></span>
               </div>
-              <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX">
+              <div class="fg">
+                <label>NEET Score</label>
+                <input type="number" id="cScore" placeholder="e.g. 550" min="0" max="720" />
               </div>
             </div>
-
-            <div class="form-group">
-              <label for="neetScoreContact">NEET Score (optional)</label>
-              <input type="number" id="neetScoreContact" name="neetScore" placeholder="Your NEET score" min="0" max="720">
+            <div class="fg">
+              <label>Email / Phone *</label>
+              <input type="text" id="cContact" placeholder="email@example.com or 9XXXXXXXXX" required />
+              <span class="ferr" id="cContactErr"></span>
             </div>
-
-            <div class="form-group">
-              <label for="query">Your Query *</label>
-              <select id="query" name="query" required>
-                <option value="">Select query type</option>
-                <option value="mcc">MCC Counselling</option>
-                <option value="state">State Counselling</option>
-                <option value="college">College Selection</option>
-                <option value="documents">Documents Help</option>
-                <option value="fees">Fees & Scholarships</option>
-                <option value="other">Other</option>
+            <div class="fg">
+              <label>Query Type *</label>
+              <select id="cQuery" required>
+                <option value="">Select your query type</option>
+                <option>MCC MBBS Counselling</option>
+                <option>AYUSH Counselling</option>
+                <option>Veterinary (BVSc)</option>
+                <option>State Counselling</option>
+                <option>College Selection Help</option>
+                <option>Documents &amp; Process</option>
+                <option>Other</option>
               </select>
-              <span class="field-error" id="queryError"></span>
+              <span class="ferr" id="cQueryErr"></span>
             </div>
-
-            <div class="form-group">
-              <label for="message">Message *</label>
-              <textarea id="message" name="message" rows="4" placeholder="Describe your question or concern..." required></textarea>
-              <span class="field-error" id="messageError"></span>
+            <div class="fg">
+              <label>Message *</label>
+              <textarea id="cMsg" rows="4" placeholder="Describe your question..." required></textarea>
+              <span class="ferr" id="cMsgErr"></span>
             </div>
-
-            <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
-              <span class="btn-text">Send Message</span>
-              <span class="btn-loader" id="btnLoader"></span>
+            <button type="submit" class="btn btn-green" id="cSubmitBtn">
+              <span id="cBtnTxt">Send Message</span>
+              <span class="btn-spin" id="cBtnSpin" style="display:none;"></span>
             </button>
-
-            <div class="form-success" id="formSuccess">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-              <p>Thank you! We'll get back to you within 24 hours.</p>
+            <div class="form-ok" id="cFormOk">
+              ✅ Thank you! We'll reply within 24 hours.
             </div>
           </form>
         </div>
@@ -537,54 +942,85 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-grid">
+      <div class="footer-top">
         <div class="footer-brand">
-          <div class="nav-brand">
-            <span class="brand-icon">+</span>
-            <span class="brand-text">NEETCounsel</span>
+          <div class="nav-logo" style="margin-bottom:12px;">
+            <div class="logo-icon">
+              <svg viewBox="0 0 32 32" fill="none">
+                <rect width="32" height="32" rx="10" fill="url(#lg2)"/>
+                <path d="M16 7v18M10 13l6-6 6 6M10 25h12" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <defs><linearGradient id="lg2" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#22c55e"/><stop offset="1" stop-color="#16a34a"/></linearGradient></defs>
+              </svg>
+            </div>
+            <span style="font-weight:800;font-size:18px;color:#fff;">NEET Counselling<span style="color:#4ade80;"> Help</span></span>
           </div>
-          <p>Your trusted partner for NEET counselling guidance. We help students navigate India's medical admission process with clarity and confidence.</p>
+          <p>Complete NEET counselling guidance for MBBS, AYUSH, and Veterinary admissions across India.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="YouTube" class="fsocial yt">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2C0 8.1 0 12 0 12s0 3.9.6 5.8a3 3 0 002.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 002.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="#" aria-label="Telegram" class="fsocial tg">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.01 9.474c-.148.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.604.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.872.747z"/></svg>
+            </a>
+            <a href="#" aria-label="Instagram" class="fsocial ig">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
         </div>
 
-        <div class="footer-links">
+        <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#about">About Counselling</a></li>
-            <li><a href="#process">Step-by-Step Guide</a></li>
-            <li><a href="#predictor">College Predictor</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#flowchart">Counselling Process</a></li>
+            <li><a href="#tools">Free Tools</a></li>
+            <li><a href="#app">Download App</a></li>
+            <li><a href="#news">Latest News</a></li>
+            <li><a href="#team">Our Team</a></li>
           </ul>
         </div>
 
-        <div class="footer-links">
+        <div class="footer-col">
+          <h4>Counselling</h4>
+          <ul>
+            <li><a href="#flowchart">MCC Counselling</a></li>
+            <li><a href="#flowchart">AYUSH (AACCC)</a></li>
+            <li><a href="#flowchart">VCC Veterinary</a></li>
+            <li><a href="#flowchart">State Quota</a></li>
+            <li><a href="#flowchart">Deemed Universities</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
           <h4>Resources</h4>
           <ul>
-            <li><a href="https://mcc.nic.in" target="_blank" rel="noopener">MCC Portal</a></li>
+            <li><a href="https://mcc.nic.in" target="_blank" rel="noopener">MCC Official</a></li>
+            <li><a href="https://aaccc.gov.in" target="_blank" rel="noopener">AACCC Official</a></li>
             <li><a href="https://neet.nta.nic.in" target="_blank" rel="noopener">NTA NEET</a></li>
-            <li><a href="#documents">Documents Checklist</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-links">
-          <h4>Counselling Types</h4>
-          <ul>
-            <li><a href="#process">AIQ Counselling</a></li>
-            <li><a href="#process">State Quota</a></li>
-            <li><a href="#process">Deemed Universities</a></li>
-            <li><a href="#process">Central Universities</a></li>
+            <li><a href="#tools">College Info Tool</a></li>
+            <li><a href="#tools">Cutoff Checker</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2025 NEETCounsel. For guidance purposes only. Always verify information on official MCC and NTA websites.</p>
-        <p class="footer-disclaimer">This is an informational website. Not affiliated with MCC, NTA, or any government body.</p>
+        <div class="fb-left">
+          <p>© 2025 NEET Counselling Help. Built with ❤️ by <strong>Dr. Praveen Patel</strong></p>
+          <p class="fb-disc">Informational website only. Not affiliated with MCC, NTA, or any government body. Always verify on official portals.</p>
+        </div>
+        <div class="fb-right">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
     </div>
   </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script src="script.js"></script>
 </body>

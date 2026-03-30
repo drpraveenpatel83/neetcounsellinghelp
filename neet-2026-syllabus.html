@@ -112,7 +112,8 @@
     .warning-box p { color: #92400e; margin: 0; font-size: 14px; font-weight: 500; }
 
     /* Exam pattern table */
-    .pattern-table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 16px 0; border-radius: 10px; }
+    .pattern-table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 360px; }
     .pattern-table th {
       background: linear-gradient(135deg, #1e3a8a, #2563eb);
       color: #fff; padding: 12px 16px; text-align: left;
@@ -371,112 +372,92 @@
         <!-- Exam Pattern -->
         <div class="content-block" id="pattern">
           <h2><span class="h-icon">📊</span> NEET UG 2026 Exam Pattern</h2>
-          <p>The NEET UG 2026 paper pattern is given below. Each subject has <strong>2 sections</strong> — Section A (compulsory) and Section B (with internal choice options).</p>
+          <p>The NEET UG 2026 paper pattern is given below. <strong>All 180 questions are compulsory</strong> — there is no optional Section B or internal choice. This pattern has been in place since 2024 and continues for 2026 as confirmed by NTA.</p>
 
+          <div class="table-scroll">
           <table class="pattern-table">
             <thead>
               <tr>
                 <th>Subject</th>
-                <th>Section A</th>
-                <th>Section B</th>
-                <th>Total Qs</th>
-                <th>Attempt</th>
+                <th>Questions</th>
                 <th>Max Marks</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><strong>Physics</strong></td>
-                <td>35 Qs</td>
-                <td>15 Qs</td>
-                <td>50</td>
-                <td>45</td>
+                <td>45 (All compulsory)</td>
                 <td>180</td>
               </tr>
               <tr>
                 <td><strong>Chemistry</strong></td>
-                <td>35 Qs</td>
-                <td>15 Qs</td>
-                <td>50</td>
-                <td>45</td>
+                <td>45 (All compulsory)</td>
                 <td>180</td>
               </tr>
               <tr>
-                <td><strong>Botany</strong></td>
-                <td>35 Qs</td>
-                <td>15 Qs</td>
-                <td>50</td>
-                <td>45</td>
-                <td>180</td>
-              </tr>
-              <tr>
-                <td><strong>Zoology</strong></td>
-                <td>35 Qs</td>
-                <td>15 Qs</td>
-                <td>50</td>
-                <td>45</td>
-                <td>180</td>
+                <td><strong>Biology (Botany + Zoology)</strong></td>
+                <td>90 (All compulsory)</td>
+                <td>360</td>
               </tr>
               <tr>
                 <td><strong>Total</strong></td>
-                <td>140 Qs</td>
-                <td>60 Qs</td>
-                <td>200</td>
-                <td>180</td>
+                <td><strong>180</strong></td>
                 <td><strong>720</strong></td>
               </tr>
             </tbody>
           </table>
+          </div>
 
           <div class="green-box">
-            <p>✅ <strong>Marking Scheme:</strong> Correct answer = +4 marks | Wrong answer = -1 mark (Negative Marking) | Unanswered = 0 marks. In Section B, attempt any 10 out of 15 questions.</p>
+            <p>✅ <strong>Marking Scheme:</strong> Correct answer = +4 marks | Wrong answer = −1 mark (Negative Marking) | Unanswered / Skipped = 0 marks. All 180 questions must be attempted — there is no optional section.</p>
           </div>
         </div>
 
         <!-- Physics Syllabus -->
         <div class="content-block" id="physics">
           <h2><span class="h-icon">⚛️</span> Physics Syllabus</h2>
-          <p>Physics includes <strong>10 units</strong> from Class 11 and <strong>9 units</strong> from Class 12. The complete chapter list is given below:</p>
+          <p>Physics has <strong>20 units</strong> as per the official NMC syllabus — Units 1–10 from Class 11 and Units 11–20 from Class 12. Unit names are exactly as given in the NMC official PDF.</p>
 
           <div class="subject-header">
             <span class="sh-icon">⚛️</span>
             <div>
-              <h3>Physics — Class 11 Chapters</h3>
-              <span>10 Units | ~35-40% weightage from Class 11</span>
+              <h3>Physics — Class 11 (Units 1–10)</h3>
+              <span>10 Units | Mechanics, Thermodynamics, Waves</span>
             </div>
           </div>
 
           <div class="chapter-list">
-            <div class="chapter-item"><div class="chapter-num">1</div>Physical World and Measurement</div>
+            <div class="chapter-item"><div class="chapter-num">1</div>Physics and Measurement</div>
             <div class="chapter-item"><div class="chapter-num">2</div>Kinematics</div>
             <div class="chapter-item"><div class="chapter-num">3</div>Laws of Motion</div>
             <div class="chapter-item"><div class="chapter-num">4</div>Work, Energy and Power</div>
-            <div class="chapter-item"><div class="chapter-num">5</div>Motion of System of Particles and Rigid Body</div>
+            <div class="chapter-item"><div class="chapter-num">5</div>Rotational Motion</div>
             <div class="chapter-item"><div class="chapter-num">6</div>Gravitation</div>
-            <div class="chapter-item"><div class="chapter-num">7</div>Properties of Bulk Matter</div>
+            <div class="chapter-item"><div class="chapter-num">7</div>Properties of Solids and Liquids</div>
             <div class="chapter-item"><div class="chapter-num">8</div>Thermodynamics</div>
-            <div class="chapter-item"><div class="chapter-num">9</div>Behaviour of Perfect Gas and Kinetic Theory</div>
+            <div class="chapter-item"><div class="chapter-num">9</div>Kinetic Theory of Gases</div>
             <div class="chapter-item"><div class="chapter-num">10</div>Oscillations and Waves</div>
           </div>
 
           <div class="subject-header">
             <span class="sh-icon">🔋</span>
             <div>
-              <h3>Physics — Class 12 Chapters</h3>
-              <span>9 Units | ~60-65% weightage from Class 12</span>
+              <h3>Physics — Class 12 (Units 11–20)</h3>
+              <span>10 Units | Electricity, Optics, Modern Physics</span>
             </div>
           </div>
 
           <div class="chapter-list">
-            <div class="chapter-item"><div class="chapter-num">1</div>Electrostatics</div>
-            <div class="chapter-item"><div class="chapter-num">2</div>Current Electricity</div>
-            <div class="chapter-item"><div class="chapter-num">3</div>Magnetic Effects of Current and Magnetism</div>
-            <div class="chapter-item"><div class="chapter-num">4</div>Electromagnetic Induction and Alternating Currents</div>
-            <div class="chapter-item"><div class="chapter-num">5</div>Electromagnetic Waves</div>
-            <div class="chapter-item"><div class="chapter-num">6</div>Optics</div>
-            <div class="chapter-item"><div class="chapter-num">7</div>Dual Nature of Matter and Radiation</div>
-            <div class="chapter-item"><div class="chapter-num">8</div>Atoms and Nuclei</div>
-            <div class="chapter-item"><div class="chapter-num">9</div>Electronic Devices</div>
+            <div class="chapter-item"><div class="chapter-num">11</div>Electrostatics</div>
+            <div class="chapter-item"><div class="chapter-num">12</div>Current Electricity</div>
+            <div class="chapter-item"><div class="chapter-num">13</div>Magnetic Effects of Current and Magnetism</div>
+            <div class="chapter-item"><div class="chapter-num">14</div>Electromagnetic Induction and Alternating Currents</div>
+            <div class="chapter-item"><div class="chapter-num">15</div>Electromagnetic Waves</div>
+            <div class="chapter-item"><div class="chapter-num">16</div>Optics</div>
+            <div class="chapter-item"><div class="chapter-num">17</div>Dual Nature of Matter and Radiation</div>
+            <div class="chapter-item"><div class="chapter-num">18</div>Atoms and Nuclei</div>
+            <div class="chapter-item"><div class="chapter-num">19</div>Electronic Devices</div>
+            <div class="chapter-item"><div class="chapter-num">20</div>Experimental Skills</div>
           </div>
 
           <div class="highlight-box">
@@ -487,58 +468,59 @@
         <!-- Chemistry Syllabus -->
         <div class="content-block" id="chemistry">
           <h2><span class="h-icon">🧪</span> Chemistry Syllabus</h2>
-          <p>Chemistry has <strong>3 divisions</strong> — Physical Chemistry, Organic Chemistry, and Inorganic Chemistry. There are 14 chapters from Class 11 and 16 chapters from Class 12.</p>
-
-          <div class="subject-header green">
-            <span class="sh-icon">🧪</span>
-            <div>
-              <h3>Chemistry — Class 11 Chapters</h3>
-              <span>14 Chapters | Physical + Inorganic + Organic Basics</span>
-            </div>
-          </div>
-
-          <div class="chapter-list">
-            <div class="chapter-item ch-green"><div class="chapter-num">1</div>Some Basic Concepts of Chemistry</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">2</div>Structure of Atom</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">3</div>Classification of Elements &amp; Periodicity</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">4</div>Chemical Bonding and Molecular Structure</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">5</div>States of Matter: Gases and Liquids</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">6</div>Thermodynamics</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">7</div>Equilibrium</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">8</div>Redox Reactions</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">9</div>Hydrogen</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">10</div>s-Block Elements (Alkali &amp; Alkaline Earth Metals)</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">11</div>Some p-Block Elements</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">12</div>Organic Chemistry – Basic Principles &amp; Techniques</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">13</div>Hydrocarbons</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">14</div>Environmental Chemistry</div>
-          </div>
+          <p>Chemistry has <strong>20 units</strong> across 3 divisions as per the official NMC 2026 PDF. Note: Chapters like Solid State, Surface Chemistry, Hydrogen, s-Block Elements, Polymers, Chemistry in Everyday Life, and Environmental Chemistry are <strong>NOT part of the NMC 2026 syllabus</strong>.</p>
 
           <div class="subject-header green">
             <span class="sh-icon">⚗️</span>
             <div>
-              <h3>Chemistry — Class 12 Chapters</h3>
-              <span>16 Chapters | Advanced Organic + Inorganic + Physical</span>
+              <h3>Physical Chemistry (Units 1–8)</h3>
+              <span>8 Units | Basic Concepts to Chemical Kinetics</span>
             </div>
           </div>
 
           <div class="chapter-list">
-            <div class="chapter-item ch-green"><div class="chapter-num">1</div>Solid State</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">2</div>Solutions</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">3</div>Electrochemistry</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">4</div>Chemical Kinetics</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">5</div>Surface Chemistry</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">6</div>General Principles &amp; Processes of Isolation of Elements</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">7</div>p-Block Elements</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">8</div>d and f Block Elements</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">9</div>Coordination Compounds</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">10</div>Haloalkanes and Haloarenes</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">11</div>Alcohols, Phenols and Ethers</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">12</div>Aldehydes, Ketones and Carboxylic Acids</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">13</div>Organic Compounds Containing Nitrogen</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">14</div>Biomolecules</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">15</div>Polymers</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">16</div>Chemistry in Everyday Life</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">1</div>Some Basic Concepts in Chemistry</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">2</div>Atomic Structure</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">3</div>Chemical Bonding and Molecular Structure</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">4</div>Chemical Thermodynamics</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">5</div>Solutions</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">6</div>Equilibrium</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">7</div>Redox Reactions and Electrochemistry</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">8</div>Chemical Kinetics</div>
+          </div>
+
+          <div class="subject-header green">
+            <span class="sh-icon">🧲</span>
+            <div>
+              <h3>Inorganic Chemistry (Units 9–12)</h3>
+              <span>4 Units | Periodic Table to Coordination Compounds</span>
+            </div>
+          </div>
+
+          <div class="chapter-list">
+            <div class="chapter-item ch-green"><div class="chapter-num">9</div>Classification of Elements and Periodicity in Properties</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">10</div>p-Block Elements (Groups 13–18)</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">11</div>d and f Block Elements</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">12</div>Co-ordination Compounds</div>
+          </div>
+
+          <div class="subject-header green">
+            <span class="sh-icon">🧪</span>
+            <div>
+              <h3>Organic Chemistry (Units 13–20)</h3>
+              <span>8 Units | Basic Principles to Biomolecules</span>
+            </div>
+          </div>
+
+          <div class="chapter-list">
+            <div class="chapter-item ch-green"><div class="chapter-num">13</div>Purification &amp; Characterisation of Organic Compounds</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">14</div>Some Basic Principles of Organic Chemistry</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">15</div>Hydrocarbons</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">16</div>Organic Compounds Containing Halogens</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">17</div>Organic Compounds Containing Oxygen</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">18</div>Organic Compounds Containing Nitrogen</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">19</div>Biomolecules</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">20</div>Principles Related to Practical Chemistry</div>
           </div>
 
           <div class="highlight-box">
@@ -549,7 +531,10 @@
         <!-- Biology Syllabus -->
         <div class="content-block" id="biology">
           <h2><span class="h-icon">🌿</span> Biology Syllabus (Botany + Zoology)</h2>
-          <p>Biology is the highest <strong>scoring subject</strong> in NEET — 360 marks (50%). Over <strong>95% of questions</strong> come directly from NCERT. Both Botany and Zoology are covered from Class 11 and 12.</p>
+          <p>Biology is the highest <strong>scoring subject</strong> in NEET — 360 marks (50%). Over <strong>95% of questions</strong> come directly from NCERT. The NMC 2026 syllabus has <strong>10 units</strong>.</p>
+          <div class="warning-box">
+            <p>⚠️ <strong>Removed from NMC 2026 Biology:</strong> "Reproduction in Organisms" (asexual reproduction), "Strategies for Enhancement in Food Production", and "Environmental Issues" are NOT part of the official NMC 2026 syllabus. Do not prepare these chapters for NEET 2026.</p>
+          </div>
 
           <div class="subject-header" style="background: linear-gradient(135deg, #14532d, #16a34a);">
             <span class="sh-icon">🌱</span>
@@ -611,10 +596,9 @@
 
           <div class="class-tag">📘 Unit 6 — Reproduction</div>
           <div class="chapter-list">
-            <div class="chapter-item ch-green"><div class="chapter-num">1</div>Reproduction in Organisms</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">2</div>Sexual Reproduction in Flowering Plants</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">3</div>Human Reproduction</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">4</div>Reproductive Health</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">1</div>Sexual Reproduction in Flowering Plants</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">2</div>Human Reproduction</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">3</div>Reproductive Health</div>
           </div>
 
           <div class="class-tag">📘 Unit 7 — Genetics and Evolution</div>
@@ -626,9 +610,8 @@
 
           <div class="class-tag">📘 Unit 8 — Biology and Human Welfare</div>
           <div class="chapter-list">
-            <div class="chapter-item ch-green"><div class="chapter-num">8</div>Human Health and Disease</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">9</div>Strategies for Enhancement in Food Production</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">10</div>Microbes in Human Welfare</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">8</div>Health and Disease (Pathogens, Immunity, Cancer, AIDS)</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">9</div>Microbes in Human Welfare</div>
           </div>
 
           <div class="class-tag">📘 Unit 9 — Biotechnology</div>
@@ -639,10 +622,9 @@
 
           <div class="class-tag">📘 Unit 10 — Ecology and Environment</div>
           <div class="chapter-list">
-            <div class="chapter-item ch-green"><div class="chapter-num">13</div>Organisms and Populations</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">14</div>Ecosystem</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">15</div>Biodiversity and Conservation</div>
-            <div class="chapter-item ch-green"><div class="chapter-num">16</div>Environmental Issues</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">12</div>Organisms and Populations (Interactions, Growth)</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">13</div>Ecosystem (Productivity, Energy Flow, Pyramids)</div>
+            <div class="chapter-item ch-green"><div class="chapter-num">14</div>Biodiversity and its Conservation</div>
           </div>
 
           <div class="highlight-box">
@@ -670,7 +652,7 @@
             </div>
             <div class="tip-card">
               <h4>⏱️ Mock Tests Weekly</h4>
-              <p>Take one full-length mock test every week — 200 questions in 180 minutes. This improves time management and accuracy. Practice mocks strictly as per the NEET pattern.</p>
+              <p>Take one full-length mock test every week — 180 questions in 180 minutes (1 minute per question). This improves time management and accuracy. Practice mocks strictly as per the NEET 2026 pattern.</p>
             </div>
             <div class="tip-card">
               <h4>🎯 Biology Ko Priority</h4>

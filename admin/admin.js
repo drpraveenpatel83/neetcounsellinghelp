@@ -165,10 +165,14 @@ async function loadPostsFromFile() {
   if (!websiteDir) { showToast('Pehle folder connect karo','error'); return; }
   try {
     const txt = await readFile('posts.js');
-    // Extract POSTS array
+    // Extract POSTS array (supports both JS object literals and JSON)
     const match = txt.match(/const POSTS\s*=\s*(\[[\s\S]*?\n\]);/);
     if (!match) { showToast('posts.js mein POSTS array nahi mila','error'); return; }
-    currentPosts = JSON.parse(match[1]);
+    try {
+      currentPosts = (new Function('return ' + match[1]))();
+    } catch(pe) {
+      showToast('posts.js parse error: '+pe.message,'error'); return;
+    }
     renderPostsTable('all');
     refreshDashboard();
     showToast('Posts loaded: ' + currentPosts.length,'success');

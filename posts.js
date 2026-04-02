@@ -278,16 +278,17 @@ const COURSE_COLORS = {
 
 /* ── Build a compact state card ── */
 function _buildStateCard(s) {
-  const hasLive = s.courses.some(c => c.live);
+  const liveCourses = s.courses.filter(c => c.live);
+  const hasLive = liveCourses.length > 0;
 
-  const chips = s.courses.map((c, i) => {
+  // Only show chips for live courses
+  const chips = liveCourses.map((c, i) => {
     const col = (COURSE_COLORS[c.type] || COURSE_COLORS.MBBS).color;
     const sep = i > 0 ? `<span class="sg-sep">|</span>` : '';
-    if (c.live) {
-      return `${sep}<a href="${c.url}" class="sg-chip sg-chip-live" style="color:${col}" onclick="event.stopPropagation()">${c.type}</a>`;
-    }
-    return `${sep}<span class="sg-chip sg-chip-soon">${c.type}</span>`;
+    return `${sep}<a href="${c.url}" class="sg-chip sg-chip-live" style="color:${col}">${c.type}</a>`;
   }).join('');
+
+  const chipsHtml = hasLive ? chips : `<span class="sg-chip sg-chip-soon" style="font-size:10px;">Coming Soon</span>`;
 
   return `
     <div class="sg-card${hasLive ? ' sg-card-live' : ''}">
@@ -296,7 +297,7 @@ function _buildStateCard(s) {
         ${hasLive ? '<span class="sg-dot"></span>' : ''}
       </div>
       <div class="sg-name">${s.state}</div>
-      <div class="sg-chips">${chips}</div>
+      <div class="sg-chips">${chipsHtml}</div>
     </div>`;
 }
 

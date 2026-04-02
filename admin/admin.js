@@ -55,8 +55,9 @@ function showTab(name) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => { if(n.textContent.toLowerCase().includes(name==='dashboard'?'dashboard':name==='news'?'news':name==='builder'?'page':name==='sheets'?'sheet':name==='ads'?'ads':'settings')) n.classList.add('active'); });
+  document.querySelectorAll('.nav-item').forEach(n => { if(n.textContent.toLowerCase().includes(name==='dashboard'?'dashboard':name==='news'?'news':name==='builder'?'page':name==='states'?'state':name==='sheets'?'sheet':name==='ads'?'ads':'settings')) n.classList.add('active'); });
   if (name === 'news' && currentPosts.length === 0) loadPostsFromFile();
+  if (name === 'states') loadStatePages();
   if (name === 'dashboard') refreshDashboard();
 }
 
@@ -904,6 +905,92 @@ async function updateSitemap(slug) {
 
 async function editExistingPage(filename) {
   showToast('Existing pages direct edit karne ke liye VS Code use karo','info');
+}
+
+// ── STATE PAGES MANAGER ──
+let currentStatePages = [];
+
+async function loadStatePages() {
+  if (!websiteDir) { showToast('Pehle folder connect karo','error'); return; }
+  try {
+    const txt = await readFile('posts.js');
+    const match = txt.match(/const STATE_PAGES\s*=\s*(\[[\s\S]*?\n\]);/);
+    if (!match) { showToast('posts.js mein STATE_PAGES nahi mila','error'); return; }
+    currentStatePages = (new Function('return ' + match[1]))();
+    renderStatePages();
+    showToast('State pages loaded: ' + currentStatePages.length,'success');
+  } catch(e) { showToast('Error: '+e.message,'error'); }
+}
+
+function renderStatePages() {
+  const container = document.getElementById('statePagesContainer');
+  if (!currentStatePages.length) { container.innerHTML='<div class="empty-state"><p>No states found</p></div>'; return; }
+
+  const COURSE_COLORS = { MBBS:'#1d4ed8', AYUSH:'#15803d', BDS:'#7e22ce', Veterinary:'#c2410c' };
+
+  container.innerHTML = currentStatePages.map((s, si) => {
+    const liveCount = s.courses.filter(c=>c.live).length;
+    return `
+    <div class="card" style="margin-bottom:12px;">
+      <div class="card-head" style="cursor:pointer;" onclick="this.closest('.card').querySelector('.sp-body').style.display = this.closest('.card').querySelector('.sp-body').style.display==='none'?'':'none'">
+        <h3 style="display:flex;align-items:center;gap:10px;">
+          <span style="background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;">${s.code}</span>
+          ${s.state}
+          <span style="font-size:12px;font-weight:400;color:${liveCount>0?'#15803d':'#94a3b8'};">
+            ${liveCount>0 ? '✅ '+liveCount+' live' : '⏳ Coming Soon'}
+          </span>
+        </h3>
+        <span style="font-size:12px;color:#94a3b8;">${s.region} ▾</span>
+      </div>
+      <div class="sp-body" style="display:none;padding:16px;">
+        <div style="display:grid;gap:10px;">
+          ${s.courses.map((c, ci) => `
+          <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#f8fafc;border-radius:8px;border:1.5px solid ${c.live?'#bfdbfe':'#e2e8f0'};">
+            <span style="font-size:12px;font-weight:800;color:${COURSE_COLORS[c.type]||'#475569'};width:80px;flex-shrink:0;">${c.type}</span>
+            <input
+              class="form-input"
+              style="flex:1;font-size:12px;"
+              placeholder="${c.type.toLowerCase()}-counselling.html ya #"
+              value="${c.url||'#'}"
+              onchange="updateStateCourse(${si},${ci},'url',this.value)"
+            />
+            <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;">
+              <input type="checkbox" ${c.live?'checked':''} onchange="updateStateCourse(${si},${ci},'live',this.checked)" style="width:16px;height:16px;cursor:pointer;" />
+              <span style="color:${c.live?'#15803d':'#94a3b8'};">${c.live?'Live ✅':'Off'}</span>
+            </label>
+          </div>`).join('')}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function updateStateCourse(si, ci, field, value) {
+  currentStatePages[si].courses[ci][field] = value;
+  // refresh just the live badge in header
+  const cards = document.querySelectorAll('#statePagesContainer .card');
+  const card = cards[si];
+  if (!card) return;
+  const liveCount = currentStatePages[si].courses.filter(c=>c.live).length;
+  const badge = card.querySelector('.card-head h3 span:nth-child(3)');
+  if (badge) {
+    badge.textContent = liveCount>0 ? '✅ '+liveCount+' live' : '⏳ Coming Soon';
+    badge.style.color = liveCount>0 ? '#15803d' : '#94a3b8';
+  }
+  // update border color
+  const rows = card.querySelectorAll('.sp-body > div > div');
+  if (rows[ci]) rows[ci].style.borderColor = value && field==='live' ? (value?'#bfdbfe':'#e2e8f0') : rows[ci].style.borderColor;
+}
+
+async function saveStatePages() {
+  if (!websiteDir) { showToast('Folder connect karo','error'); return; }
+  try {
+    const currentTxt = await readFile('posts.js');
+    const pagesJSON  = JSON.stringify(currentStatePages, null, 2);
+    const newTxt = currentTxt.replace(/const STATE_PAGES\s*=\s*\[[\s\S]*?\n\];/, 'const STATE_PAGES = ' + pagesJSON + ';');
+    await writeFile('posts.js', newTxt);
+    showToast('State pages saved! Homepage pe live ho gaya ✅','success');
+  } catch(e) { showToast('Save failed: '+e.message,'error'); }
 }
 
 // ── SHEET MANAGER ──

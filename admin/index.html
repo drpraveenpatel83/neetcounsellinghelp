@@ -232,6 +232,7 @@ body{font-family:'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b;height:1
       <div class="nav-label">Content</div>
       <div class="nav-item" onclick="showTab('news')">📰 News Manager</div>
       <div class="nav-item" onclick="showTab('builder')">✍️ Page Builder</div>
+      <div class="nav-item" onclick="showTab('states')">🗺️ State Pages</div>
       <div class="nav-sep"></div>
       <div class="nav-label">Data</div>
       <div class="nav-item" onclick="showTab('sheets')">📄 Sheet Manager</div>
@@ -756,6 +757,24 @@ body{font-family:'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b;height:1
           </div>
         </div><!-- /builder-steps -->
       </div><!-- /tab-builder -->
+
+      <!-- ═══════════ STATE PAGES ═══════════ -->
+      <div id="tab-states" class="tab-panel">
+        <div class="flex gap-12" style="margin-bottom:20px;">
+          <div>
+            <div class="page-title">State Pages Manager</div>
+            <div class="page-sub mb-0">State ke courses ko live/off karo — URL set karo — ek click mein homepage pe show hoga</div>
+          </div>
+          <div class="ml-auto flex gap-8">
+            <button class="btn btn-outline" onclick="loadStatePages()">🔄 Reload</button>
+            <button class="btn btn-success" onclick="saveStatePages()">💾 Save to posts.js</button>
+          </div>
+        </div>
+        <div class="alert alert-info">
+          💡 <strong>Kaise use karein:</strong> State expand karo → course ka URL bharo → Live toggle karo → Save karo → Homepage pe turant dikh jayega
+        </div>
+        <div id="statePagesContainer"><div class="empty-state"><div class="es-icon">🗺️</div><p>Folder connect karo aur Reload karo</p></div></div>
+      </div>
 
       <!-- ═══════════ SHEET MANAGER ═══════════ -->
       <div id="tab-sheets" class="tab-panel">

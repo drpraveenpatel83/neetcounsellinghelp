@@ -217,10 +217,28 @@ function toggleAddForm() {
 }
 
 function clearPostForm() {
-  ['pTitle','pUrl','pAuthor','pDate','pRead','pSubcat','editPostId'].forEach(id => document.getElementById(id).value='');
+  ['pTitle','pUrl','pAuthor','pDate','pRead','pSubcat','pContent','editPostId'].forEach(id => document.getElementById(id).value='');
   document.getElementById('pCat').value='neet';
   document.getElementById('pLive').value='true';
   ['bNew','bHot','bMust','bUpd','bFeat'].forEach(id => document.getElementById(id).checked=false);
+  document.getElementById('contentPreview').style.display='none';
+}
+
+function insertHtml(tag) {
+  const ta = document.getElementById('pContent');
+  const s = ta.selectionStart, e = ta.selectionEnd;
+  ta.value = ta.value.slice(0,s) + tag + ta.value.slice(e);
+  ta.focus(); ta.selectionStart = ta.selectionEnd = s + tag.length;
+}
+
+function toggleContentPreview() {
+  const prev = document.getElementById('contentPreview');
+  if (prev.style.display === 'none') {
+    prev.innerHTML = document.getElementById('pContent').value || '<span style="color:#94a3b8;">No content</span>';
+    prev.style.display = '';
+  } else {
+    prev.style.display = 'none';
+  }
 }
 
 function editPost(id) {
@@ -236,8 +254,9 @@ function editPost(id) {
   document.getElementById('pDate').value   = p.date||'';
   document.getElementById('pRead').value   = p.readTime||'';
   document.getElementById('pAuthor').value = p.author||'';
-  document.getElementById('pLive').value   = String(p.live!==false);
-  document.getElementById('bFeat').checked = !!p.featured;
+  document.getElementById('pLive').value    = String(p.live!==false);
+  document.getElementById('pContent').value = p.content||'';
+  document.getElementById('bFeat').checked  = !!p.featured;
   ['bNew','bHot','bMust','bUpd'].forEach(id => {
     const val = id.replace('b','').toLowerCase().replace('must','mustread').replace('upd','update').replace('hot','hot').replace('new','new');
     document.getElementById(id).checked = (p.badges||[]).includes(id==='bMust'?'mustread':id==='bUpd'?'update':id==='bNew'?'new':'hot');
@@ -257,6 +276,7 @@ function savePost() {
   if (document.getElementById('bMust').checked) badges.push('mustread');
   if (document.getElementById('bUpd').checked)  badges.push('update');
 
+  const content = document.getElementById('pContent').value.trim();
   const post = {
     id:          document.getElementById('editPostId').value || 'post-'+Date.now(),
     title,
@@ -268,7 +288,8 @@ function savePost() {
     author:      document.getElementById('pAuthor').value.trim(),
     badges,
     featured:    document.getElementById('bFeat').checked,
-    live:        document.getElementById('pLive').value === 'true'
+    live:        document.getElementById('pLive').value === 'true',
+    ...(content && { content })
   };
 
   const editId = document.getElementById('editPostId').value;

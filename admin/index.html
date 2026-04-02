@@ -338,6 +338,24 @@ body{font-family:'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b;height:1
               <label class="badge-check"><input type="checkbox" id="bFeat" /> ⭐ Featured</label>
             </div>
           </div>
+          <div class="form-group">
+            <label class="form-label">Content (HTML) <span style="font-size:11px;font-weight:400;color:#94a3b8;">— Post ka pura content HTML mein likho ya paste karo</span></label>
+            <div style="display:flex;gap:6px;margin-bottom:6px;">
+              <button type="button" class="btn btn-outline btn-xs" onclick="insertHtml('<h2>Heading</h2>')">H2</button>
+              <button type="button" class="btn btn-outline btn-xs" onclick="insertHtml('<h3>Sub Heading</h3>')">H3</button>
+              <button type="button" class="btn btn-outline btn-xs" onclick="insertHtml('<p>Paragraph text</p>')">P</button>
+              <button type="button" class="btn btn-outline btn-xs" onclick="insertHtml('<ul>\n  <li>Item 1</li>\n  <li>Item 2</li>\n</ul>')">List</button>
+              <button type="button" class="btn btn-outline btn-xs" onclick="insertHtml('<table class=\'mini-table\'>\n  <thead><tr><th>Col 1</th><th>Col 2</th></tr></thead>\n  <tbody><tr><td>Data</td><td>Data</td></tr></tbody>\n</table>')">Table</button>
+              <button type="button" class="btn btn-outline btn-xs" onclick="insertHtml('<div class=\'note-box\'>⚠️ Note text here</div>')">Note</button>
+              <button type="button" class="btn btn-outline btn-xs" style="margin-left:auto;color:#dc2626;" onclick="document.getElementById('pContent').value=''">Clear</button>
+            </div>
+            <textarea class="form-textarea" id="pContent" style="min-height:220px;font-family:monospace;font-size:12px;" placeholder="HTML content yahan likho ya paste karo...&#10;&#10;Example:&#10;&lt;h2&gt;NEET 2026 Syllabus&lt;/h2&gt;&#10;&lt;p&gt;NMC ne officially NEET 2026 ka syllabus release kar diya hai...&lt;/p&gt;&#10;&lt;h3&gt;Physics Topics&lt;/h3&gt;&#10;&lt;ul&gt;&#10;  &lt;li&gt;Mechanics&lt;/li&gt;&#10;&lt;/ul&gt;"></textarea>
+            <div style="margin-top:6px;display:flex;gap:8px;align-items:center;">
+              <button type="button" class="btn btn-outline btn-sm" onclick="toggleContentPreview()">👁 Preview</button>
+              <span style="font-size:11px;color:#94a3b8;">Content posts.js mein save hogi aur page generate karne ke liye use hogi</span>
+            </div>
+            <div id="contentPreview" style="display:none;margin-top:10px;padding:16px;border:1.5px solid #e2e8f0;border-radius:8px;background:#fff;font-size:14px;line-height:1.7;"></div>
+          </div>
           <div class="flex gap-8">
             <button class="btn btn-success" onclick="savePost()">💾 Save Post</button>
             <button class="btn btn-outline" onclick="toggleAddForm()">Cancel</button>

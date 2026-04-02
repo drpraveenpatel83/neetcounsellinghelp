@@ -117,7 +117,7 @@
   }
   </script>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -382,59 +382,59 @@
       </div>
 
       <!-- Quota Tabs -->
-      <div class="quota-tabs">
-        <button class="quota-tab active" id="tab-aiq" onclick="switchQuota('aiq')">
-          <div class="qi-badge qi-badge-blue">15%</div>
-          <div class="qi-text">
-            <span class="qi-label">All India Quota</span>
-            <span class="qi-sub">MCC / AACCC / VCC centralized counselling</span>
+      <div style="display:flex;flex-direction:row;gap:6px;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:14px;padding:6px;margin-top:40px;">
+        <button id="tab-aiq" onclick="switchQuota('aiq')" style="flex:1;display:flex;flex-direction:row;align-items:center;gap:14px;background:#fff;border:none;cursor:pointer;padding:16px 20px;border-radius:10px;text-align:left;box-shadow:0 2px 10px rgba(0,0,0,.08);">
+          <div style="flex-shrink:0;width:54px;height:54px;border-radius:10px;background:#dbeafe;color:#2563eb;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;">15%</div>
+          <div style="text-align:left;">
+            <span style="display:block;font-size:14px;font-weight:700;color:#2563eb;margin-bottom:3px;">All India Quota</span>
+            <span style="display:block;font-size:11px;color:#94a3b8;line-height:1.4;">MCC / AACCC / VCC centralized counselling</span>
           </div>
         </button>
-        <div class="quota-divider"></div>
-        <button class="quota-tab" id="tab-state" onclick="switchQuota('state')">
-          <div class="qi-badge qi-badge-green">85%</div>
-          <div class="qi-text">
-            <span class="qi-label">State Quota</span>
-            <span class="qi-sub">State-wise counselling guides</span>
+        <div style="width:1px;background:#e2e8f0;margin:4px 0;flex-shrink:0;"></div>
+        <button id="tab-state" onclick="switchQuota('state')" style="flex:1;display:flex;flex-direction:row;align-items:center;gap:14px;background:transparent;border:none;cursor:pointer;padding:16px 20px;border-radius:10px;text-align:left;">
+          <div style="flex-shrink:0;width:54px;height:54px;border-radius:10px;background:#dcfce7;color:#15803d;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;">85%</div>
+          <div style="text-align:left;">
+            <span style="display:block;font-size:14px;font-weight:700;color:#1e293b;margin-bottom:3px;">State Quota</span>
+            <span style="display:block;font-size:11px;color:#94a3b8;line-height:1.4;">State-wise counselling guides</span>
           </div>
         </button>
       </div>
 
       <!-- AIQ Content -->
-      <div id="quota-aiq-content" class="quota-content">
-        <div class="aiq-grid">
-          <a href="mcc-neet-counselling.html" class="aiq-card aiq-mcc">
-            <div class="aiq-icon">🏛️</div>
-            <div class="aiq-body">
-              <div class="aiq-tag">MBBS & BDS</div>
-              <h3>MCC Counselling</h3>
-              <p>Medical Counselling Committee — All India Quota for MBBS & BDS seats</p>
+      <div id="quota-aiq-content" style="margin-top:24px;">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+          <a href="mcc-neet-counselling.html" style="display:flex;flex-direction:row;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:20px 18px;text-decoration:none;transition:all .2s;">
+            <div style="font-size:28px;flex-shrink:0;">🏛️</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#94a3b8;margin-bottom:4px;">MBBS & BDS</div>
+              <div style="font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px;">MCC Counselling</div>
+              <div style="font-size:12px;color:#64748b;line-height:1.5;">Medical Counselling Committee — All India Quota</div>
             </div>
-            <div class="aiq-arrow">→</div>
+            <div style="font-size:18px;color:#cbd5e1;flex-shrink:0;">→</div>
           </a>
-          <a href="aaccc-ayush-counselling.html" class="aiq-card aiq-aaccc">
-            <div class="aiq-icon">🌿</div>
-            <div class="aiq-body">
-              <div class="aiq-tag">AYUSH</div>
-              <h3>AACCC Counselling</h3>
-              <p>Ayush Admissions Central Counselling Committee — BAMS, BHMS, BUMS seats</p>
+          <a href="aaccc-ayush-counselling.html" style="display:flex;flex-direction:row;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:20px 18px;text-decoration:none;transition:all .2s;">
+            <div style="font-size:28px;flex-shrink:0;">🌿</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#94a3b8;margin-bottom:4px;">AYUSH</div>
+              <div style="font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px;">AACCC Counselling</div>
+              <div style="font-size:12px;color:#64748b;line-height:1.5;">BAMS, BHMS, BUMS — Ayush AIQ seats</div>
             </div>
-            <div class="aiq-arrow">→</div>
+            <div style="font-size:18px;color:#cbd5e1;flex-shrink:0;">→</div>
           </a>
-          <a href="vcc-counselling.html" class="aiq-card aiq-vcc">
-            <div class="aiq-icon">🐾</div>
-            <div class="aiq-body">
-              <div class="aiq-tag">Veterinary</div>
-              <h3>VCC Counselling</h3>
-              <p>Veterinary Council of India — BVSc & AH All India Quota seats</p>
+          <a href="vcc-counselling.html" style="display:flex;flex-direction:row;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:20px 18px;text-decoration:none;transition:all .2s;">
+            <div style="font-size:28px;flex-shrink:0;">🐾</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#94a3b8;margin-bottom:4px;">Veterinary</div>
+              <div style="font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px;">VCC Counselling</div>
+              <div style="font-size:12px;color:#64748b;line-height:1.5;">BVSc & AH — All India Quota seats</div>
             </div>
-            <div class="aiq-arrow">→</div>
+            <div style="font-size:18px;color:#cbd5e1;flex-shrink:0;">→</div>
           </a>
         </div>
       </div>
 
       <!-- State Quota Content -->
-      <div id="quota-state-content" class="quota-content" style="display:none;">
+      <div id="quota-state-content" style="display:none;margin-top:24px;">
         <div class="sg-top-bar">
           <h2 class="sg-heading">State-wise Counselling Guide</h2>
           <div class="sg-dropdown-wrap">
@@ -854,10 +854,27 @@
   <script src="posts.js"></script>
   <script>
     function switchQuota(tab) {
-      document.getElementById('quota-aiq-content').style.display   = tab === 'aiq'   ? '' : 'none';
-      document.getElementById('quota-state-content').style.display  = tab === 'state' ? '' : 'none';
-      document.getElementById('tab-aiq').classList.toggle('active',   tab === 'aiq');
-      document.getElementById('tab-state').classList.toggle('active', tab === 'state');
+      var aiq   = document.getElementById('quota-aiq-content');
+      var state = document.getElementById('quota-state-content');
+      var btnA  = document.getElementById('tab-aiq');
+      var btnS  = document.getElementById('tab-state');
+      aiq.style.display   = tab === 'aiq'   ? '' : 'none';
+      state.style.display = tab === 'state' ? '' : 'none';
+      // Active tab styling
+      btnA.style.background = tab === 'aiq'   ? '#fff' : 'transparent';
+      btnA.style.boxShadow  = tab === 'aiq'   ? '0 2px 10px rgba(0,0,0,.08)' : 'none';
+      btnS.style.background = tab === 'state' ? '#fff' : 'transparent';
+      btnS.style.boxShadow  = tab === 'state' ? '0 2px 10px rgba(0,0,0,.08)' : 'none';
+      btnA.querySelector('span').style.color = tab === 'aiq'   ? '#2563eb' : '#1e293b';
+      btnS.querySelector('span').style.color = tab === 'state' ? '#15803d' : '#1e293b';
+    }
+
+    // Mobile: switch AIQ grid to 1 column
+    if (window.innerWidth < 640) {
+      document.addEventListener('DOMContentLoaded', function() {
+        var grid = document.querySelector('#quota-aiq-content > div');
+        if (grid) grid.style.gridTemplateColumns = '1fr';
+      });
     }
   </script>
 </body>

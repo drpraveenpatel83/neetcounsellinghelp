@@ -402,6 +402,30 @@
     </div>
   </section>
 
+  <!-- ========== STATE GUIDES ========== -->
+  <section class="sg-section" id="state-guides">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">State Guides</span>
+        <h2>State NEET Counselling Guides</h2>
+        <p>Complete counselling information for every state — MBBS, AYUSH, BDS & Veterinary</p>
+      </div>
+
+      <!-- Region filter -->
+      <div class="sg-filters">
+        <button class="sg-filter-btn active" data-region="all">🗺️ All States</button>
+        <button class="sg-filter-btn" data-region="north">Northern India</button>
+        <button class="sg-filter-btn" data-region="south">Southern India</button>
+        <button class="sg-filter-btn" data-region="west">Western India</button>
+        <button class="sg-filter-btn" data-region="east">Eastern India</button>
+        <button class="sg-filter-btn" data-region="central">Central India</button>
+      </div>
+
+      <!-- Cards grid — filled by posts.js -->
+      <div class="sg-grid" id="sg-grid"></div>
+    </div>
+  </section>
+
   <!-- ========== TOOLS ========== -->
   <section class="tools-section" id="tools">
     <div class="container">
@@ -569,238 +593,24 @@
       <!-- Tab Panels -->
       <div class="news-panels">
 
+        <!-- Posts rendered by posts.js — do not add static items here -->
         <div class="news-panel active" id="panel-neet">
-          <div class="news-list">
-
-            <!-- POST 1 — NEET 2026 Syllabus (LIVE) -->
-            <a href="neet-2026-syllabus.html" class="news-item new-item featured-news">
-              <div class="news-item-left">
-                <div class="news-cat-row">
-                  <span class="news-cat neet-cat">Syllabus</span>
-                  <span class="new-badge-pill">🔴 New</span>
-                  <span class="new-badge-pill" style="background:#eff6ff;color:#1d4ed8;border-color:#bfdbfe;">📋 Must Read</span>
-                </div>
-                <h4>NEET UG 2026 Syllabus — Complete Physics, Chemistry &amp; Biology Chapter List (NMC Official)</h4>
-                <span class="news-meta">Jan 8, 2026 · 10 min read · By Dr. Praveen Patel</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-
-            <a href="neet-2026-exam-details.html" class="news-item new-item">
-              <div class="news-item-left">
-                <div class="news-cat-row">
-                  <span class="news-cat neet-cat">Exam Date</span>
-                  <span class="news-badge">NEW</span>
-                </div>
-                <h4>NEET UG 2026 Exam Date, Pattern &amp; Important Dates — Official NTA Info</h4>
-                <span class="news-meta">Mar 12, 2026 · 8 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat neet-cat">Result</span>
-                <h4>NEET 2025 Final Answer Key Released by NTA — Download PDF</h4>
-                <span class="news-meta">Mar 25, 2026 · 2 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat neet-cat">Eligibility</span>
-                <h4>NEET 2026 Eligibility Criteria — Age Limit, Qualification &amp; Attempts</h4>
-                <span class="news-meta">Mar 20, 2026 · 3 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat neet-cat">Preparation</span>
-                <h4>Top 10 Tips to Score 650+ in NEET 2026 — Expert Strategy by Dr. Praveen</h4>
-                <span class="news-meta">Mar 18, 2026 · 5 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat neet-cat">Registration</span>
-                <h4>NEET 2026 Registration Process — Forms, Fees &amp; Correction Window</h4>
-                <span class="news-meta">Mar 15, 2026 · 3 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-          </div>
+          <div class="news-list"></div>
           <a href="#" class="more-posts-btn">View All NEET News <span>→</span></a>
         </div>
 
         <div class="news-panel" id="panel-mcc">
-          <div class="news-list">
-            <a href="#" class="news-item new-item">
-              <div class="news-item-left">
-                <div class="news-cat-row">
-                  <span class="news-cat mcc-cat">Round 2</span>
-                  <span class="new-badge-pill">🔴 New</span>
-                </div>
-                <h4>MCC NEET UG Counselling Round 2 Seat Allotment Result — Download Letter</h4>
-                <span class="news-meta">Mar 27, 2025 · 3 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat mcc-cat">Schedule</span>
-                <h4>MCC Counselling 2025 Full Schedule — Round 1, 2, Mop-Up &amp; Stray Vacancy</h4>
-                <span class="news-meta">Mar 24, 2025 · 4 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat mcc-cat">Seat Matrix</span>
-                <h4>MCC Seat Matrix 2025 Released — State-wise MBBS &amp; BDS Seats</h4>
-                <span class="news-meta">Mar 21, 2025 · 2 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat mcc-cat">Registration</span>
-                <h4>MCC Counselling Registration 2025 Begins — Direct Link &amp; Steps</h4>
-                <span class="news-meta">Mar 19, 2025 · 3 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat mcc-cat">Mop-Up</span>
-                <h4>MCC Mop-Up Round 2025 Notification — Dates &amp; Process Explained</h4>
-                <span class="news-meta">Mar 17, 2025 · 2 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat mcc-cat">Cutoff</span>
-                <h4>MCC NEET UG 2024 Final Closing Ranks — All Categories &amp; States</h4>
-                <span class="news-meta">Mar 14, 2025 · 5 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-          </div>
+          <div class="news-list"></div>
           <a href="#" class="more-posts-btn">View All MCC News <span>→</span></a>
         </div>
 
         <div class="news-panel" id="panel-ayush">
-          <div class="news-list">
-            <a href="#" class="news-item new-item">
-              <div class="news-item-left">
-                <div class="news-cat-row">
-                  <span class="news-cat ayush-cat">AACCC</span>
-                  <span class="new-badge-pill">🔴 New</span>
-                </div>
-                <h4>AYUSH Counselling 2025 Registration Starts — Apply at aaccc.gov.in</h4>
-                <span class="news-meta">Mar 26, 2025 · 3 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat ayush-cat">BAMS</span>
-                <h4>BAMS Counselling 2025 — Seat Matrix, Cutoff &amp; Registration Process</h4>
-                <span class="news-meta">Mar 23, 2025 · 4 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat ayush-cat">BHMS</span>
-                <h4>BHMS Admission 2025 — Complete Guide to AYUSH Counselling for Homeopathy</h4>
-                <span class="news-meta">Mar 20, 2025 · 3 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat ayush-cat">BUMS</span>
-                <h4>BUMS Colleges 2025 — Top Unani Medical Colleges with Cutoffs</h4>
-                <span class="news-meta">Mar 17, 2025 · 3 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat ayush-cat">Result</span>
-                <h4>AACCC AYUSH Round 1 Allotment Result 2025 — How to Check &amp; Next Steps</h4>
-                <span class="news-meta">Mar 15, 2025 · 2 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat ayush-cat">Cutoff</span>
-                <h4>AYUSH 2024 Final Cutoff Ranks — BAMS, BHMS, BUMS, BPharma Category-wise</h4>
-                <span class="news-meta">Mar 12, 2025 · 5 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-          </div>
+          <div class="news-list"></div>
           <a href="#" class="more-posts-btn">View All AYUSH News <span>→</span></a>
         </div>
 
         <div class="news-panel" id="panel-vcc">
-          <div class="news-list">
-            <a href="#" class="news-item new-item">
-              <div class="news-item-left">
-                <div class="news-cat-row">
-                  <span class="news-cat vcc-cat">VCC</span>
-                  <span class="new-badge-pill">🔴 New</span>
-                </div>
-                <h4>VCC BVSc Counselling 2025 Registration Open — Dates &amp; Process</h4>
-                <span class="news-meta">Mar 25, 2025 · 3 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat vcc-cat">Seat Matrix</span>
-                <h4>VCC Veterinary Seat Matrix 2025 — State-wise BVSc &amp; AH Seats Released</h4>
-                <span class="news-meta">Mar 22, 2025 · 2 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat vcc-cat">Cutoff</span>
-                <h4>VCC NEET 2024 Closing Ranks — All India BVSc Counselling Cutoff List</h4>
-                <span class="news-meta">Mar 19, 2025 · 4 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat vcc-cat">Colleges</span>
-                <h4>Top Veterinary Colleges in India 2025 — Ranking, Fees &amp; Cutoffs</h4>
-                <span class="news-meta">Mar 17, 2025 · 5 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat vcc-cat">Documents</span>
-                <h4>VCC Counselling Documents Checklist 2025 — Complete List</h4>
-                <span class="news-meta">Mar 14, 2025 · 2 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-            <a href="#" class="news-item">
-              <div class="news-item-left">
-                <span class="news-cat vcc-cat">Eligibility</span>
-                <h4>BVSc Admission 2025 — Eligibility, Process &amp; Career After Veterinary</h4>
-                <span class="news-meta">Mar 11, 2025 · 4 min read</span>
-              </div>
-              <div class="news-arrow">→</div>
-            </a>
-          </div>
+          <div class="news-list"></div>
           <a href="#" class="more-posts-btn">View All VCC News <span>→</span></a>
         </div>
 
@@ -1018,5 +828,6 @@
   <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script src="script.js"></script>
+  <script src="posts.js"></script>
 </body>
 </html>

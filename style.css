@@ -648,6 +648,104 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   transform: translateY(-4px) !important;
 }
 
+/* Placeholder posts — page not created yet */
+.post-placeholder { opacity: .55; cursor: default; pointer-events: none; }
+.post-placeholder .news-arrow { font-size: 12px; }
+
+/* Empty panel state */
+.news-empty {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 10px; padding: 48px 24px; text-align: center;
+  background: #fff; border-radius: var(--r-xl);
+  border: 1.5px dashed var(--gray-200);
+}
+.news-empty span { font-size: 32px; }
+.news-empty p { font-size: 14px; color: var(--gray-400); margin: 0; }
+
+/* ===== STATE GUIDES ===== */
+.sg-section { background: #fff; }
+
+.sg-filters {
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-bottom: 36px; justify-content: center;
+}
+.sg-filter-btn {
+  padding: 9px 20px; border: 2px solid var(--gray-200);
+  border-radius: var(--r-full); background: #fff;
+  font-size: 13px; font-weight: 600; color: var(--gray-500);
+  cursor: pointer; transition: var(--ease);
+}
+.sg-filter-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-l); }
+.sg-filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); box-shadow: 0 4px 14px rgba(37,99,235,.3); }
+
+.sg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.sg-card {
+  background: #fff; border: 1.5px solid var(--gray-200);
+  border-radius: var(--r-xl); padding: 22px 20px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: var(--ease);
+}
+.sg-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); border-color: var(--gray-300); }
+.sg-card-live { border-color: #bfdbfe; }
+.sg-card-live:hover { border-color: var(--blue); }
+
+.sg-card-top { display: flex; align-items: center; justify-content: space-between; }
+.sg-state-code {
+  width: 44px; height: 44px; border-radius: var(--r-lg);
+  background: var(--blue-l); color: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 800; letter-spacing: .03em;
+}
+.sg-live-badge {
+  font-size: 11px; font-weight: 700; padding: 4px 10px;
+  border-radius: var(--r-full); background: #f0fdf4;
+  color: #15803d; border: 1px solid #bbf7d0;
+}
+.sg-soon-badge {
+  font-size: 11px; font-weight: 700; padding: 4px 10px;
+  border-radius: var(--r-full); background: var(--gray-100);
+  color: var(--gray-400); border: 1px solid var(--gray-200);
+}
+
+.sg-state-name { font-size: 16px; font-weight: 700; color: var(--gray-900); margin: 0; }
+
+.sg-courses { display: flex; flex-wrap: wrap; gap: 6px; }
+.sg-course-chip {
+  font-size: 11px; font-weight: 700; padding: 3px 10px;
+  border-radius: var(--r-full); text-decoration: none;
+  letter-spacing: .04em;
+}
+.sg-course-live { transition: var(--ease); }
+.sg-course-live:hover { opacity: .8; }
+
+.sg-view-btn {
+  display: block; text-align: center;
+  background: var(--blue); color: #fff;
+  padding: 10px 16px; border-radius: var(--r-lg);
+  font-size: 13px; font-weight: 700;
+  text-decoration: none; transition: var(--ease);
+  margin-top: auto;
+}
+.sg-view-btn:hover { background: var(--blue-d); box-shadow: 0 4px 14px rgba(37,99,235,.35); }
+.sg-view-btn-soon {
+  background: var(--gray-100); color: var(--gray-400);
+  pointer-events: none; cursor: default;
+}
+.sg-view-btn-soon:hover { background: var(--gray-100); box-shadow: none; }
+
+@media (max-width: 768px) {
+  .sg-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+  .sg-card { padding: 16px 14px; }
+}
+@media (max-width: 480px) {
+  .sg-grid { grid-template-columns: 1fr 1fr; }
+}
+
 /* ===== TEAM ===== */
 .team-section { background: #fff; }
 .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }

@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NCH Admin Panel</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b;height:100vh;overflow:hidden;}
+
+/* ── LOGIN ── */
+#loginScreen{display:flex;align-items:center;justify-content:center;height:100vh;background:linear-gradient(135deg,#0f172a,#1e3a8a);}
+.login-box{background:#fff;border-radius:16px;padding:48px 40px;width:360px;box-shadow:0 20px 60px rgba(0,0,0,.3);text-align:center;}
+.login-logo{font-size:32px;font-weight:900;color:#1e3a8a;margin-bottom:6px;letter-spacing:-1px;}
+.login-sub{font-size:13px;color:#64748b;margin-bottom:32px;}
+.login-box input{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-size:15px;outline:none;margin-bottom:14px;transition:border .2s;}
+.login-box input:focus{border-color:#2563eb;}
+.login-btn{width:100%;padding:13px;background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;}
+.login-btn:hover{opacity:.9;}
+.login-err{color:#dc2626;font-size:13px;margin-top:10px;}
+
+/* ── APP SHELL ── */
+#adminApp{display:none;height:100vh;flex-direction:column;}
+.topbar{height:56px;background:#fff;border-bottom:1px solid #e2e8f0;display:flex;align-items:center;padding:0 20px;gap:16px;flex-shrink:0;z-index:100;}
+.topbar-logo{font-size:18px;font-weight:900;color:#1e3a8a;letter-spacing:-0.5px;white-space:nowrap;}
+.folder-btn{display:flex;align-items:center;gap:8px;padding:7px 14px;border-radius:8px;border:1.5px solid #e2e8f0;background:#f8fafc;font-size:13px;cursor:pointer;font-weight:600;color:#475569;transition:all .2s;}
+.folder-btn:hover,.folder-btn.connected{border-color:#2563eb;color:#2563eb;background:#eff6ff;}
+.folder-btn.connected{background:#f0fdf4;border-color:#16a34a;color:#15803d;}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:10px;}
+.topbar-right span{font-size:13px;color:#64748b;}
+.logout-btn{padding:6px 14px;border:1.5px solid #e2e8f0;border-radius:7px;background:#fff;font-size:13px;cursor:pointer;color:#ef4444;font-weight:600;}
+.logout-btn:hover{background:#fef2f2;border-color:#fca5a5;}
+
+.app-body{display:flex;flex:1;overflow:hidden;}
+
+/* ── SIDEBAR ── */
+.sidebar{width:220px;background:#0f172a;flex-shrink:0;overflow-y:auto;padding:16px 0;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:11px 20px;color:rgba(255,255,255,.6);font-size:14px;font-weight:500;cursor:pointer;transition:all .2s;border-left:3px solid transparent;text-decoration:none;}
+.nav-item:hover{color:#fff;background:rgba(255,255,255,.06);}
+.nav-item.active{color:#fff;background:rgba(37,99,235,.25);border-left-color:#2563eb;}
+.nav-sep{height:1px;background:rgba(255,255,255,.06);margin:10px 16px;}
+.nav-label{font-size:10px;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.08em;padding:12px 20px 4px;}
+
+/* ── MAIN ── */
+.main{flex:1;overflow-y:auto;padding:28px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+/* ── CARDS ── */
+.card{background:#fff;border-radius:14px;border:1px solid #e2e8f0;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:20px;}
+.card-head{padding:18px 22px;border-bottom:1px solid #f1f5f9;display:flex;align-items:center;justify-content:space-between;}
+.card-head h3{font-size:15px;font-weight:800;color:#0f172a;}
+.card-body{padding:22px;}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;}
+.btn-primary{background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;}
+.btn-primary:hover{opacity:.9;}
+.btn-success{background:#16a34a;color:#fff;}
+.btn-success:hover{background:#15803d;}
+.btn-danger{background:#dc2626;color:#fff;}
+.btn-danger:hover{background:#b91c1c;}
+.btn-outline{background:#fff;border:1.5px solid #e2e8f0;color:#475569;}
+.btn-outline:hover{border-color:#2563eb;color:#2563eb;}
+.btn-sm{padding:5px 10px;font-size:12px;}
+.btn-xs{padding:3px 8px;font-size:11px;border-radius:5px;}
+
+/* ── FORMS ── */
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:12px;font-weight:700;color:#475569;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px;}
+.form-input{width:100%;padding:9px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px;outline:none;transition:border .2s;}
+.form-input:focus{border-color:#2563eb;}
+.form-select{width:100%;padding:9px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:14px;outline:none;background:#fff;}
+.form-textarea{width:100%;padding:10px 12px;border:1.5px solid #e2e8f0;border-radius:8px;font-size:13px;outline:none;font-family:monospace;resize:vertical;min-height:120px;}
+.form-textarea:focus{border-color:#2563eb;}
+.form-row{display:grid;gap:14px;}
+.form-row-2{grid-template-columns:1fr 1fr;}
+.form-row-3{grid-template-columns:1fr 1fr 1fr;}
+
+/* ── STATS ── */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px;}
+.stat-card{background:#fff;border-radius:12px;padding:20px;border:1px solid #e2e8f0;}
+.stat-num{font-size:32px;font-weight:900;color:#1e3a8a;}
+.stat-label{font-size:12px;color:#64748b;margin-top:4px;}
+
+/* ── TABLE ── */
+.data-table{width:100%;border-collapse:collapse;font-size:13px;}
+.data-table th{background:#f8fafc;padding:10px 14px;text-align:left;font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid #e2e8f0;white-space:nowrap;}
+.data-table td{padding:11px 14px;border-bottom:1px solid #f1f5f9;color:#334155;vertical-align:middle;}
+.data-table tbody tr:hover td{background:#f8fafc;}
+.data-table tbody tr:last-child td{border-bottom:none;}
+.tbl-wrap{overflow-x:auto;border-radius:10px;border:1px solid #e2e8f0;}
+
+/* ── BADGES ── */
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;}
+.badge-neet{background:#eff6ff;color:#1d4ed8;}
+.badge-mcc{background:#f0fdf4;color:#15803d;}
+.badge-ayush{background:#f0fdf4;color:#166534;}
+.badge-vcc{background:#fdf4ff;color:#7c3aed;}
+.badge-live{background:#dcfce7;color:#15803d;}
+.badge-draft{background:#f1f5f9;color:#64748b;}
+.badge-new{background:#fee2e2;color:#dc2626;}
+
+/* ── NEWS MANAGER ── */
+.cat-tabs{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap;}
+.cat-tab{padding:6px 14px;border-radius:20px;border:1.5px solid #e2e8f0;background:#fff;font-size:13px;font-weight:600;cursor:pointer;color:#475569;}
+.cat-tab.active{background:#1e3a8a;border-color:#1e3a8a;color:#fff;}
+
+/* ── ADD POST FORM ── */
+.post-form{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:12px;padding:22px;margin-bottom:20px;display:none;}
+.post-form.show{display:block;}
+.badges-check{display:flex;gap:12px;flex-wrap:wrap;}
+.badge-check{display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer;}
+
+/* ── PAGE BUILDER ── */
+.step-bar{display:flex;gap:0;margin-bottom:28px;}
+.step{display:flex;align-items:center;gap:8px;padding:10px 20px;background:#f1f5f9;font-size:13px;font-weight:600;color:#64748b;flex:1;border-bottom:3px solid transparent;}
+.step.active{background:#eff6ff;color:#1e3a8a;border-bottom-color:#2563eb;}
+.step.done{background:#f0fdf4;color:#15803d;border-bottom-color:#16a34a;}
+.step-num{width:24px;height:24px;border-radius:50%;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#64748b;flex-shrink:0;}
+.step.active .step-num{background:#2563eb;color:#fff;}
+.step.done .step-num{background:#16a34a;color:#fff;}
+
+.builder-steps>div{display:none;}
+.builder-steps>div.show{display:block;}
+
+.section-block{border:1.5px solid #e2e8f0;border-radius:10px;margin-bottom:14px;overflow:hidden;}
+.section-block-head{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:#f8fafc;border-bottom:1px solid #e2e8f0;cursor:pointer;}
+.section-block-head h4{font-size:13px;font-weight:700;color:#0f172a;}
+.section-block-body{padding:16px;display:none;}
+.section-block.open .section-block-body{display:block;}
+.mode-toggle{display:flex;gap:4px;}
+.mode-btn{padding:4px 10px;border-radius:6px;border:1.5px solid #e2e8f0;background:#fff;font-size:11px;font-weight:600;cursor:pointer;color:#64748b;}
+.mode-btn.active{background:#1e3a8a;border-color:#1e3a8a;color:#fff;}
+
+.dynamic-table{width:100%;border-collapse:collapse;margin-bottom:10px;font-size:13px;}
+.dynamic-table th{background:#f1f5f9;padding:8px 10px;font-size:11px;font-weight:700;color:#64748b;text-align:left;border-bottom:1px solid #e2e8f0;}
+.dynamic-table td{padding:6px 8px;border-bottom:1px solid #f1f5f9;}
+.dynamic-table td input,.dynamic-table td select{width:100%;padding:5px 8px;border:1px solid #e2e8f0;border-radius:5px;font-size:12px;outline:none;}
+.dynamic-table td input:focus,.dynamic-table td select:focus{border-color:#2563eb;}
+
+/* ── SHEET MANAGER ── */
+.upload-area{border:2px dashed #c7d2fe;border-radius:12px;padding:32px;text-align:center;cursor:pointer;transition:all .2s;background:#f8fafc;}
+.upload-area:hover{border-color:#2563eb;background:#eff6ff;}
+.upload-area input{display:none;}
+.upload-icon{font-size:36px;margin-bottom:10px;}
+.upload-text{font-size:14px;font-weight:600;color:#475569;}
+.upload-sub{font-size:12px;color:#94a3b8;margin-top:4px;}
+.upload-area.has-file{border-color:#16a34a;background:#f0fdf4;}
+
+/* ── ADS MANAGER ── */
+.ad-slot{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:18px;margin-bottom:14px;}
+.ad-slot h4{font-size:13px;font-weight:700;color:#0f172a;margin-bottom:10px;}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:24px;right:24px;padding:13px 20px;border-radius:10px;font-size:14px;font-weight:600;color:#fff;z-index:9999;transform:translateY(80px);opacity:0;transition:all .3s;pointer-events:none;}
+#toast.show{transform:translateY(0);opacity:1;}
+#toast.success{background:#16a34a;}
+#toast.error{background:#dc2626;}
+#toast.info{background:#1e3a8a;}
+
+/* ── MODAL ── */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;align-items:center;justify-content:center;}
+.modal-bg.show{display:flex;}
+.modal{background:#fff;border-radius:16px;padding:28px;width:90%;max-width:580px;max-height:90vh;overflow-y:auto;}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;}
+.modal-head h3{font-size:17px;font-weight:800;}
+.modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:#64748b;}
+
+/* ── ALERTS ── */
+.alert{padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:16px;}
+.alert-info{background:#eff6ff;border:1px solid #bfdbfe;color:#1e40af;}
+.alert-warn{background:#fffbeb;border:1px solid #fde68a;color:#92400e;}
+
+/* ── MISC ── */
+.page-title{font-size:22px;font-weight:900;color:#0f172a;margin-bottom:6px;}
+.page-sub{font-size:14px;color:#64748b;margin-bottom:24px;}
+.flex{display:flex;align-items:center;}
+.gap-8{gap:8px;}
+.gap-12{gap:12px;}
+.ml-auto{margin-left:auto;}
+.mt-8{margin-top:8px;}
+.mb-0{margin-bottom:0;}
+.text-sm{font-size:13px;}
+.text-muted{color:#64748b;}
+.fw-bold{font-weight:700;}
+.divider{height:1px;background:#f1f5f9;margin:16px 0;}
+.empty-state{text-align:center;padding:48px 20px;color:#94a3b8;}
+.empty-state .es-icon{font-size:48px;margin-bottom:12px;}
+.empty-state p{font-size:14px;}
+.page-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;}
+.page-card{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:14px 16px;}
+.page-card h5{font-size:13px;font-weight:700;margin-bottom:6px;}
+.page-card p{font-size:12px;color:#64748b;}
+.page-card-footer{display:flex;gap:8px;margin-top:10px;}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="login-logo">NCH Admin</div>
+    <div class="login-sub">NEET Counselling Help — Content Manager</div>
+    <input type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()" />
+    <button class="login-btn" onclick="doLogin()">Login →</button>
+    <div class="login-err" id="loginErr"></div>
+  </div>
+</div>
+
+<!-- ADMIN APP -->
+<div id="adminApp" style="display:none;height:100vh;display:none;flex-direction:column;">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-logo">NCH Admin</div>
+    <button class="folder-btn" id="folderBtn" onclick="connectFolder()">📁 Connect Website Folder</button>
+    <div id="folderName" style="font-size:12px;color:#16a34a;font-weight:600;"></div>
+    <div class="topbar-right">
+      <span id="topbarUser">Admin</span>
+      <button class="logout-btn" onclick="doLogout()">Logout</button>
+    </div>
+  </div>
+
+  <div class="app-body">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="nav-label">Main</div>
+      <div class="nav-item active" onclick="showTab('dashboard')">📊 Dashboard</div>
+      <div class="nav-sep"></div>
+      <div class="nav-label">Content</div>
+      <div class="nav-item" onclick="showTab('news')">📰 News Manager</div>
+      <div class="nav-item" onclick="showTab('builder')">✍️ Page Builder</div>
+      <div class="nav-sep"></div>
+      <div class="nav-label">Data</div>
+      <div class="nav-item" onclick="showTab('sheets')">📄 Sheet Manager</div>
+      <div class="nav-sep"></div>
+      <div class="nav-label">Monetize</div>
+      <div class="nav-item" onclick="showTab('ads')">💰 Ads Manager</div>
+      <div class="nav-sep"></div>
+      <div class="nav-item" onclick="showTab('settings')">⚙️ Settings</div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- ═══════════ DASHBOARD ═══════════ -->
+      <div id="tab-dashboard" class="tab-panel active">
+        <div class="page-title">Dashboard</div>
+        <div class="page-sub" id="dashDate"></div>
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat-card"><div class="stat-num" id="st-total">—</div><div class="stat-label">Total Posts</div></div>
+          <div class="stat-card"><div class="stat-num" id="st-live">—</div><div class="stat-label">Live Posts</div></div>
+          <div class="stat-card"><div class="stat-num" id="st-pages">—</div><div class="stat-label">HTML Pages</div></div>
+          <div class="stat-card"><div class="stat-num" id="st-cats">4</div><div class="stat-label">Categories</div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>📋 Recent Posts</h3><button class="btn btn-primary btn-sm" onclick="showTab('news')">Manage Posts</button></div>
+          <div class="card-body" id="recentPostsList"><div class="empty-state"><p>Folder connect karo to posts load honge</p></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>📄 Pages</h3><button class="btn btn-primary btn-sm" onclick="showTab('builder')">Create Page</button></div>
+          <div class="card-body"><div class="page-list" id="pagesList"><div class="empty-state"><p>Folder connect karo to pages load honge</p></div></div></div>
+        </div>
+      </div>
+
+      <!-- ═══════════ NEWS MANAGER ═══════════ -->
+      <div id="tab-news" class="tab-panel">
+        <div class="flex gap-12 mb-0" style="margin-bottom:20px;">
+          <div><div class="page-title">News Manager</div><div class="page-sub mb-0">posts.js manage karo — naye posts add, edit, delete karo</div></div>
+          <div class="ml-auto flex gap-8">
+            <button class="btn btn-outline" onclick="loadPostsFromFile()">🔄 Reload</button>
+            <button class="btn btn-primary" onclick="toggleAddForm()">+ Add Post</button>
+          </div>
+        </div>
+
+        <!-- Add/Edit Form -->
+        <div class="post-form" id="postForm">
+          <div class="flex gap-12" style="margin-bottom:16px;">
+            <h4 style="font-size:15px;font-weight:800;" id="formTitle">New Post</h4>
+            <button class="btn btn-outline btn-sm ml-auto" onclick="toggleAddForm()">✕ Close</button>
+          </div>
+          <input type="hidden" id="editPostId" />
+          <div class="form-row form-row-2">
+            <div class="form-group">
+              <label class="form-label">Category *</label>
+              <select class="form-select" id="pCat">
+                <option value="neet">NEET Exam News</option>
+                <option value="mcc">MCC News</option>
+                <option value="ayush">AYUSH News</option>
+                <option value="vcc">VCC News</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Sub-category (Badge Label) *</label>
+              <input class="form-input" id="pSubcat" placeholder="e.g. Syllabus, Result, Round 1" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Title *</label>
+            <input class="form-input" id="pTitle" placeholder="Post ka title" />
+          </div>
+          <div class="form-row form-row-2">
+            <div class="form-group">
+              <label class="form-label">URL (page filename)</label>
+              <input class="form-input" id="pUrl" placeholder="neet-2026-result.html  ya  #" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Author</label>
+              <input class="form-input" id="pAuthor" placeholder="Dr. Praveen Patel" />
+            </div>
+          </div>
+          <div class="form-row form-row-3">
+            <div class="form-group">
+              <label class="form-label">Date</label>
+              <input class="form-input" id="pDate" placeholder="Apr 2, 2026" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Read Time</label>
+              <input class="form-input" id="pRead" placeholder="5 min read" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Status</label>
+              <select class="form-select" id="pLive">
+                <option value="true">Live ✓</option>
+                <option value="false">Hidden</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Badges</label>
+            <div class="badges-check">
+              <label class="badge-check"><input type="checkbox" id="bNew" value="new" /> 🔴 New</label>
+              <label class="badge-check"><input type="checkbox" id="bHot" value="hot" /> 🔥 Hot</label>
+              <label class="badge-check"><input type="checkbox" id="bMust" value="mustread" /> 📋 Must Read</label>
+              <label class="badge-check"><input type="checkbox" id="bUpd" value="update" /> 📢 Update</label>
+              <label class="badge-check"><input type="checkbox" id="bFeat" /> ⭐ Featured</label>
+            </div>
+          </div>
+          <div class="flex gap-8">
+            <button class="btn btn-success" onclick="savePost()">💾 Save Post</button>
+            <button class="btn btn-outline" onclick="toggleAddForm()">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="cat-tabs">
+          <div class="cat-tab active" onclick="filterPosts('all',this)">All</div>
+          <div class="cat-tab" onclick="filterPosts('neet',this)">📝 NEET Exam</div>
+          <div class="cat-tab" onclick="filterPosts('mcc',this)">🏥 MCC</div>
+          <div class="cat-tab" onclick="filterPosts('ayush',this)">🌿 AYUSH</div>
+          <div class="cat-tab" onclick="filterPosts('vcc',this)">🐾 VCC</div>
+        </div>
+
+        <div class="card">
+          <div class="card-body" style="padding:0;">
+            <div class="tbl-wrap" style="border:none;">
+              <table class="data-table">
+                <thead><tr><th>#</th><th>Title</th><th>Category</th><th>Sub-cat</th><th>Date</th><th>Badges</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="postsTableBody"><tr><td colspan="8" style="text-align:center;padding:32px;color:#94a3b8;">Folder connect karo ya Reload karo</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="flex gap-8">
+          <button class="btn btn-success" onclick="savePostsToFile()">💾 Save to posts.js</button>
+          <span class="text-sm text-muted" id="saveStatus"></span>
+        </div>
+      </div>
+
+      <!-- ═══════════ PAGE BUILDER ═══════════ -->
+      <div id="tab-builder" class="tab-panel">
+        <div class="flex gap-12" style="margin-bottom:20px;">
+          <div><div class="page-title">Page Builder</div><div class="page-sub mb-0">State MBBS / AYUSH / MCC / AACCC pages banao</div></div>
+          <div class="ml-auto"><button class="btn btn-outline" onclick="resetBuilder()">↺ Reset</button></div>
+        </div>
+
+        <!-- Step Bar -->
+        <div class="step-bar">
+          <div class="step active" id="sbar-1"><div class="step-num">1</div> Page Setup</div>
+          <div class="step" id="sbar-2"><div class="step-num">2</div> Content</div>
+          <div class="step" id="sbar-3"><div class="step-num">3</div> College Table</div>
+          <div class="step" id="sbar-4"><div class="step-num">4</div> Preview & Save</div>
+        </div>
+
+        <div class="builder-steps">
+
+          <!-- STEP 1 -->
+          <div id="bstep-1" class="show">
+            <div class="card">
+              <div class="card-head"><h3>📋 Page Setup</h3></div>
+              <div class="card-body">
+                <div class="form-row form-row-2">
+                  <div class="form-group">
+                    <label class="form-label">Page Type *</label>
+                    <select class="form-select" id="b-pageType" onchange="onPageTypeChange()">
+                      <option value="">-- Select --</option>
+                      <option value="state-mbbs">State MBBS Counselling</option>
+                      <option value="state-ayush">State AYUSH Counselling</option>
+                      <option value="mcc">MCC Central Counselling</option>
+                      <option value="aaccc">AACCC Central Counselling</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="stateFieldWrap">
+                    <label class="form-label">State *</label>
+                    <select class="form-select" id="b-state">
+                      <option value="">-- Select State --</option>
+                      <option>Rajasthan</option><option>Madhya Pradesh</option><option>Uttar Pradesh</option>
+                      <option>Maharashtra</option><option>Karnataka</option><option>Tamil Nadu</option>
+                      <option>Andhra Pradesh</option><option>Telangana</option><option>Gujarat</option>
+                      <option>Kerala</option><option>Bihar</option><option>Jharkhand</option>
+                      <option>Odisha</option><option>West Bengal</option><option>Punjab</option>
+                      <option>Haryana</option><option>Himachal Pradesh</option><option>Uttarakhand</option>
+                      <option>Chhattisgarh</option><option>Assam</option><option>Delhi</option>
+                      <option>Goa</option><option>Jammu & Kashmir</option><option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row form-row-2" id="slugRow">
+                  <div class="form-group">
+                    <label class="form-label">Page Slug (filename)</label>
+                    <input class="form-input" id="b-slug" placeholder="rajasthan-mbbs-counselling" />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Meta Description</label>
+                    <input class="form-input" id="b-metadesc" placeholder="Page ki description for Google" />
+                  </div>
+                </div>
+                <div class="alert alert-info">💡 Slug = filename bina .html ke. e.g. <strong>rajasthan-mbbs-counselling</strong> → rajasthan-mbbs-counselling.html</div>
+                <button class="btn btn-primary" onclick="goStep(2)">Next: Content →</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 2 -->
+          <div id="bstep-2">
+            <div class="card">
+              <div class="card-head">
+                <h3>✍️ Content Sections</h3>
+                <div class="flex gap-8">
+                  <button class="btn btn-outline btn-sm" onclick="copyAiPrompt()">🤖 Copy AI Prompt</button>
+                  <button class="btn btn-outline btn-sm" onclick="pasteAiContent()">📋 Paste AI Response</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="alert alert-info" id="aiPasteArea" style="display:none;">
+                  <textarea class="form-textarea" id="aiResponseInput" placeholder="AI response yahan paste karo (JSON format)..." style="height:80px;margin-bottom:8px;"></textarea>
+                  <button class="btn btn-primary btn-sm" onclick="parseAiResponse()">Parse & Fill</button>
+                  <button class="btn btn-outline btn-sm" onclick="document.getElementById('aiPasteArea').style.display='none'">Cancel</button>
+                </div>
+
+                <!-- Overview -->
+                <div class="section-block open">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>📌 Overview</h4>
+                    <div class="mode-toggle" onclick="event.stopPropagation()">
+                      <button class="mode-btn active" onclick="setMode('overview','form',this)">📝 Form</button>
+                      <button class="mode-btn" onclick="setMode('overview','html',this)">⟨/⟩ HTML</button>
+                    </div>
+                  </div>
+                  <div class="section-block-body">
+                    <div id="overview-form">
+                      <div class="form-row form-row-2">
+                        <div class="form-group"><label class="form-label">Authority Name</label><input class="form-input" id="ov-authority" placeholder="e.g. RUHS, Jaipur" /></div>
+                        <div class="form-group"><label class="form-label">Official Website</label><input class="form-input" id="ov-website" placeholder="ruhs.ac.in" /></div>
+                        <div class="form-group"><label class="form-label">State Quota %</label><input class="form-input" id="ov-stquota" placeholder="85%" /></div>
+                        <div class="form-group"><label class="form-label">AIQ %</label><input class="form-input" id="ov-aiq" placeholder="15%" /></div>
+                        <div class="form-group"><label class="form-label">Total Govt Seats</label><input class="form-input" id="ov-govtseats" placeholder="4531" /></div>
+                        <div class="form-group"><label class="form-label">Total Pvt Seats</label><input class="form-input" id="ov-pvtseats" placeholder="2800" /></div>
+                        <div class="form-group"><label class="form-label">Counselling Rounds</label><input class="form-input" id="ov-rounds" placeholder="3 Rounds + Mop-up" /></div>
+                        <div class="form-group"><label class="form-label">Course Duration</label><input class="form-input" id="ov-duration" placeholder="5.5 Years" /></div>
+                      </div>
+                    </div>
+                    <div id="overview-html" style="display:none;">
+                      <textarea class="form-textarea" id="ov-html" placeholder="Paste Overview section HTML here..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Dates -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>📅 Important Dates</h4>
+                    <div class="mode-toggle" onclick="event.stopPropagation()">
+                      <button class="mode-btn active" onclick="setMode('dates','form',this)">📝 Form</button>
+                      <button class="mode-btn" onclick="setMode('dates','html',this)">⟨/⟩ HTML</button>
+                    </div>
+                  </div>
+                  <div class="section-block-body">
+                    <div id="dates-form">
+                      <table class="dynamic-table" id="datesTable">
+                        <thead><tr><th>Event</th><th>Date</th><th>Status</th><th style="width:36px;"></th></tr></thead>
+                        <tbody id="datesTbody">
+                          <tr><td><input placeholder="Registration Begins" /></td><td><input placeholder="July 2026" /></td><td><select><option>Upcoming</option><option>Active</option><option>Done</option></select></td><td><button class="btn btn-danger btn-xs" onclick="delRow(this)">✕</button></td></tr>
+                        </tbody>
+                      </table>
+                      <button class="btn btn-outline btn-sm" onclick="addDatesRow()">+ Add Row</button>
+                    </div>
+                    <div id="dates-html" style="display:none;">
+                      <textarea class="form-textarea" id="dates-htmlarea" placeholder="Paste Dates section HTML..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Eligibility -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>✅ Eligibility</h4>
+                    <div class="mode-toggle" onclick="event.stopPropagation()">
+                      <button class="mode-btn active" onclick="setMode('elig','form',this)">📝 Form</button>
+                      <button class="mode-btn" onclick="setMode('elig','html',this)">⟨/⟩ HTML</button>
+                    </div>
+                  </div>
+                  <div class="section-block-body">
+                    <div id="elig-form">
+                      <table class="dynamic-table">
+                        <thead><tr><th>Criteria</th><th>Value</th><th>Notes</th><th style="width:36px;"></th></tr></thead>
+                        <tbody id="eligTbody">
+                          <tr><td><input placeholder="NEET Score (UR/EWS)" /></td><td><input placeholder="50th Percentile" /></td><td><input placeholder="—" /></td><td><button class="btn btn-danger btn-xs" onclick="delRow(this)">✕</button></td></tr>
+                        </tbody>
+                      </table>
+                      <button class="btn btn-outline btn-sm" onclick="addEligRow()">+ Add Row</button>
+                    </div>
+                    <div id="elig-html" style="display:none;">
+                      <textarea class="form-textarea" id="elig-htmlarea" placeholder="Paste Eligibility HTML..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Cutoff -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>🎯 Cutoff</h4>
+                    <div class="mode-toggle" onclick="event.stopPropagation()">
+                      <button class="mode-btn active" onclick="setMode('cutoff','form',this)">📝 Form</button>
+                      <button class="mode-btn" onclick="setMode('cutoff','html',this)">⟨/⟩ HTML</button>
+                    </div>
+                  </div>
+                  <div class="section-block-body">
+                    <div id="cutoff-form">
+                      <table class="dynamic-table">
+                        <thead><tr><th>Category</th><th>Quota</th><th>Min Score</th><th>Max Score</th><th style="width:36px;"></th></tr></thead>
+                        <tbody id="cutoffTbody">
+                          <tr><td><input placeholder="General" /></td><td><input placeholder="State Quota" /></td><td><input placeholder="570" /></td><td><input placeholder="680" /></td><td><button class="btn btn-danger btn-xs" onclick="delRow(this)">✕</button></td></tr>
+                        </tbody>
+                      </table>
+                      <button class="btn btn-outline btn-sm" onclick="addCutoffRow()">+ Add Row</button>
+                    </div>
+                    <div id="cutoff-html" style="display:none;">
+                      <textarea class="form-textarea" id="cutoff-htmlarea" placeholder="Paste Cutoff HTML..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Process Steps -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>📋 Counselling Process</h4>
+                    <div class="mode-toggle" onclick="event.stopPropagation()">
+                      <button class="mode-btn active" onclick="setMode('steps','form',this)">📝 Form</button>
+                      <button class="mode-btn" onclick="setMode('steps','html',this)">⟨/⟩ HTML</button>
+                    </div>
+                  </div>
+                  <div class="section-block-body">
+                    <div id="steps-form">
+                      <table class="dynamic-table">
+                        <thead><tr><th style="width:40px;">#</th><th>Step Title</th><th>Description</th><th style="width:36px;"></th></tr></thead>
+                        <tbody id="stepsTbody">
+                          <tr><td><input type="number" value="1" style="width:40px;" /></td><td><input placeholder="Step title" /></td><td><input placeholder="Step description" /></td><td><button class="btn btn-danger btn-xs" onclick="delRow(this)">✕</button></td></tr>
+                        </tbody>
+                      </table>
+                      <button class="btn btn-outline btn-sm" onclick="addStepRow()">+ Add Step</button>
+                    </div>
+                    <div id="steps-html" style="display:none;">
+                      <textarea class="form-textarea" id="steps-htmlarea" placeholder="Paste Process Steps HTML..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Fees -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>💰 Registration Fee & Security Deposit</h4>
+                    <div class="mode-toggle" onclick="event.stopPropagation()">
+                      <button class="mode-btn active" onclick="setMode('fees','form',this)">📝 Form</button>
+                      <button class="mode-btn" onclick="setMode('fees','html',this)">⟨/⟩ HTML</button>
+                    </div>
+                  </div>
+                  <div class="section-block-body">
+                    <div id="fees-form">
+                      <table class="dynamic-table">
+                        <thead><tr><th>Category</th><th>Reg Fee</th><th>Security Deposit</th><th>Type</th><th style="width:36px;"></th></tr></thead>
+                        <tbody id="feesTbody">
+                          <tr><td><input placeholder="General/OBC/EWS" /></td><td><input placeholder="₹2,500" /></td><td><input placeholder="₹50,000" /></td><td><input placeholder="Refundable" /></td><td><button class="btn btn-danger btn-xs" onclick="delRow(this)">✕</button></td></tr>
+                        </tbody>
+                      </table>
+                      <button class="btn btn-outline btn-sm" onclick="addFeesRow()">+ Add Row</button>
+                    </div>
+                    <div id="fees-html" style="display:none;">
+                      <textarea class="form-textarea" id="fees-htmlarea" placeholder="Paste Fees HTML..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Reservation -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>🎯 Reservation</h4>
+                    <div class="mode-toggle" onclick="event.stopPropagation()">
+                      <button class="mode-btn active" onclick="setMode('res','form',this)">📝 Form</button>
+                      <button class="mode-btn" onclick="setMode('res','html',this)">⟨/⟩ HTML</button>
+                    </div>
+                  </div>
+                  <div class="section-block-body">
+                    <div id="res-form">
+                      <table class="dynamic-table">
+                        <thead><tr><th>Category</th><th>%</th><th>Notes</th><th style="width:36px;"></th></tr></thead>
+                        <tbody id="resTbody">
+                          <tr><td><input placeholder="General (UR)" /></td><td><input placeholder="41%" /></td><td><input placeholder="—" /></td><td><button class="btn btn-danger btn-xs" onclick="delRow(this)">✕</button></td></tr>
+                        </tbody>
+                      </table>
+                      <button class="btn btn-outline btn-sm" onclick="addResRow()">+ Add Row</button>
+                    </div>
+                    <div id="res-html" style="display:none;">
+                      <textarea class="form-textarea" id="res-htmlarea" placeholder="Paste Reservation HTML..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Documents -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>📁 Documents Required</h4>
+                    <div class="mode-toggle" onclick="event.stopPropagation()">
+                      <button class="mode-btn active" onclick="setMode('docs','form',this)">📝 Form</button>
+                      <button class="mode-btn" onclick="setMode('docs','html',this)">⟨/⟩ HTML</button>
+                    </div>
+                  </div>
+                  <div class="section-block-body">
+                    <div id="docs-form">
+                      <div id="docsItems" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:10px;"></div>
+                      <div class="flex gap-8">
+                        <input class="form-input" id="docNewItem" placeholder="Document name" style="flex:1;" />
+                        <button class="btn btn-outline btn-sm" onclick="addDocItem()">+ Add</button>
+                      </div>
+                    </div>
+                    <div id="docs-html" style="display:none;">
+                      <textarea class="form-textarea" id="docs-htmlarea" placeholder="Paste Documents HTML..."></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Custom Block -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>⚙️ Custom HTML Block (Optional)</h4>
+                  </div>
+                  <div class="section-block-body">
+                    <textarea class="form-textarea" id="custom-html" placeholder="Koi bhi custom HTML paste karo — FAQ, extra table, info box, etc." style="height:150px;"></textarea>
+                  </div>
+                </div>
+
+                <!-- Related Links -->
+                <div class="section-block">
+                  <div class="section-block-head" onclick="toggleSection(this)">
+                    <h4>🔗 Related Links Box</h4>
+                  </div>
+                  <div class="section-block-body">
+                    <div class="badges-check" style="gap:16px;">
+                      <label class="badge-check"><input type="checkbox" id="rel-ayush" checked /> 🌿 AYUSH Page</label>
+                      <label class="badge-check"><input type="checkbox" id="rel-mcc" checked /> 🏛️ MCC Page</label>
+                      <label class="badge-check"><input type="checkbox" id="rel-aaccc" checked /> 🌿 AACCC Page</label>
+                      <label class="badge-check"><input type="checkbox" id="rel-mbbs" /> 🏥 MBBS Page</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex gap-8" style="margin-top:16px;">
+                  <button class="btn btn-outline" onclick="goStep(1)">← Back</button>
+                  <button class="btn btn-primary" onclick="goStep(3)">Next: College Table →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div id="bstep-3">
+            <div class="card">
+              <div class="card-head">
+                <h3>📄 College Table</h3>
+                <div class="flex gap-8">
+                  <span class="text-sm text-muted" id="sheetStatus">Sheet loaded: —</span>
+                  <button class="btn btn-outline btn-sm" onclick="showTab('sheets')">Upload Sheet</button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="alert alert-info">Sheet Manager mein <strong>MBBS Master Sheet</strong> ya <strong>AYUSH Master Sheet</strong> upload karo. Phir yahan state filter se colleges auto-populate honge.</div>
+                <div class="form-row form-row-2">
+                  <div class="form-group">
+                    <label class="form-label">Filter by State</label>
+                    <select class="form-select" id="collegeStateFilter" onchange="filterCollegePreview()">
+                      <option value="">-- All States --</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Course (AYUSH only)</label>
+                    <select class="form-select" id="collegeCourseFilter" onchange="filterCollegePreview()">
+                      <option value="">All Courses</option>
+                      <option>BAMS</option><option>BHMS</option><option>BUMS</option><option>BSMS</option>
+                    </select>
+                  </div>
+                </div>
+                <div id="collegePreview"><div class="empty-state"><div class="es-icon">📄</div><p>Sheet upload karo aur state select karo</p></div></div>
+                <div class="flex gap-8" style="margin-top:16px;">
+                  <button class="btn btn-outline" onclick="goStep(2)">← Back</button>
+                  <button class="btn btn-primary" onclick="goStep(4)">Next: Preview →</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div id="bstep-4">
+            <div class="card">
+              <div class="card-head"><h3>👁 Preview & Save</h3></div>
+              <div class="card-body">
+                <div class="flex gap-8" style="margin-bottom:16px;">
+                  <button class="btn btn-primary" onclick="generatePreview()">🔄 Generate Preview</button>
+                  <button class="btn btn-success" onclick="savePageFile()">💾 Save HTML File</button>
+                  <button class="btn btn-outline" onclick="goStep(3)">← Back</button>
+                </div>
+                <div id="previewContainer" style="border:2px solid #e2e8f0;border-radius:10px;overflow:hidden;height:500px;">
+                  <iframe id="previewFrame" style="width:100%;height:100%;border:none;"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- /builder-steps -->
+      </div><!-- /tab-builder -->
+
+      <!-- ═══════════ SHEET MANAGER ═══════════ -->
+      <div id="tab-sheets" class="tab-panel">
+        <div class="page-title">Sheet Manager</div>
+        <div class="page-sub">MBBS aur AYUSH master sheets upload karo — ek baar upload, sab pages mein use hogi</div>
+
+        <div class="form-row form-row-2">
+          <!-- MBBS -->
+          <div class="card">
+            <div class="card-head"><h3>🏥 MBBS Master Sheet</h3></div>
+            <div class="card-body">
+              <div class="upload-area" id="mbbsUploadArea" onclick="document.getElementById('mbbsFile').click()">
+                <input type="file" id="mbbsFile" accept=".xlsx,.xls,.csv" onchange="handleSheetUpload('mbbs',this)" />
+                <div class="upload-icon">📊</div>
+                <div class="upload-text">Click to Upload MBBS Excel</div>
+                <div class="upload-sub">Columns: State | Govt_Pvt | SN | Name | City | Year | Seats | Fee | Other</div>
+              </div>
+              <div class="alert alert-info mt-8">
+                <strong>Required Columns:</strong><br/>State, Govt_Pvt, SN, Name, City, Year, Seats, Fee, Other
+              </div>
+              <div style="margin-top:12px;" class="flex gap-8">
+                <button class="btn btn-outline btn-sm" onclick="downloadTemplate('mbbs')">⬇ Download Template</button>
+                <span class="text-sm text-muted" id="mbbsStatus"></span>
+              </div>
+              <div id="mbbsPreview" style="margin-top:14px;"></div>
+            </div>
+          </div>
+
+          <!-- AYUSH -->
+          <div class="card">
+            <div class="card-head"><h3>🌿 AYUSH Master Sheet</h3></div>
+            <div class="card-body">
+              <div class="upload-area" id="ayushUploadArea" onclick="document.getElementById('ayushFile').click()">
+                <input type="file" id="ayushFile" accept=".xlsx,.xls,.csv" onchange="handleSheetUpload('ayush',this)" />
+                <div class="upload-icon">📊</div>
+                <div class="upload-text">Click to Upload AYUSH Excel</div>
+                <div class="upload-sub">Columns: State | Course | Govt_Pvt | SN | Name | City | Year | Seats | Fee | Other</div>
+              </div>
+              <div class="alert alert-info mt-8">
+                <strong>Required Columns:</strong><br/>State, Course, Govt_Pvt, SN, Name, City, Year, Seats, Fee, Other
+              </div>
+              <div style="margin-top:12px;" class="flex gap-8">
+                <button class="btn btn-outline btn-sm" onclick="downloadTemplate('ayush')">⬇ Download Template</button>
+                <span class="text-sm text-muted" id="ayushStatus"></span>
+              </div>
+              <div id="ayushPreview" style="margin-top:14px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ ADS MANAGER ═══════════ -->
+      <div id="tab-ads" class="tab-panel">
+        <div class="page-title">Ads Manager</div>
+        <div class="page-sub">AdSense Publisher ID aur ad unit codes set karo</div>
+
+        <div class="card">
+          <div class="card-head"><h3>🔑 Publisher ID</h3></div>
+          <div class="card-body">
+            <div class="form-row form-row-2">
+              <div class="form-group">
+                <label class="form-label">Google AdSense Publisher ID</label>
+                <input class="form-input" id="publisherId" placeholder="ca-pub-XXXXXXXXXXXXXXXXX" />
+              </div>
+            </div>
+            <div class="alert alert-warn">⚠️ Publisher ID approve hone ke baad yahan daalo. Abhi placeholder hai — sab files mein <code>ca-pub-XXXXXXXXXXXXXXXXX</code> hai jo replace hoga.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>📺 Ad Unit Slots</h3></div>
+          <div class="card-body">
+            <div class="ad-slot">
+              <h4>Top Banner (After Hero)</h4>
+              <input class="form-input" id="adSlot1" placeholder="Ad Slot ID (e.g. 1234567890)" />
+            </div>
+            <div class="ad-slot">
+              <h4>Mid Article</h4>
+              <input class="form-input" id="adSlot2" placeholder="Ad Slot ID" />
+            </div>
+            <div class="ad-slot">
+              <h4>Bottom Banner</h4>
+              <input class="form-input" id="adSlot3" placeholder="Ad Slot ID" />
+            </div>
+            <div class="ad-slot">
+              <h4>Sidebar</h4>
+              <input class="form-input" id="adSlot4" placeholder="Ad Slot ID" />
+            </div>
+            <div class="flex gap-8" style="margin-top:16px;">
+              <button class="btn btn-success" onclick="saveAdsConfig()">💾 Save Ads Config</button>
+              <button class="btn btn-primary" onclick="applyAdsToAllPages()">🔄 Apply to All Pages</button>
+              <span class="text-sm text-muted" id="adsStatus"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══════════ SETTINGS ═══════════ -->
+      <div id="tab-settings" class="tab-panel">
+        <div class="page-title">Settings</div>
+        <div class="page-sub">Admin panel configure karo</div>
+
+        <div class="form-row form-row-2">
+          <div class="card">
+            <div class="card-head"><h3>🔑 Change Password</h3></div>
+            <div class="card-body">
+              <div class="form-group"><label class="form-label">Current Password</label><input type="password" class="form-input" id="curPw" /></div>
+              <div class="form-group"><label class="form-label">New Password</label><input type="password" class="form-input" id="newPw" /></div>
+              <div class="form-group"><label class="form-label">Confirm New Password</label><input type="password" class="form-input" id="conPw" /></div>
+              <button class="btn btn-primary" onclick="changePassword()">Change Password</button>
+              <div class="text-sm text-muted mt-8" id="pwMsg"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>🌐 Site Info</h3></div>
+            <div class="card-body">
+              <div class="form-group"><label class="form-label">Site URL</label><input class="form-input" id="siteUrl" value="https://neetcounsellinghelp.in" /></div>
+              <div class="form-group"><label class="form-label">Site Name</label><input class="form-input" id="siteName" value="NEET Counselling Help" /></div>
+              <div class="form-group"><label class="form-label">Default Author</label><input class="form-input" id="defaultAuthor" value="Dr. Praveen Patel" /></div>
+              <button class="btn btn-primary" onclick="saveSiteInfo()">Save Settings</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h3>ℹ️ Admin Info</h3></div>
+          <div class="card-body">
+            <p class="text-sm text-muted">Admin panel sirf <strong>Chrome / Edge</strong> browser mein best kaam karta hai (File System Access API).</p>
+            <p class="text-sm text-muted mt-8">Folder connect karne ke baad files directly save hoti hain. Refresh karne par folder re-connect karna padega.</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalTitle">—</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<script src="admin.js"></script>
+</body>
+</html>

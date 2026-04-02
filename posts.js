@@ -12,35 +12,37 @@
  */
 
 const POSTS = [
-
-  /* ===================== NEET EXAM NEWS ===================== */
   {
-    id: "neet-2026-syllabus",
-    title: "NEET UG 2026 Syllabus — Complete Physics, Chemistry & Biology Chapter List (NMC Official)",
-    url: "neet-2026-syllabus.html",
-    category: "neet",
-    subcategory: "Syllabus",
-    date: "Jan 8, 2026",
-    readTime: "10 min read",
-    author: "Dr. Praveen Patel",
-    badges: ["new", "mustread"],
-    featured: true,
-    live: true
+    "id": "neet-2026-syllabus",
+    "title": "NEET UG 2026 Syllabus — Complete Physics, Chemistry & Biology Chapter List (NMC Official)",
+    "url": "neet-2026-syllabus.html",
+    "category": "neet",
+    "subcategory": "Syllabus",
+    "date": "Jan 8, 2026",
+    "readTime": "10 min read",
+    "author": "Dr. Praveen Patel",
+    "badges": [
+      "new",
+      "mustread"
+    ],
+    "featured": true,
+    "live": true
   },
   {
-    id: "neet-2026-exam-details",
-    title: "NEET UG 2026 Exam Date, Pattern & Important Dates — Official NTA Info",
-    url: "neet-2026-exam-details.html",
-    category: "neet",
-    subcategory: "Exam Date",
-    date: "Mar 12, 2026",
-    readTime: "8 min read",
-    author: "Dr. Praveen Patel",
-    badges: ["new"],
-    featured: false,
-    live: true
+    "id": "neet-2026-exam-details",
+    "title": "NEET UG 2026 Exam Date, Pattern & Important Dates — Official NTA Info",
+    "url": "neet-2026-exam-details.html",
+    "category": "neet",
+    "subcategory": "Exam Date",
+    "date": "Mar 12, 2026",
+    "readTime": "8 min read",
+    "author": "Dr. Praveen Patel",
+    "badges": [
+      "new"
+    ],
+    "featured": false,
+    "live": true
   }
-
 ];
 
 /* ── Category config ── */
@@ -124,7 +126,7 @@ const STATE_PAGES = [
     code: "RJ",
     region: "north",
     courses: [
-      { type: "MBBS",       url: "rajasthan-mbbs-counselling.html",   live: false },
+      { type: "MBBS",       url: "rajasthan-mbbs-counselling.html",   live: true  },
       { type: "AYUSH",      url: "rajasthan-ayush-counselling.html",  live: false },
       { type: "BDS",        url: "#",                                  live: false },
       { type: "Veterinary", url: "#",                                  live: false }

@@ -405,21 +405,15 @@
   <!-- ========== STATE GUIDES ========== -->
   <section class="sg-section" id="state-guides">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">State Guides</span>
-        <h2>State NEET Counselling Guides</h2>
-        <p>Complete counselling information for every state — MBBS, AYUSH, BDS & Veterinary</p>
+      <div class="sg-top">
+        <div>
+          <span class="section-tag">State Guides</span>
+          <h2 class="sg-heading">State-wise Counselling Guide</h2>
+        </div>
       </div>
 
-      <!-- Region filter -->
-      <div class="sg-filters">
-        <button class="sg-filter-btn active" data-region="all">🗺️ All States</button>
-        <button class="sg-filter-btn" data-region="north">Northern India</button>
-        <button class="sg-filter-btn" data-region="south">Southern India</button>
-        <button class="sg-filter-btn" data-region="west">Western India</button>
-        <button class="sg-filter-btn" data-region="east">Eastern India</button>
-        <button class="sg-filter-btn" data-region="central">Central India</button>
-      </div>
+      <!-- State filter pills — filled by posts.js -->
+      <div class="sg-pill-bar" id="sg-pill-bar"></div>
 
       <!-- Cards grid — filled by posts.js -->
       <div class="sg-grid" id="sg-grid"></div>

@@ -124,10 +124,10 @@ const STATE_PAGES = [
     code: "RJ",
     region: "north",
     courses: [
-      { type: "MBBS",       url: "rajasthan-neet-counselling.html", live: true  },
-      { type: "AYUSH",      url: "#",                               live: false },
-      { type: "BDS",        url: "#",                               live: false },
-      { type: "Veterinary", url: "#",                               live: false }
+      { type: "MBBS",       url: "rajasthan-mbbs-counselling.html",   live: false },
+      { type: "AYUSH",      url: "rajasthan-ayush-counselling.html",  live: false },
+      { type: "BDS",        url: "#",                                  live: false },
+      { type: "Veterinary", url: "#",                                  live: false }
     ]
   },
   {
@@ -268,66 +268,62 @@ const STATE_PAGES = [
 
 ];
 
-/* ── Course type badge colors ── */
+/* ── Course colors ── */
 const COURSE_COLORS = {
-  MBBS:       { bg: '#eff6ff', color: '#1d4ed8', border: '#bfdbfe' },
-  AYUSH:      { bg: '#f0fdf4', color: '#15803d', border: '#bbf7d0' },
-  BDS:        { bg: '#fdf4ff', color: '#7e22ce', border: '#e9d5ff' },
-  Veterinary: { bg: '#fff7ed', color: '#c2410c', border: '#fed7aa' }
+  MBBS:       { color: '#1d4ed8' },
+  AYUSH:      { color: '#15803d' },
+  BDS:        { color: '#7e22ce' },
+  Veterinary: { color: '#c2410c' }
 };
 
-/* ── Build a single state card ── */
+/* ── Build a compact state card ── */
 function _buildStateCard(s) {
   const hasLive = s.courses.some(c => c.live);
-  const badgeClass = hasLive ? 'sg-live-badge' : 'sg-soon-badge';
-  const badgeText  = hasLive ? '✅ Available' : '🔜 Coming Soon';
 
-  const courseLinks = s.courses.map(c => {
-    const col = COURSE_COLORS[c.type] || COURSE_COLORS.MBBS;
-    const style = `background:${col.bg};color:${col.color};border:1px solid ${col.border}`;
+  const chips = s.courses.map((c, i) => {
+    const col = (COURSE_COLORS[c.type] || COURSE_COLORS.MBBS).color;
+    const sep = i > 0 ? `<span class="sg-sep">|</span>` : '';
     if (c.live) {
-      return `<a href="${c.url}" class="sg-course-chip sg-course-live" style="${style}">${c.type}</a>`;
+      return `${sep}<a href="${c.url}" class="sg-chip sg-chip-live" style="color:${col}" onclick="event.stopPropagation()">${c.type}</a>`;
     }
-    return `<span class="sg-course-chip sg-course-soon" style="${style};opacity:.5;cursor:default">${c.type}</span>`;
+    return `${sep}<span class="sg-chip sg-chip-soon">${c.type}</span>`;
   }).join('');
 
-  const primaryUrl = s.courses.find(c => c.live)?.url || '#';
-  const cardClass  = hasLive ? 'sg-card sg-card-live' : 'sg-card';
-
   return `
-    <div class="${cardClass}" data-region="${s.region}">
-      <div class="sg-card-top">
-        <div class="sg-state-code">${s.code}</div>
-        <span class="${badgeClass}">${badgeText}</span>
+    <div class="sg-card${hasLive ? ' sg-card-live' : ''}">
+      <div class="sg-card-head">
+        <span class="sg-code">${s.code}</span>
+        ${hasLive ? '<span class="sg-dot"></span>' : ''}
       </div>
-      <h4 class="sg-state-name">${s.state}</h4>
-      <div class="sg-courses">${courseLinks}</div>
-      <a href="${primaryUrl}" class="sg-view-btn${hasLive ? '' : ' sg-view-btn-soon'}"${!hasLive ? ' tabindex="-1" aria-disabled="true"' : ''}>
-        ${hasLive ? 'View Guide →' : 'Notify Me'}
-      </a>
+      <div class="sg-name">${s.state}</div>
+      <div class="sg-chips">${chips}</div>
     </div>`;
 }
 
 /* ── Render state guides section ── */
 function renderStateGuides() {
-  const grid = document.getElementById('sg-grid');
-  if (!grid) return;
+  const grid    = document.getElementById('sg-grid');
+  const pillBar = document.getElementById('sg-pill-bar');
+  if (!grid || !pillBar) return;
 
-  let activeRegion = 'all';
+  // Build state filter pills
+  const allPill = `<button class="sg-pill active" data-state="all">All States</button>`;
+  const statePills = STATE_PAGES.map(s =>
+    `<button class="sg-pill" data-state="${s.state}">${s.state}</button>`
+  ).join('');
+  pillBar.innerHTML = allPill + statePills;
 
-  function render(region) {
-    const states = region === 'all' ? STATE_PAGES : STATE_PAGES.filter(s => s.region === region);
-    grid.innerHTML = states.map(_buildStateCard).join('');
+  function render(state) {
+    const list = state === 'all' ? STATE_PAGES : STATE_PAGES.filter(s => s.state === state);
+    grid.innerHTML = list.map(_buildStateCard).join('');
   }
 
-  // Filter buttons
-  document.querySelectorAll('.sg-filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.sg-filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activeRegion = btn.dataset.region;
-      render(activeRegion);
-    });
+  pillBar.addEventListener('click', e => {
+    const btn = e.target.closest('.sg-pill');
+    if (!btn) return;
+    pillBar.querySelectorAll('.sg-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render(btn.dataset.state);
   });
 
   render('all');

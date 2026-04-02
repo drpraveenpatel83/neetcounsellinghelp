@@ -405,15 +405,17 @@
   <!-- ========== STATE GUIDES ========== -->
   <section class="sg-section" id="state-guides">
     <div class="container">
-      <div class="sg-top">
-        <div>
+      <div class="sg-top-bar">
+        <div class="sg-title-wrap">
           <span class="section-tag">State Guides</span>
           <h2 class="sg-heading">State-wise Counselling Guide</h2>
         </div>
+        <div class="sg-dropdown-wrap">
+          <select id="sg-select" class="sg-select">
+            <option value="all">🗺️ All States</option>
+          </select>
+        </div>
       </div>
-
-      <!-- State filter pills — filled by posts.js -->
-      <div class="sg-pill-bar" id="sg-pill-bar"></div>
 
       <!-- Cards grid — filled by posts.js -->
       <div class="sg-grid" id="sg-grid"></div>

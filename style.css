@@ -665,27 +665,22 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 /* ===== STATE GUIDES ===== */
 .sg-section { background: var(--gray-50); padding: 56px 0; }
 
-.sg-top { margin-bottom: 20px; }
-.sg-heading { font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: var(--gray-900); margin: 6px 0 0; }
-
-/* Pill bar — horizontal scroll */
-.sg-pill-bar {
-  display: flex; gap: 8px; overflow-x: auto;
-  padding-bottom: 6px; margin-bottom: 24px;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+.sg-top-bar {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: 28px; flex-wrap: wrap;
 }
-.sg-pill-bar::-webkit-scrollbar { display: none; }
+.sg-title-wrap .section-tag { margin-bottom: 6px; }
+.sg-heading { font-size: clamp(20px, 3vw, 28px); font-weight: 700; color: var(--gray-900); margin: 0; }
 
-.sg-pill {
-  flex-shrink: 0;
-  padding: 7px 16px; border: 1.5px solid var(--gray-200);
-  border-radius: var(--r-full); background: #fff;
-  font-size: 12px; font-weight: 600; color: var(--gray-500);
-  cursor: pointer; transition: var(--ease); white-space: nowrap;
+.sg-dropdown-wrap { flex-shrink: 0; }
+.sg-select {
+  padding: 10px 40px 10px 16px; border: 1.5px solid var(--gray-200);
+  border-radius: var(--r-lg); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 14px center;
+  font-size: 14px; font-weight: 600; color: var(--gray-700);
+  cursor: pointer; appearance: none; -webkit-appearance: none;
+  min-width: 200px; transition: var(--ease);
 }
-.sg-pill:hover { border-color: var(--blue); color: var(--blue); }
-.sg-pill.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+.sg-select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
 
 /* Card grid — 5 cols desktop, responsive */
 .sg-grid {

@@ -302,29 +302,24 @@ function _buildStateCard(s) {
 
 /* ── Render state guides section ── */
 function renderStateGuides() {
-  const grid    = document.getElementById('sg-grid');
-  const pillBar = document.getElementById('sg-pill-bar');
-  if (!grid || !pillBar) return;
+  const grid   = document.getElementById('sg-grid');
+  const select = document.getElementById('sg-select');
+  if (!grid || !select) return;
 
-  // Build state filter pills
-  const allPill = `<button class="sg-pill active" data-state="all">All States</button>`;
-  const statePills = STATE_PAGES.map(s =>
-    `<button class="sg-pill" data-state="${s.state}">${s.state}</button>`
-  ).join('');
-  pillBar.innerHTML = allPill + statePills;
+  // Populate dropdown options
+  STATE_PAGES.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s.state;
+    opt.textContent = s.state;
+    select.appendChild(opt);
+  });
 
   function render(state) {
     const list = state === 'all' ? STATE_PAGES : STATE_PAGES.filter(s => s.state === state);
     grid.innerHTML = list.map(_buildStateCard).join('');
   }
 
-  pillBar.addEventListener('click', e => {
-    const btn = e.target.closest('.sg-pill');
-    if (!btn) return;
-    pillBar.querySelectorAll('.sg-pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    render(btn.dataset.state);
-  });
+  select.addEventListener('change', () => render(select.value));
 
   render('all');
 }

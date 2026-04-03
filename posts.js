@@ -158,7 +158,7 @@ const STATE_PAGES = [
     code: "MP",
     region: "central",
     courses: [
-      { type: "MBBS",  url: "#", live: false },
+      { type: "MBBS",  url: "mp-mbbs-counselling.html", live: true },
       { type: "AYUSH", url: "#", live: false },
       { type: "BDS",   url: "#", live: false }
     ]

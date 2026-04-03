@@ -154,7 +154,7 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "rajasthan-up-counselling.html",
+        "url": "up-mbbs-counselling.html",
         "live": true
       },
       {

@@ -749,8 +749,8 @@ function generatePageHtml(d) {
 .step-desc{font-size:13px;color:#64748b;line-height:1.6;}
 .tbl-wrap{overflow-x:auto;border-radius:8px;border:1px solid #e2e8f0;margin-bottom:4px;}
 .mini-table{width:100%;border-collapse:collapse;font-size:13px;min-width:400px;}
-.mini-table th{background:#f1f5f9;color:#475569;padding:9px 13px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #e2e8f0;}
-.mini-table td{padding:10px 13px;border-bottom:1px solid #f1f5f9;color:#334155;}
+.mini-table th{background:#f1f5f9;color:#475569;padding:9px 13px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:1px solid #e2e8f0;border-bottom:2px solid #e2e8f0;}
+.mini-table td{padding:10px 13px;border:1px solid #e2e8f0;color:#334155;}
 .mini-table tr:last-child td{border-bottom:none;}
 .doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
 .doc-item{display:flex;align-items:center;gap:8px;background:#f8fafc;border-radius:8px;padding:9px 12px;border:1px solid #e2e8f0;font-size:13px;color:#334155;}
@@ -760,8 +760,8 @@ function generatePageHtml(d) {
 .pvt-header{background:linear-gradient(135deg,#1e3a5f,#1d4ed8);color:#fff;}
 .ctbl-wrap{overflow-x:auto;border:1px solid #e2e8f0;border-top:none;border-radius:0 0 8px 8px;margin-bottom:4px;}
 .ctbl{width:100%;border-collapse:collapse;font-size:13px;min-width:580px;}
-.ctbl thead th{background:#f8fafc;padding:9px 12px;text-align:left;font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid #e2e8f0;white-space:nowrap;}
-.ctbl tbody td{padding:11px 12px;border-bottom:1px solid #f1f5f9;color:#334155;vertical-align:top;}
+.ctbl thead th{background:#f8fafc;padding:9px 12px;text-align:left;font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.05em;border:1px solid #e2e8f0;border-bottom:2px solid #e2e8f0;white-space:nowrap;}
+.ctbl tbody td{padding:11px 12px;border:1px solid #e2e8f0;color:#334155;vertical-align:top;}
 .ctbl tbody tr:last-child td{border-bottom:none;}
 .ctbl tbody tr:hover td{background:#f0f9ff;}
 .td-sn{font-weight:700;color:#94a3b8;width:36px;}

@@ -54,10 +54,15 @@ function initApp() {
 function showTab(name) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('tab-'+name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => { if(n.textContent.toLowerCase().includes(name==='dashboard'?'dashboard':name==='news'?'news':name==='builder'?'page':name==='states'?'state':name==='sheets'?'sheet':name==='ads'?'ads':'settings')) n.classList.add('active'); });
+  const panel = document.getElementById('tab-'+name);
+  if (!panel) return;
+  panel.classList.add('active');
+  const keyMap = { dashboard:'dashboard', news:'news', builder:'page', states:'state', editor:'editor', sheets:'sheet', ads:'ads', settings:'settings' };
+  const key = keyMap[name] || name;
+  document.querySelectorAll('.nav-item').forEach(n => { if(n.textContent.toLowerCase().includes(key)) n.classList.add('active'); });
   if (name === 'news' && currentPosts.length === 0) loadPostsFromFile();
   if (name === 'states') loadStatePages();
+  if (name === 'editor') document.getElementById('nav-editor').style.display = '';
   if (name === 'dashboard') refreshDashboard();
 }
 
@@ -927,37 +932,40 @@ function renderStatePages() {
   if (!currentStatePages.length) { container.innerHTML='<div class="empty-state"><p>No states found</p></div>'; return; }
 
   const COURSE_COLORS = { MBBS:'#1d4ed8', AYUSH:'#15803d', BDS:'#7e22ce', Veterinary:'#c2410c' };
+  const COURSE_BG     = { MBBS:'#eff6ff',  AYUSH:'#f0fdf4', BDS:'#faf5ff',  Veterinary:'#fff7ed' };
 
   container.innerHTML = currentStatePages.map((s, si) => {
     const liveCount = s.courses.filter(c=>c.live).length;
     return `
-    <div class="card" style="margin-bottom:12px;">
-      <div class="card-head" style="cursor:pointer;" onclick="this.closest('.card').querySelector('.sp-body').style.display = this.closest('.card').querySelector('.sp-body').style.display==='none'?'':'none'">
-        <h3 style="display:flex;align-items:center;gap:10px;">
+    <div class="card" style="margin-bottom:10px;">
+      <div class="card-head" style="cursor:pointer;" onclick="this.closest('.card').querySelector('.sp-body').style.display = this.closest('.card').querySelector('.sp-body').style.display===''?'none':''">
+        <h3 style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
           <span style="background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:800;padding:2px 8px;border-radius:20px;">${s.code}</span>
           ${s.state}
-          <span style="font-size:12px;font-weight:400;color:${liveCount>0?'#15803d':'#94a3b8'};">
+          <span style="font-size:12px;font-weight:600;color:${liveCount>0?'#15803d':'#94a3b8'};">
             ${liveCount>0 ? '✅ '+liveCount+' live' : '⏳ Coming Soon'}
           </span>
         </h3>
         <span style="font-size:12px;color:#94a3b8;">${s.region} ▾</span>
       </div>
-      <div class="sp-body" style="display:none;padding:16px;">
-        <div style="display:grid;gap:10px;">
+      <div class="sp-body" style="padding:14px;display:none;">
+        <div style="display:grid;gap:8px;">
           ${s.courses.map((c, ci) => `
-          <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:#f8fafc;border-radius:8px;border:1.5px solid ${c.live?'#bfdbfe':'#e2e8f0'};">
-            <span style="font-size:12px;font-weight:800;color:${COURSE_COLORS[c.type]||'#475569'};width:80px;flex-shrink:0;">${c.type}</span>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:#f8fafc;border-radius:8px;border:1.5px solid ${c.live?'#bfdbfe':'#e2e8f0'};flex-wrap:wrap;">
+            <span style="font-size:11px;font-weight:800;color:${COURSE_COLORS[c.type]||'#475569'};background:${COURSE_BG[c.type]||'#f1f5f9'};padding:3px 10px;border-radius:20px;flex-shrink:0;">${c.type}</span>
             <input
               class="form-input"
-              style="flex:1;font-size:12px;"
-              placeholder="${c.type.toLowerCase()}-counselling.html ya #"
-              value="${c.url||'#'}"
+              style="flex:1;min-width:180px;font-size:12px;"
+              placeholder="${c.type.toLowerCase()}-mbbs-counselling.html"
+              value="${c.url||''}"
               onchange="updateStateCourse(${si},${ci},'url',this.value)"
             />
-            <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;cursor:pointer;flex-shrink:0;">
-              <input type="checkbox" ${c.live?'checked':''} onchange="updateStateCourse(${si},${ci},'live',this.checked)" style="width:16px;height:16px;cursor:pointer;" />
-              <span style="color:${c.live?'#15803d':'#94a3b8'};">${c.live?'Live ✅':'Off'}</span>
+            <label style="display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;padding:6px 12px;border-radius:8px;border:1.5px solid ${c.live?'#86efac':'#e2e8f0'};background:${c.live?'#f0fdf4':'#fff'};" id="sp-live-label-${si}-${ci}">
+              <input type="checkbox" ${c.live?'checked':''} onchange="updateStateCourse(${si},${ci},'live',this.checked)" style="width:15px;height:15px;cursor:pointer;accent-color:#16a34a;" />
+              <span style="color:${c.live?'#15803d':'#94a3b8'};" id="sp-live-text-${si}-${ci}">${c.live?'Live ✅':'Off'}</span>
             </label>
+            ${c.url && c.url !== '#' ? `<button class="sp-action-btn sp-preview-btn" onclick="window.open('../${c.url}','_blank')" title="Browser me preview">👁️ Preview</button>` : ''}
+            ${c.url && c.url !== '#' ? `<button class="sp-action-btn sp-edit-btn" onclick="editPageFile('${c.url}')" title="Page ke sections edit karo">✏️ Edit Page</button>` : ''}
           </div>`).join('')}
         </div>
       </div>
@@ -967,7 +975,6 @@ function renderStatePages() {
 
 function updateStateCourse(si, ci, field, value) {
   currentStatePages[si].courses[ci][field] = value;
-  // refresh just the live badge in header
   const cards = document.querySelectorAll('#statePagesContainer .card');
   const card = cards[si];
   if (!card) return;
@@ -977,9 +984,20 @@ function updateStateCourse(si, ci, field, value) {
     badge.textContent = liveCount>0 ? '✅ '+liveCount+' live' : '⏳ Coming Soon';
     badge.style.color = liveCount>0 ? '#15803d' : '#94a3b8';
   }
-  // update border color
   const rows = card.querySelectorAll('.sp-body > div > div');
-  if (rows[ci]) rows[ci].style.borderColor = value && field==='live' ? (value?'#bfdbfe':'#e2e8f0') : rows[ci].style.borderColor;
+  if (rows[ci]) {
+    rows[ci].style.borderColor = field==='live' ? (value?'#bfdbfe':'#e2e8f0') : rows[ci].style.borderColor;
+    const label = document.getElementById(`sp-live-label-${si}-${ci}`);
+    const txt   = document.getElementById(`sp-live-text-${si}-${ci}`);
+    if (label && field==='live') {
+      label.style.borderColor = value ? '#86efac' : '#e2e8f0';
+      label.style.background  = value ? '#f0fdf4' : '#fff';
+    }
+    if (txt && field==='live') {
+      txt.textContent = value ? 'Live ✅' : 'Off';
+      txt.style.color = value ? '#15803d' : '#94a3b8';
+    }
+  }
 }
 
 async function saveStatePages() {
@@ -991,6 +1009,159 @@ async function saveStatePages() {
     await writeFile('posts.js', newTxt);
     showToast('State pages saved! Homepage pe live ho gaya ✅','success');
   } catch(e) { showToast('Save failed: '+e.message,'error'); }
+}
+
+// ── PAGE EDITOR ──
+let currentEditFile = null;
+
+async function editPageFile(filename) {
+  if (!websiteDir) { showToast('Pehle folder connect karo','error'); return; }
+  try {
+    showToast('Loading ' + filename + '...', 'info');
+    const htmlStr = await readFile(filename);
+    const parser  = new DOMParser();
+    const doc     = parser.parseFromString(htmlStr, 'text/html');
+
+    // Hero section
+    const h1El    = doc.querySelector('.state-hero h1');
+    const heroP   = doc.querySelector('.state-hero p');
+    const badges  = doc.querySelectorAll('.state-badge');
+
+    // All info-cards
+    const cards = Array.from(doc.querySelectorAll('.info-card')).map(card => {
+      const h2 = card.querySelector('h2');
+      return {
+        title   : h2 ? h2.textContent.trim() : 'Section',
+        h2Html  : h2 ? h2.outerHTML : '',
+        bodyHtml: h2 ? card.innerHTML.replace(h2.outerHTML, '').trim() : card.innerHTML.trim()
+      };
+    });
+
+    currentEditFile = filename;
+    renderPageEditor(filename, {
+      h1       : h1El   ? h1El.textContent.trim()   : '',
+      heroP    : heroP  ? heroP.textContent.trim()  : '',
+      badgesStr: Array.from(badges).map(b=>b.textContent.trim()).join('\n'),
+      cards
+    });
+
+    // Show nav item + switch to tab
+    document.getElementById('nav-editor').style.display = '';
+    showTab('editor');
+  } catch(e) { showToast('Error loading page: '+e.message,'error'); }
+}
+
+function renderPageEditor(filename, data) {
+  document.getElementById('pe-filename-title').textContent = '✏️ ' + filename;
+  document.getElementById('pe-file-sub').textContent = 'Sections edit karo → Save All dabao → File overwrite ho jayegi';
+  document.getElementById('pe-preview-btn').style.display = '';
+  document.getElementById('pe-save-btn').style.display = '';
+
+  // Build section cards HTML
+  let sectionsHtml = data.cards.map((sec, i) => `
+    <div class="pe-section" id="pe-sec-wrap-${i}">
+      <div class="pe-section-head" onclick="this.closest('.pe-section').classList.toggle('open')">
+        <h4>${sec.title}</h4>
+        <span style="font-size:11px;color:#94a3b8;">click to expand ▾</span>
+      </div>
+      <div class="pe-section-body">
+        <div class="pe-warn">
+          ⚠️ Sirf <strong>HTML fragment</strong> daalo —
+          <code>&lt;!DOCTYPE&gt;</code> <code>&lt;html&gt;</code> <code>&lt;head&gt;</code> <code>&lt;body&gt;</code> <code>&lt;style&gt;</code>
+          tags mat daalo. Sirf content paste karo.
+        </div>
+        <textarea id="pe-section-${i}" class="form-textarea" style="min-height:200px;font-size:12px;font-family:monospace;"></textarea>
+      </div>
+    </div>`).join('');
+
+  const heroHtml = `
+    <div class="pe-section" id="pe-sec-hero">
+      <div class="pe-section-head" onclick="this.closest('.pe-section').classList.toggle('open')">
+        <h4>🦸 Hero Section (Title, Subtitle, Badges)</h4>
+        <span style="font-size:11px;color:#94a3b8;">click to expand ▾</span>
+      </div>
+      <div class="pe-section-body">
+        <div class="form-group">
+          <label class="form-label">Page Title (H1)</label>
+          <input class="form-input" id="pe-h1" placeholder="State Name MBBS Counselling 2026 — Complete Guide" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Subtitle (p)</label>
+          <input class="form-input" id="pe-herop" placeholder="Authority, process, dates, eligibility, fees..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Badges (ek line mein ek badge)</label>
+          <textarea class="form-textarea" id="pe-badges" style="min-height:80px;font-size:13px;" placeholder="🏛️ RUHS / NEET UG Board&#10;📅 Updated: April 2026&#10;🎯 State Quota: 85%"></textarea>
+        </div>
+      </div>
+    </div>`;
+
+  document.getElementById('pe-body').innerHTML = `
+    <div class="alert alert-info" style="margin-bottom:16px;">
+      💡 <strong>Workflow:</strong> Section expand karo → content edit karo → <strong>Save All Changes</strong> dabao → file directly overwrite ho jayegi
+    </div>
+    ${heroHtml}
+    ${sectionsHtml}
+    <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
+      <button class="btn btn-success" onclick="savePageEdits()">💾 Save All Changes</button>
+      <button class="btn btn-outline" onclick="pePreview()">👁️ Preview in Browser</button>
+      <button class="btn btn-outline" onclick="showTab('states')">← Back to State Pages</button>
+    </div>`;
+
+  // Set textarea values via JS (safe for special chars)
+  document.getElementById('pe-h1').value       = data.h1;
+  document.getElementById('pe-herop').value    = data.heroP;
+  document.getElementById('pe-badges').value   = data.badgesStr;
+  data.cards.forEach((sec, i) => {
+    const ta = document.getElementById('pe-section-' + i);
+    if (ta) ta.value = sec.bodyHtml;
+  });
+}
+
+async function savePageEdits() {
+  if (!currentEditFile || !websiteDir) { showToast('No file loaded or folder not connected','error'); return; }
+  try {
+    const htmlStr = await readFile(currentEditFile);
+    const parser  = new DOMParser();
+    const doc     = parser.parseFromString(htmlStr, 'text/html');
+
+    // Update hero h1
+    const h1El = doc.querySelector('.state-hero h1');
+    const newH1 = document.getElementById('pe-h1').value.trim();
+    if (h1El && newH1) h1El.textContent = newH1;
+
+    // Update hero p
+    const heroP = doc.querySelector('.state-hero p');
+    const newP  = document.getElementById('pe-herop').value.trim();
+    if (heroP && newP) heroP.textContent = newP;
+
+    // Update badges
+    const badgesWrap = doc.querySelector('.state-badges');
+    const newBadgesStr = document.getElementById('pe-badges').value.trim();
+    if (badgesWrap && newBadgesStr) {
+      const lines = newBadgesStr.split('\n').map(l=>l.trim()).filter(Boolean);
+      badgesWrap.innerHTML = lines.map(l=>`<span class="state-badge">${l}</span>`).join('\n      ');
+    }
+
+    // Update each info-card inner content
+    const cards = doc.querySelectorAll('.info-card');
+    cards.forEach((card, i) => {
+      const ta = document.getElementById('pe-section-' + i);
+      if (!ta) return;
+      const h2 = card.querySelector('h2');
+      const h2Html = h2 ? h2.outerHTML : '';
+      card.innerHTML = h2Html + '\n' + ta.value;
+    });
+
+    // Serialize — prepend DOCTYPE
+    const newHtml = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
+    await writeFile(currentEditFile, newHtml);
+    showToast('✅ Saved: ' + currentEditFile, 'success');
+  } catch(e) { showToast('Save error: ' + e.message, 'error'); }
+}
+
+function pePreview() {
+  if (currentEditFile) window.open('../' + currentEditFile, '_blank');
 }
 
 // ── SHEET MANAGER ──

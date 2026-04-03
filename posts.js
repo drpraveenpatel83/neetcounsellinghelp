@@ -120,162 +120,324 @@ if (document.readyState === 'loading') {
    ===================================================================== */
 
 const STATE_PAGES = [
-
   {
-    state: "Rajasthan",
-    code: "RJ",
-    region: "north",
-    courses: [
-      { type: "MBBS",       url: "rajasthan-mbbs-counselling.html",   live: true  },
-      { type: "AYUSH",      url: "rajasthan-ayush-counselling.html",  live: false },
-      { type: "BDS",        url: "#",                                  live: false },
-      { type: "Veterinary", url: "#",                                  live: false }
+    "state": "Rajasthan",
+    "code": "RJ",
+    "region": "north",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "rajasthan-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "rajasthan-ayush-counselling.html",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "Veterinary",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Uttar Pradesh",
-    code: "UP",
-    region: "north",
-    courses: [
-      { type: "MBBS",       url: "#", live: false },
-      { type: "AYUSH",      url: "#", live: false },
-      { type: "BDS",        url: "#", live: false },
-      { type: "Veterinary", url: "#", live: false }
+    "state": "Uttar Pradesh",
+    "code": "UP",
+    "region": "north",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "rajasthan-up-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "Veterinary",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Maharashtra",
-    code: "MH",
-    region: "west",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "Maharashtra",
+    "code": "MH",
+    "region": "west",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Madhya Pradesh",
-    code: "MP",
-    region: "central",
-    courses: [
-      { type: "MBBS",  url: "mp-mbbs-counselling.html", live: true },
-      { type: "AYUSH", url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "Madhya Pradesh",
+    "code": "MP",
+    "region": "central",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "mp-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Gujarat",
-    code: "GJ",
-    region: "west",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "Gujarat",
+    "code": "GJ",
+    "region": "west",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Karnataka",
-    code: "KA",
-    region: "south",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "Karnataka",
+    "code": "KA",
+    "region": "south",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Tamil Nadu",
-    code: "TN",
-    region: "south",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "Tamil Nadu",
+    "code": "TN",
+    "region": "south",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Delhi",
-    code: "DL",
-    region: "north",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "Delhi",
+    "code": "DL",
+    "region": "north",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Bihar",
-    code: "BR",
-    region: "east",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false }
+    "state": "Bihar",
+    "code": "BR",
+    "region": "east",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "West Bengal",
-    code: "WB",
-    region: "east",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "West Bengal",
+    "code": "WB",
+    "region": "east",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Andhra Pradesh",
-    code: "AP",
-    region: "south",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false }
+    "state": "Andhra Pradesh",
+    "code": "AP",
+    "region": "south",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Telangana",
-    code: "TG",
-    region: "south",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "Telangana",
+    "code": "TG",
+    "region": "south",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Punjab",
-    code: "PB",
-    region: "north",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false }
+    "state": "Punjab",
+    "code": "PB",
+    "region": "north",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Haryana",
-    code: "HR",
-    region: "north",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false }
+    "state": "Haryana",
+    "code": "HR",
+    "region": "north",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
     ]
   },
   {
-    state: "Kerala",
-    code: "KL",
-    region: "south",
-    courses: [
-      { type: "MBBS",  url: "#", live: false },
-      { type: "AYUSH", url: "#", live: false },
-      { type: "BDS",   url: "#", live: false }
+    "state": "Kerala",
+    "code": "KL",
+    "region": "south",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      },
+      {
+        "type": "BDS",
+        "url": "#",
+        "live": false
+      }
     ]
   }
-
 ];
 
-/* ── Course colors ── */
-const COURSE_COLORS = {
-  MBBS:       { color: '#1d4ed8' },
-  AYUSH:      { color: '#15803d' },
-  BDS:        { color: '#7e22ce' },
-  Veterinary: { color: '#c2410c' }
+/* ── Course icons & CSS classes ── */
+const COURSE_META = {
+  MBBS:       { icon: '🏥', cls: 'sg-btn-mbbs' },
+  AYUSH:      { icon: '🌿', cls: 'sg-btn-ayush' },
+  BDS:        { icon: '🦷', cls: 'sg-btn-bds' },
+  Veterinary: { icon: '🐄', cls: 'sg-btn-vet' }
 };
 
 /* ── Build a compact state card ── */
@@ -283,14 +445,14 @@ function _buildStateCard(s) {
   const liveCourses = s.courses.filter(c => c.live);
   const hasLive = liveCourses.length > 0;
 
-  // Only show chips for live courses
-  const chips = liveCourses.map((c, i) => {
-    const col = (COURSE_COLORS[c.type] || COURSE_COLORS.MBBS).color;
-    const sep = i > 0 ? `<span class="sg-sep">|</span>` : '';
-    return `${sep}<a href="${c.url}" class="sg-chip sg-chip-live" style="color:${col}">${c.type}</a>`;
+  const btns = liveCourses.map(c => {
+    const meta = COURSE_META[c.type] || { icon: '📋', cls: 'sg-btn-mbbs' };
+    return `<a href="${c.url}" class="sg-btn ${meta.cls}">${meta.icon} ${c.type}<span class="sg-btn-arrow">→</span></a>`;
   }).join('');
 
-  const chipsHtml = hasLive ? chips : `<span class="sg-chip sg-chip-soon" style="font-size:10px;">Coming Soon</span>`;
+  const bodyHtml = hasLive
+    ? `<div class="sg-btns">${btns}</div>`
+    : `<div class="sg-soon">Coming Soon</div>`;
 
   return `
     <div class="sg-card${hasLive ? ' sg-card-live' : ''}">
@@ -299,7 +461,7 @@ function _buildStateCard(s) {
         ${hasLive ? '<span class="sg-dot"></span>' : ''}
       </div>
       <div class="sg-name">${s.state}</div>
-      <div class="sg-chips">${chipsHtml}</div>
+      ${bodyHtml}
     </div>`;
 }
 

@@ -181,8 +181,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "Maharashtra-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",
@@ -225,8 +225,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "Gujarat-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",

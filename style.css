@@ -666,6 +666,18 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   background: var(--gray-100);
 }
 .news-item:hover .news-arrow { color: #fff; background: var(--blue); transform: translateX(2px); }
+.news-item-wrap { position: relative; }
+.card-share-btn {
+  position: absolute; top: 10px; right: 10px;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #f1f5f9; border: 1px solid #e2e8f0;
+  color: #94a3b8; cursor: pointer; display: none;
+  align-items: center; justify-content: center;
+  font-size: 13px; transition: background .15s, color .15s;
+  z-index: 2;
+}
+.news-item-wrap:hover .card-share-btn { display: flex; }
+.card-share-btn:hover { background: #e0e7ff; color: #4f46e5; border-color: #c7d2fe; }
 
 .more-posts-btn {
   display: inline-flex; align-items: center; gap: 8px;
@@ -879,6 +891,18 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   padding: 12px 16px; border-radius: var(--r);
 }
 .form-ok.show { display: block; animation: fadeIn .3s ease; }
+
+/* ===== SHARE BAR ===== */
+.share-bar-wrap { background: #fff; border-bottom: 1px solid #e2e8f0; padding: 10px 0; }
+.share-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.share-label { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: .05em; margin-right: 4px; }
+.share-btn { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 999px; border: 1px solid; cursor: pointer; text-decoration: none; transition: opacity .15s; white-space: nowrap; }
+.share-btn:hover { opacity: .8; }
+.sb-wa   { background: #dcfce7; color: #15803d; border-color: #86efac; }
+.sb-tw   { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; }
+.sb-fb   { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.sb-copy { background: #f1f5f9; color: #475569; border-color: #cbd5e1; font-family: inherit; }
+@media (max-width: 480px) { .share-label { display: none; } }
 
 /* ===== FOOTER ===== */
 .footer { background: #020617; padding: 64px 0 0; }

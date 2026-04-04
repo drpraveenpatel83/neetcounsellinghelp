@@ -81,15 +81,23 @@ function _buildCard(post) {
     isPlaceholder ? 'post-placeholder' : ''
   ].filter(Boolean).join(' ');
 
+  const shareBtn = isPlaceholder ? '' :
+    `<button class="card-share-btn" title="Share" onclick="event.preventDefault();event.stopPropagation();(function(b){var u='https://neetcounsellinghelp.in/${post.url}';var t=encodeURIComponent('${post.title.replace(/'/g,"\\'")}');if(navigator.share){navigator.share({title:'${post.title.replace(/'/g,"\\'")}',url:u})}else{navigator.clipboard.writeText(u).then(function(){b.textContent='✅';setTimeout(function(){b.innerHTML='<svg viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'currentColor\\' stroke-width=\\'2\\' width=\\'14\\' height=\\'14\\'><path d=\\'M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8\\'/><polyline points=\\'16 6 12 2 8 6\\'/><line x1=\\'12\\' y1=\\'2\\' x2=\\'12\\' y2=\\'15\\'/></svg>'},1800)})})(this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+    </button>`;
+
   return `
-    <a href="${post.url || '#'}" class="${linkClass}"${isPlaceholder ? ' tabindex="-1" aria-disabled="true"' : ''}>
-      <div class="news-item-left">
-        ${catRow}
-        <h4>${post.title}</h4>
-        <span class="news-meta">${post.date} · ${post.readTime}${authorStr}</span>
-      </div>
-      <div class="news-arrow">${isPlaceholder ? '🔒' : '→'}</div>
-    </a>`;
+    <div class="news-item-wrap">
+      <a href="${post.url || '#'}" class="${linkClass}"${isPlaceholder ? ' tabindex="-1" aria-disabled="true"' : ''}>
+        <div class="news-item-left">
+          ${catRow}
+          <h4>${post.title}</h4>
+          <span class="news-meta">${post.date} · ${post.readTime}${authorStr}</span>
+        </div>
+        <div class="news-arrow">${isPlaceholder ? '🔒' : '→'}</div>
+      </a>
+      ${shareBtn}
+    </div>`;
 }
 
 /* ── Render all panels ── */
@@ -225,7 +233,7 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "Gujarat-mbbs-counselling.html",
+        "url": "gujarat-mbbs-counselling.html",
         "live": true
       },
       {
@@ -247,8 +255,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "karnataka-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",
@@ -269,8 +277,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "tamil-nadu-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",
@@ -291,8 +299,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "delhi-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -308,8 +316,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "bihar-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",

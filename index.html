@@ -884,6 +884,62 @@
         if (grid) grid.style.gridTemplateColumns = '1fr';
       });
     }
+
+    /* ── Contact Form → Google Sheets ── */
+    const FORM_URL = 'https://script.google.com/macros/s/AKfycbyjxUDMZ8Zg6jizpe1kGAu2MyfTU7pcRirlBi8m4Wn8ZjnDG0XITys8GpqcZ0V_jeuaBw/exec';
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Clear previous errors
+      ['cNameErr','cContactErr','cQueryErr','cMsgErr'].forEach(id => {
+        document.getElementById(id).textContent = '';
+      });
+
+      const name    = document.getElementById('cName').value.trim();
+      const score   = document.getElementById('cScore').value.trim();
+      const contact = document.getElementById('cContact').value.trim();
+      const query   = document.getElementById('cQuery').value;
+      const msg     = document.getElementById('cMsg').value.trim();
+
+      // Validation
+      let valid = true;
+      if (!name) { document.getElementById('cNameErr').textContent = 'Name is required'; valid = false; }
+      if (!contact) { document.getElementById('cContactErr').textContent = 'Email or phone is required'; valid = false; }
+      if (!query) { document.getElementById('cQueryErr').textContent = 'Please select a query type'; valid = false; }
+      if (!msg) { document.getElementById('cMsgErr').textContent = 'Message is required'; valid = false; }
+      if (!valid) return;
+
+      // Show spinner
+      const btn  = document.getElementById('cSubmitBtn');
+      const txt  = document.getElementById('cBtnTxt');
+      const spin = document.getElementById('cBtnSpin');
+      btn.disabled = true;
+      txt.textContent = 'Sending…';
+      spin.style.display = 'inline-block';
+
+      const params = new URLSearchParams({ name, score, contact, query, message: msg });
+
+      fetch(FORM_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      })
+      .then(function() {
+        document.getElementById('cFormOk').classList.add('show');
+        document.getElementById('contactForm').reset();
+        txt.textContent = 'Send Message';
+        spin.style.display = 'none';
+        btn.disabled = false;
+      })
+      .catch(function() {
+        txt.textContent = 'Send Message';
+        spin.style.display = 'none';
+        btn.disabled = false;
+        alert('Something went wrong. Please try WhatsApp or email us directly.');
+      });
+    });
   </script>
 </body>
 </html>

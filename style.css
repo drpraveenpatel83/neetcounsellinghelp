@@ -106,11 +106,14 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 .play-badge-link:hover { transform: translateY(-2px); }
 .play-badge-img {
   display: block;
-  width: auto;
-  height: 56px;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
   object-fit: contain;
+  mix-blend-mode: multiply;
 }
-.hero-play-badge .play-badge-img { height: 58px; }
+.hero-play-img { width: 260px; }
+.cta-play-img { width: 250px; }
 
 /* ===== NAVBAR ===== */
 .navbar {
@@ -132,6 +135,7 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   border-radius: 14px;
   padding: 8px 12px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, .18);
+  overflow: hidden;
 }
 .navbar.scrolled .nav-logo { color: var(--gray-900); }
 .logo-icon { width: 36px; height: 36px; flex-shrink: 0; }
@@ -139,7 +143,16 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 .logo-accent { color: #4ade80; }
 .navbar.scrolled .logo-accent { color: var(--green); }
 /* Keep the original logo visible in both transparent and scrolled states */
-.nav-logo img { display: block; height: 45px; width: auto; max-height: 45px; object-fit: contain; }
+.nav-logo img {
+  display: block;
+  height: 45px;
+  width: auto;
+  max-height: 45px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transform: scale(1.55);
+  transform-origin: center;
+}
 .navbar:not(.scrolled) .nav-logo img,
 .navbar.scrolled .nav-logo img { filter: none; }
 
@@ -1002,7 +1015,17 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .hero-right { display: none; }
   .hero-btns { justify-content: center; }
   .hero-trust { margin: 0 auto; }
-  .hero-play-badge .play-badge-img { height: 54px; }
+  .nav-logo {
+    padding: 4px 6px;
+    border-radius: 12px;
+  }
+  .nav-logo img {
+    height: 34px;
+    max-height: 34px;
+    transform: scale(1.9);
+  }
+  .hero-play-img { width: min(82vw, 300px); }
+  .cta-play-img { width: min(72vw, 240px); }
   .strip-grid { grid-template-columns: 1fr; }
 
   /* ---- Flowchart mobile: full vertical stack ---- */
@@ -1049,5 +1072,11 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .team-grid { grid-template-columns: 1fr; }
   .video-wrap-shorts { max-width: 220px; }
   .news-tabs { flex-wrap: wrap; }
-  .play-badge-img { height: 50px; }
+  .nav-logo img {
+    height: 30px;
+    max-height: 30px;
+    transform: scale(2);
+  }
+  .hero-play-img { width: min(86vw, 290px); }
+  .cta-play-img { width: min(78vw, 220px); }
 }

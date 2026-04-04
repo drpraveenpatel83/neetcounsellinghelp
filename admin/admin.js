@@ -10,19 +10,77 @@ let ayushData    = JSON.parse(localStorage.getItem('ayushData') || '[]');
 let adsConfig    = JSON.parse(localStorage.getItem('adsConfig') || '{}');
 let siteInfo     = JSON.parse(localStorage.getItem('siteInfo') || '{"url":"https://neetcounsellinghelp.in","name":"NEET Counselling Help","author":"Dr. Praveen Patel"}');
 let docsItems    = ['NEET UG 2026 Admit Card','NEET UG 2026 Score Card','Class 10 Certificate (DOB Proof)','Class 12 Marksheet','Class 12 Pass Certificate','Domicile Certificate','Category Certificate (SC/ST/OBC/EWS)','Aadhaar Card','Passport Size Photographs (10)','Character Certificate'];
-const DEFAULT_PW = 'nch@2026';
+const ADMIN_PW_HASH_KEY = 'adminPwHash';
 
 // ── AUTH ──
-function doLogin() {
-  const pw = document.getElementById('pwInput').value;
-  const stored = localStorage.getItem('adminPw') || DEFAULT_PW;
-  if (pw === stored) {
+function isSetupMode() {
+  return !localStorage.getItem(ADMIN_PW_HASH_KEY);
+}
+
+function updateLoginUi() {
+  const setup = isSetupMode();
+  const titleEl = document.getElementById('loginTitle');
+  const subEl = document.getElementById('loginSub');
+  const pwInput = document.getElementById('pwInput');
+  const pwConfirm = document.getElementById('pwConfirm');
+  const loginBtn = document.getElementById('loginBtn');
+
+  if (titleEl) titleEl.textContent = setup ? 'Set Admin Password' : 'NCH Admin';
+  if (subEl) subEl.textContent = setup
+    ? 'First-time setup: create a password for this browser'
+    : 'NEET Counselling Help — Content Manager';
+  if (pwInput) pwInput.placeholder = setup ? 'Create password (min 8 chars)' : 'Enter password';
+  if (pwConfirm) {
+    pwConfirm.style.display = setup ? '' : 'none';
+    if (!setup) pwConfirm.value = '';
+  }
+  if (loginBtn) loginBtn.textContent = setup ? 'Set Password →' : 'Login →';
+}
+
+async function sha256(text) {
+  if (!window.crypto || !window.crypto.subtle) {
+    // Fallback for unsupported environments (still better than plain text comparison).
+    return btoa(unescape(encodeURIComponent(text)));
+  }
+  const msgBuffer = new TextEncoder().encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function doLogin() {
+  const pwInput = document.getElementById('pwInput');
+  const pwConfirm = document.getElementById('pwConfirm');
+  const errEl = document.getElementById('loginErr');
+  const pw = pwInput.value;
+
+  if (isSetupMode()) {
+    const confirmPw = pwConfirm.value;
+    if (!pw || pw.length < 8) {
+      errEl.textContent = '❌ Password must be at least 8 characters';
+      return;
+    }
+    if (pw !== confirmPw) {
+      errEl.textContent = '❌ Passwords do not match';
+      return;
+    }
+    localStorage.setItem(ADMIN_PW_HASH_KEY, await sha256(pw));
+    pwInput.value = '';
+    pwConfirm.value = '';
+    errEl.textContent = '';
+    updateLoginUi();
+    showToast('Password created. Login now.', 'success');
+    return;
+  }
+
+  const storedHash = localStorage.getItem(ADMIN_PW_HASH_KEY);
+  const inputHash = await sha256(pw);
+  if (storedHash && inputHash === storedHash) {
     localStorage.setItem('adminLoggedIn','1');
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('adminApp').style.display    = 'flex';
     initApp();
   } else {
-    document.getElementById('loginErr').textContent = '❌ Wrong password';
+    errEl.textContent = '❌ Wrong password';
   }
 }
 
@@ -31,7 +89,13 @@ function doLogout() {
   location.reload();
 }
 
-function checkLogin() {
+async function checkLogin() {
+  const legacyPw = localStorage.getItem('adminPw');
+  if (!localStorage.getItem(ADMIN_PW_HASH_KEY) && legacyPw) {
+    localStorage.setItem(ADMIN_PW_HASH_KEY, await sha256(legacyPw));
+    localStorage.removeItem('adminPw');
+  }
+  updateLoginUi();
   if (localStorage.getItem('adminLoggedIn') === '1') {
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('adminApp').style.display    = 'flex';
@@ -622,7 +686,7 @@ function generatePageHtml(d) {
   const state    = document.getElementById('b-state').value;
   const slug     = document.getElementById('b-slug').value;
   const metaDesc = document.getElementById('b-metadesc').value || `${state} ${pageType} counselling 2026 — complete guide with college list, seats, fees, eligibility and process.`;
-  const pub      = adsConfig.publisherId || 'ca-pub-XXXXXXXXXXXXXXXXX';
+  const pub      = adsConfig.publisherId || 'ca-pub-1300049746675872';
   const slot1    = adsConfig.slot1 || 'XXXXXXXXXX';
   const title    = `${state} ${pageType==='state-mbbs'?'MBBS':pageType==='state-ayush'?'AYUSH':pageType==='mcc'?'MCC NEET':pageType==='aaccc'?'AACCC AYUSH':''} Counselling 2026`;
   const url      = `${siteInfo.url}/${slug}.html`;
@@ -1256,7 +1320,7 @@ async function applyAdsToAllPages() {
   for (const f of files) {
     try {
       let html = await readFile(f);
-      const updated = html.replaceAll('ca-pub-XXXXXXXXXXXXXXXXX', pub);
+      const updated = html.replaceAll('ca-pub-1300049746675872', pub);
       if (updated !== html) { await writeFile(f, updated); count++; }
     } catch(e) {}
   }
@@ -1276,16 +1340,18 @@ function saveSiteInfo() {
   showToast('Site info saved!','success');
 }
 
-function changePassword() {
+async function changePassword() {
   const cur = document.getElementById('curPw').value;
   const nw  = document.getElementById('newPw').value;
   const con = document.getElementById('conPw').value;
-  const stored = localStorage.getItem('adminPw') || DEFAULT_PW;
+  const storedHash = localStorage.getItem(ADMIN_PW_HASH_KEY);
   const msg = document.getElementById('pwMsg');
-  if (cur !== stored) { msg.textContent = '❌ Current password wrong'; return; }
-  if (!nw || nw.length < 6) { msg.textContent = '❌ Min 6 characters'; return; }
+  if (!storedHash) { msg.textContent = '❌ Password not configured yet'; return; }
+  const curHash = await sha256(cur);
+  if (curHash !== storedHash) { msg.textContent = '❌ Current password wrong'; return; }
+  if (!nw || nw.length < 8) { msg.textContent = '❌ Min 8 characters'; return; }
   if (nw !== con) { msg.textContent = '❌ Passwords do not match'; return; }
-  localStorage.setItem('adminPw', nw);
+  localStorage.setItem(ADMIN_PW_HASH_KEY, await sha256(nw));
   msg.textContent = '✓ Password changed successfully';
   showToast('Password changed!','success');
   ['curPw','newPw','conPw'].forEach(id=>document.getElementById(id).value='');

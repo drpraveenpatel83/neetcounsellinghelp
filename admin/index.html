@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow, noarchive" />
 <title>NCH Admin Panel</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
@@ -216,10 +217,11 @@ body{font-family:'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b;height:1
 <!-- LOGIN -->
 <div id="loginScreen">
   <div class="login-box">
-    <div class="login-logo">NCH Admin</div>
-    <div class="login-sub">NEET Counselling Help — Content Manager</div>
+    <div class="login-logo" id="loginTitle">NCH Admin</div>
+    <div class="login-sub" id="loginSub">NEET Counselling Help — Content Manager</div>
     <input type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()" />
-    <button class="login-btn" onclick="doLogin()">Login →</button>
+    <input type="password" id="pwConfirm" placeholder="Confirm password" style="display:none;" onkeydown="if(event.key==='Enter')doLogin()" />
+    <button class="login-btn" id="loginBtn" onclick="doLogin()">Login →</button>
     <div class="login-err" id="loginErr"></div>
   </div>
 </div>
@@ -879,10 +881,10 @@ body{font-family:'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b;height:1
             <div class="form-row form-row-2">
               <div class="form-group">
                 <label class="form-label">Google AdSense Publisher ID</label>
-                <input class="form-input" id="publisherId" placeholder="ca-pub-XXXXXXXXXXXXXXXXX" />
+                <input class="form-input" id="publisherId" placeholder="ca-pub-1300049746675872" />
               </div>
             </div>
-            <div class="alert alert-warn">⚠️ Publisher ID approve hone ke baad yahan daalo. Abhi placeholder hai — sab files mein <code>ca-pub-XXXXXXXXXXXXXXXXX</code> hai jo replace hoga.</div>
+            <div class="alert alert-warn">⚠️ Publisher ID approve hone ke baad yahan daalo. Abhi placeholder hai — sab files mein <code>ca-pub-1300049746675872</code> hai jo replace hoga.</div>
           </div>
         </div>
 

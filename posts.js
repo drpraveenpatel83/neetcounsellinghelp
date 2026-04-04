@@ -141,7 +141,7 @@ const STATE_PAGES = [
       {
         "type": "AYUSH",
         "url": "rajasthan-ayush-counselling.html",
-        "live": false
+        "live": true
       },
       {
         "type": "BDS",
@@ -167,8 +167,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "up-ayush-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -194,8 +194,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "maharashtra-ayush-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -216,8 +216,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "mp-ayush-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -238,8 +238,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "gujarat-ayush-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -333,8 +333,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "west-bengal-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",
@@ -355,8 +355,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "andhra-pradesh-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",
@@ -372,8 +372,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "telangana-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -389,8 +389,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "punjab-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",
@@ -406,8 +406,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "haryana-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",
@@ -423,8 +423,8 @@ const STATE_PAGES = [
     "courses": [
       {
         "type": "MBBS",
-        "url": "#",
-        "live": false
+        "url": "kerala-mbbs-counselling.html",
+        "live": true
       },
       {
         "type": "AYUSH",
@@ -433,6 +433,227 @@ const STATE_PAGES = [
       },
       {
         "type": "BDS",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Uttarakhand",
+    "code": "UK",
+    "region": "north",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "uttarakhand-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Jharkhand",
+    "code": "JH",
+    "region": "east",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "jharkhand-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Goa",
+    "code": "GA",
+    "region": "west",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "goa-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Himachal Pradesh",
+    "code": "HP",
+    "region": "north",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "himachal-pradesh-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Odisha",
+    "code": "OD",
+    "region": "east",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "odisha-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Assam",
+    "code": "AS",
+    "region": "east",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "assam-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Jammu & Kashmir",
+    "code": "JK",
+    "region": "north",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "jammu-kashmir-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Tripura",
+    "code": "TR",
+    "region": "east",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "tripura-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Arunachal Pradesh",
+    "code": "AR",
+    "region": "northeast",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "arunachal-pradesh-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Manipur",
+    "code": "MN",
+    "region": "northeast",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "manipur-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Chhattisgarh",
+    "code": "CG",
+    "region": "central",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "chhattisgarh-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Meghalaya",
+    "code": "ML",
+    "region": "northeast",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "meghalaya-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
+        "url": "#",
+        "live": false
+      }
+    ]
+  },
+  {
+    "state": "Pondicherry",
+    "code": "PY",
+    "region": "south",
+    "courses": [
+      {
+        "type": "MBBS",
+        "url": "pondicherry-mbbs-counselling.html",
+        "live": true
+      },
+      {
+        "type": "AYUSH",
         "url": "#",
         "live": false
       }

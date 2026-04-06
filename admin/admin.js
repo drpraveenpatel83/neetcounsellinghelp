@@ -347,6 +347,13 @@ function savePost() {
   if (document.getElementById('bUpd').checked)  badges.push('update');
 
   const content = document.getElementById('pContent').value.trim();
+  const editId = document.getElementById('editPostId').value;
+
+  if (!editId && currentPosts.some(p => p.title.toLowerCase() === title.toLowerCase())) {
+    showToast('❌ Post with this title already exists!','error');
+    return;
+  }
+
   const post = {
     id:          document.getElementById('editPostId').value || 'post-'+Date.now(),
     title,
@@ -514,7 +521,10 @@ function pasteAiContent() {
 
 function parseAiResponse() {
   try {
-    const txt = document.getElementById('aiResponseInput').value.trim();
+    let txt = document.getElementById('aiResponseInput').value.trim();
+    // Strip markdown codeblocks if AI generated them
+    txt = txt.replace(/^```(json)?\s*/i, '').replace(/```$/i, '').trim();
+    
     const json = JSON.parse(txt);
     // Fill form fields
     if(json.authority)   document.getElementById('ov-authority').value = json.authority;
@@ -1240,13 +1250,21 @@ function handleSheetUpload(type, input) {
       const data = XLSX.utils.sheet_to_json(ws);
       if (type==='mbbs') {
         mbbsData = data;
-        localStorage.setItem('mbbsData', JSON.stringify(data));
+        try {
+          localStorage.setItem('mbbsData', JSON.stringify(data));
+        } catch(err) {
+          showToast('Data loaded, but too large to save in browser memory', 'warning');
+        }
         updateSheetStatus('mbbs', data.length);
         showPreviewTable('mbbsPreview', data.slice(0,5));
         showToast('MBBS sheet loaded: '+data.length+' colleges','success');
       } else {
         ayushData = data;
-        localStorage.setItem('ayushData', JSON.stringify(data));
+        try {
+          localStorage.setItem('ayushData', JSON.stringify(data));
+        } catch(err) {
+          showToast('Data loaded, but too large to save in browser memory', 'warning');
+        }
         updateSheetStatus('ayush', data.length);
         showPreviewTable('ayushPreview', data.slice(0,5));
         showToast('AYUSH sheet loaded: '+data.length+' colleges','success');

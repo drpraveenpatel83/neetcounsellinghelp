@@ -97,6 +97,7 @@ details.faq-item p{margin:12px 0 0;font-size:13px;color:#475569;line-height:1.6;
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo"><img src="logo.png" height="45" alt="NEET Counselling Help" style="display:block;max-height:45px;width:auto;" /></a>
     <ul class="nav-links" id="navLinks">
+      <li class="nav-drawer-header"><img src="logo.png" alt="NEET Counselling Help" /><button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">✕</button></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#news">News</a></li>
@@ -105,6 +106,7 @@ details.faq-item p{margin:12px 0 0;font-size:13px;color:#475569;line-height:1.6;
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <div class="state-hero">
   <div class="container" style="position:relative;z-index:1;">
@@ -409,7 +411,7 @@ details.faq-item p{margin:12px 0 0;font-size:13px;color:#475569;line-height:1.6;
 
 <button id="backToTop" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;font-size:18px;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:999;">↑</button>
 <script>
-  document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('navLinks').classList.toggle('open');});
+  (function(){var h=document.getElementById('hamburger'),n=document.getElementById('navLinks'),o=document.getElementById('navOverlay'),c=document.getElementById('navCloseBtn');function close(){h.classList.remove('active');n.classList.remove('open');if(o)o.classList.remove('active');document.body.style.overflow='';}h.addEventListener('click',function(){var open=n.classList.toggle('open');h.classList.toggle('active',open);if(o)o.classList.toggle('active',open);document.body.style.overflow=open?'hidden':'';});if(c)c.addEventListener('click',close);if(o)o.addEventListener('click',close);n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});})();
   window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);document.getElementById('backToTop').style.display=window.scrollY>300?'flex':'none';});
   document.getElementById('backToTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 </script>

@@ -95,7 +95,7 @@
             "name": "What is NEET counselling?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "NEET counselling involves seat allotment — MCC conducts counselling for AIQ (All India Quota), while respective state authorities handle State Quota counselling. AACCC manages AYUSH counselling and VCC handles Veterinary counselling."
+              "text": "NEET counselling involves seat allotment — MCC conducts counselling for AIQ (All India Quota), while respective state authorities handle State Quota counselling. AACCC manages AYUSH counselling and VCI handles Veterinary counselling."
             }
           },
           {
@@ -134,6 +134,10 @@
         <img src="logo.png" height="45" alt="NEET Counselling Help" style="display:block;max-height:45px;width:auto;" />
       </a>
       <ul class="nav-links" id="navLinks">
+        <li class="nav-drawer-header">
+          <img src="logo.png" alt="NEET Counselling Help" />
+          <button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">✕</button>
+        </li>
         <li><a href="#about">About</a></li>
         <li><a href="neet-counselling.html">Counselling</a></li>
         <li><a href="#tools">Tools</a></li>
@@ -146,6 +150,7 @@
       </button>
     </div>
   </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
 
   <!-- ========== HERO ========== -->
   <section class="hero" id="home">
@@ -273,7 +278,7 @@
           </div>
           <div>
             <h4>Veterinary</h4>
-            <p>BVSc admissions via VCC</p>
+            <p>BVSc admissions via VCI</p>
           </div>
         </div>
       </div>
@@ -364,7 +369,7 @@
             <div class="branch-arrow-down"></div>
             <div class="fc-node branch-node teal-node">
               <div class="branch-icon">🐾</div>
-              <div class="branch-title">VCC</div>
+              <div class="branch-title">VCI</div>
               <div class="branch-subtitle">Veterinary Council Counselling</div>
               <div class="branch-courses">
                 <span class="course-tag">BVSc</span>
@@ -392,7 +397,7 @@
           <div style="flex-shrink:0;width:54px;height:54px;border-radius:10px;background:rgba(255,255,255,.2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:900;">15%</div>
           <div style="text-align:left;">
             <span style="display:block;font-size:14px;font-weight:700;color:#fff;margin-bottom:3px;">All India Quota</span>
-            <span style="display:block;font-size:11px;color:rgba(255,255,255,.7);line-height:1.4;">MCC / AACCC / VCC centralized counselling</span>
+            <span style="display:block;font-size:11px;color:rgba(255,255,255,.7);line-height:1.4;">MCC / AACCC / VCI centralized counselling</span>
           </div>
         </button>
         <button id="tab-state" onclick="switchQuota('state')" style="flex:1;display:flex;flex-direction:row;align-items:center;gap:14px;background:transparent;border:none;cursor:pointer;padding:16px 20px;border-radius:12px;text-align:left;transition:all .2s;">
@@ -425,11 +430,11 @@
             </div>
             <div style="font-size:18px;color:#cbd5e1;flex-shrink:0;">→</div>
           </a>
-          <a href="vcc-counselling.html" style="display:flex;flex-direction:row;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:20px 18px;text-decoration:none;transition:all .2s;">
+          <a href="vci-counselling.html" style="display:flex;flex-direction:row;align-items:center;gap:14px;background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:20px 18px;text-decoration:none;transition:all .2s;">
             <div style="font-size:28px;flex-shrink:0;">🐾</div>
             <div style="flex:1;min-width:0;">
               <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#94a3b8;margin-bottom:4px;">Veterinary</div>
-              <div style="font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px;">VCC Counselling</div>
+              <div style="font-size:15px;font-weight:800;color:#0f172a;margin-bottom:4px;">VCI Counselling</div>
               <div style="font-size:12px;color:#64748b;line-height:1.5;">BVSc & AH — All India Quota seats</div>
             </div>
             <div style="font-size:18px;color:#cbd5e1;flex-shrink:0;">→</div>
@@ -608,8 +613,8 @@
         <button class="news-tab" data-tab="ayush" role="tab">
           <span class="tab-icon">🌿</span> AYUSH News
         </button>
-        <button class="news-tab" data-tab="vcc" role="tab">
-          <span class="tab-icon">🐾</span> VCC News
+        <button class="news-tab" data-tab="vci" role="tab">
+          <span class="tab-icon">🐾</span> VCI News
         </button>
       </div>
 
@@ -632,9 +637,9 @@
           <a href="aaccc-ayush-counselling.html" class="more-posts-btn">View All AYUSH News <span>→</span></a>
         </div>
 
-        <div class="news-panel" id="panel-vcc">
+        <div class="news-panel" id="panel-vci">
           <div class="news-list"></div>
-          <a href="neet-counselling.html" class="more-posts-btn">View All VCC News <span>→</span></a>
+          <a href="neet-counselling.html" class="more-posts-btn">View All VCI News <span>→</span></a>
         </div>
 
       </div>
@@ -816,7 +821,7 @@
           <ul>
             <li><a href="#flowchart">MCC Counselling</a></li>
             <li><a href="#flowchart">AYUSH (AACCC)</a></li>
-            <li><a href="#flowchart">VCC Veterinary</a></li>
+            <li><a href="#flowchart">VCI Veterinary</a></li>
             <li><a href="#flowchart">State Quota</a></li>
             <li><a href="#flowchart">Deemed Universities</a></li>
           </ul>

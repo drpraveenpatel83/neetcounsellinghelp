@@ -8,6 +8,8 @@
 const navbar    = document.getElementById('navbar');
 const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
+const navCloseBtn = document.getElementById('navCloseBtn');
 
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
@@ -15,22 +17,26 @@ window.addEventListener('scroll', () => {
 });
 
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('active');
-  navLinks.classList.toggle('open');
-  document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+  const isOpen = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('active', isOpen);
+  navOverlay.classList.toggle('active', isOpen);
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 });
+
+if (navCloseBtn) {
+  navCloseBtn.addEventListener('click', closeMenu);
+}
+
+navOverlay.addEventListener('click', closeMenu);
 
 navLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', closeMenu);
 });
 
-document.addEventListener('click', e => {
-  if (!navbar.contains(e.target)) closeMenu();
-});
-
 function closeMenu() {
   hamburger.classList.remove('active');
   navLinks.classList.remove('open');
+  navOverlay.classList.remove('active');
   document.body.style.overflow = '';
 }
 
@@ -130,10 +136,13 @@ const iframeObserver = new IntersectionObserver(entries => {
     const iframe = entry.target.querySelector('iframe');
     if (!iframe) return;
     if (!entry.isIntersecting) {
-      // Temporarily store src and remove it to pause
       if (iframe.src) {
         iframe.dataset.src = iframe.src;
-        // Don't remove — just let browser handle it; iframes are already lazy loaded
+        iframe.src = ''; // Actually removes source to pause playback
+      }
+    } else {
+      if (iframe.dataset.src && !iframe.src) {
+        iframe.src = iframe.dataset.src; // Restore source when visible
       }
     }
   });

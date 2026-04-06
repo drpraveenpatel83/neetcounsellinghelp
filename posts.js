@@ -4,7 +4,7 @@
  * Naya post add karna ho toh neeche array mein ek object add karo.
  * Admin panel se automatically update hoga.
  *
- * category:    "neet" | "mcc" | "ayush" | "vcc"
+ * category:    "neet" | "mcc" | "ayush" | "vci"
  * subcategory: Badge label (e.g. "Syllabus", "Exam Date", "Round 1")
  * badges:      Array — "new" | "hot" | "mustread" | "update" | ""
  * live:        true = show on homepage | false = hidden
@@ -12,6 +12,23 @@
  */
 
 const POSTS = [
+  {
+    "id": "mcc-free-exit-rule-explained",
+    "title": "MCC Free Exit Rules Explained — All Rounds (Round 1, 2, 3 & Stray Vacancy)",
+    "url": "mcc-free-exit-rules.html",
+    "category": "mcc",
+    "subcategory": "All Rounds",
+    "date": "Apr 5, 2026",
+    "readTime": "4 min read",
+    "author": "Dr. Praveen Patel",
+    "badges": [
+      "hot",
+      "mustread"
+    ],
+    "featured": true,
+    "live": true,
+    "content": "<p>In the complex world of NEET UG/PG counselling, the \"Free Exit\" rule is a lifesaver for students. It allows you to explore your options without the fear of losing your hard-earned security deposit. Here is a comprehensive breakdown of how this rule works and when the \"free\" part ends.</p><h3>1. What is the Round 1 \"Free Exit\"?</h3><p>If you are allotted a seat in Round 1 of the MCC (Medical Counselling Committee) process but choose not to join the college, you can simply walk away.</p><ul><li><strong>No Penalty:</strong> Your security deposit will not be forfeited.</li><li><strong>No Registration Needed Again:</strong> You remain eligible for Round 2 automatically.</li><li><strong>Why it exists:</strong> It gives students a chance to see what college you can get and decide if you want to hold it or try for a better one in the next round.</li></ul><h3>2. The Step-by-Step Flow</h3><div class=\"tbl-wrap\"><table class=\"mini-table\"><thead><tr><th>Stage</th><th>Action</th><th>Result/Rule</th></tr></thead><tbody><tr><td><strong>Registration</strong></td><td>Pay Registration Fee (Non-refundable) + Security Deposit (Refundable).</td><td>You are now in the system.</td></tr><tr><td><strong>Choice Filling</strong></td><td>Lock your preferred colleges.</td><td>Based on your rank, a seat is allotted.</td></tr><tr><td><strong>Allotment</strong></td><td>You get a seat in Round 1.</td><td>You have two choices: Join or Free Exit.</td></tr><tr><td><strong>Exit Option</strong></td><td>You don't report to the college.</td><td>Free Exit triggered. Security deposit is safe.</td></tr></tbody></table></div><h3>3. When does the \"Penalty\" kick in? (Exit with Forfeiture)</h3><p>The rules get stricter once you move past Round 1. Here is how the penalty (forfeiture of security deposit) works in subsequent rounds:</p><h4>Round 2 Rules</h4><ul><li><strong>If Allotted & Not Joined:</strong> If you get a seat in Round 2 and do not join, your Security Deposit will be forfeited (lost). To participate in further rounds (like Round 3), you will have to register and pay the security deposit again.</li><li><strong>If Joined & Resigned:</strong> If you join the Round 2 seat and later want to resign, it must be done within the MCC's specified \"Resignation Period,\" or you risk forfeiture and further debarment.</li></ul><h4>Round 3 & Stray Vacancy Round</h4><ul><li><strong>Strict No-Exit:</strong> If you are allotted a seat in Round 3 or the Stray Vacancy Round and you do not join, your security deposit is forfeited, and you may be debarred from NEET counselling for the next academic year.</li><li><strong>No Resignation:</strong> Once you join a seat in Round 3, you cannot resign or participate in any further counselling (State or Central).</li></ul><h3>4. Security Deposit Breakdown</h3><p>The amount you risk losing depends on the type of college you are applying for:</p><ul><li><strong>AIQ/Central Universities/ESIC:</strong> General: ₹10,000 | SC/ST/OBC/PwD: ₹5,000</li><li><strong>Deemed Universities:</strong> All Categories: ₹2,00,000 (This is why the Round 2 exit is very expensive for Deemed aspirants!)</li></ul><div class=\"note-box\"><h4>💡 Pro-Tips for Students</h4><p><strong>Must Read:</strong> If you are satisfied with your Round 1 seat but want to try for a better one, Join the college and opt for Upgradation. This keeps your Round 1 seat safe while you \"shop\" for a better one in Round 2.</p><p><strong>Warning:</strong> If you do a \"Free Exit\" in Round 1, you have no claim on that seat anymore. It goes back into the pool for Round 2.</p><p><a href=\"https://cdnbbsr.s3waas.gov.in/s3e0f7a4d0ef9b84b83b693bbf3feb8e6e/uploads/2025/07/202509181307981517.pdf\" target=\"_blank\" rel=\"noopener\" style=\"color:#2563eb;font-weight:700;\">🔗 Official Notice PDF Reference</a></p></div>"
+  },
   {
     "id": "neet-2026-syllabus",
     "title": "NEET UG 2026 Syllabus — Complete Physics, Chemistry & Biology Chapter List (NMC Official)",
@@ -42,6 +59,54 @@ const POSTS = [
     ],
     "featured": false,
     "live": true
+  },
+  {
+    "id": "vci-counselling-2026-guide",
+    "title": "VCI Counselling 2026: Complete Guide for 15% AIQ BVSc & AH Admissions",
+    "url": "vci-counselling.html",
+    "category": "vci",
+    "subcategory": "Information",
+    "date": "Apr 15, 2026",
+    "readTime": "6 min read",
+    "author": "Dr. Praveen Patel",
+    "badges": [
+      "new",
+      "mustread"
+    ],
+    "featured": true,
+    "live": true
+  },
+  {
+    "id": "ayush-counselling-2026-update",
+    "title": "AACCC AYUSH Counselling 2026: Registration & Choice Filling Guide",
+    "url": "aaccc-ayush-counselling.html",
+    "category": "ayush",
+    "subcategory": "Alert",
+    "date": "Apr 18, 2026",
+    "readTime": "4 min read",
+    "author": "Dr. Praveen Patel",
+    "badges": [
+      "new",
+      "hot"
+    ],
+    "featured": true,
+    "live": true
+  },
+  {
+    "id": "aaccc-free-exit-rule-explained",
+    "title": "AACCC AYUSH Free Exit Rules Explained — All Rounds (Round 1, 2, 3 & Stray Vacancy)",
+    "url": "aaccc-free-exit-rules.html",
+    "category": "ayush",
+    "subcategory": "All Rounds",
+    "date": "Apr 6, 2026",
+    "readTime": "6 min read",
+    "author": "Dr. Praveen Patel",
+    "badges": [
+      "hot",
+      "mustread"
+    ],
+    "featured": true,
+    "live": true
   }
 ];
 
@@ -50,7 +115,7 @@ const CAT_CONFIG = {
   neet:  { class: "neet-cat",  label: "NEET Exam News",  viewAll: "View All NEET News" },
   mcc:   { class: "mcc-cat",   label: "MCC News",        viewAll: "View All MCC News" },
   ayush: { class: "ayush-cat", label: "AYUSH News",      viewAll: "View All AYUSH News" },
-  vcc:   { class: "vcc-cat",   label: "VCC News",        viewAll: "View All VCC News" }
+  vci:   { class: "vci-cat",   label: "VCI News",        viewAll: "View All VCI News" }
 };
 
 /* ── Badge config ── */
@@ -76,7 +141,7 @@ function _buildCard(post) {
   const isPlaceholder = !post.url || post.url === '#';
   const linkClass = [
     'news-item',
-    post.badges.includes('new') ? 'new-item' : '',
+    (post.badges || []).includes('new') ? 'new-item' : '',
     post.featured ? 'featured-news' : '',
     isPlaceholder ? 'post-placeholder' : ''
   ].filter(Boolean).join(' ');
@@ -102,7 +167,7 @@ function _buildCard(post) {
 
 /* ── Render all panels ── */
 function renderNewsPosts() {
-  ['neet', 'mcc', 'ayush', 'vcc'].forEach(cat => {
+  ['neet', 'mcc', 'ayush', 'vci'].forEach(cat => {
     const list = document.querySelector(`#panel-${cat} .news-list`);
     if (!list) return;
     const posts = POSTS.filter(p => p.category === cat && p.live);
@@ -260,8 +325,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "karnataka-ayush-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -394,8 +459,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "punjab-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -411,8 +476,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "haryana-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -428,8 +493,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "kerala-ayush-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",

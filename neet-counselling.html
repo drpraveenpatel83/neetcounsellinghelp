@@ -4,13 +4,13 @@
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-adsense-account" content="ca-pub-1300049746675872" />
 <title>NEET UG Counselling 2026 — AIQ, State Quota, MCC, AACCC Schedule & Dates</title>
-<meta name="description" content="Complete NEET UG 2026 Counselling guide — All India Quota (MCC, AACCC, VCC), State Quota counselling, schedule, dates, seat matrix, college search and state-wise guides." />
+<meta name="description" content="Complete NEET UG 2026 Counselling guide — All India Quota (MCC, AACCC, VCI), State Quota counselling, schedule, dates, seat matrix, college search and state-wise guides." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://neetcounsellinghelp.in/neet-counselling.html" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://neetcounsellinghelp.in/neet-counselling.html" />
 <meta property="og:title" content="NEET UG Counselling 2026 — Complete Guide" />
-<meta property="og:description" content="All India Quota (MCC, AACCC, VCC) and State Quota counselling — schedule, dates, seat matrix and state-wise guides." />
+<meta property="og:description" content="All India Quota (MCC, AACCC, VCI) and State Quota counselling — schedule, dates, seat matrix and state-wise guides." />
 <meta property="og:image" content="https://neetcounsellinghelp.in/logo.png" />
 <meta property="og:image:width" content="1563" />
 <meta property="og:image:height" content="1563" />
@@ -146,6 +146,7 @@
   <div class="container nav-inner">
     <a href="index.html" class="nav-logo"><img src="logo.png" height="45" alt="NEET Counselling Help" style="display:block;max-height:45px;width:auto;" /></a>
     <ul class="nav-links" id="navLinks">
+      <li class="nav-drawer-header"><img src="logo.png" alt="NEET Counselling Help" /><button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">✕</button></li>
       <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#tools">Tools</a></li>
       <li><a href="index.html#news">News</a></li>
@@ -154,13 +155,14 @@
     <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="nav-overlay" id="navOverlay"></div>
 
 <!-- ── Hero ── -->
 <div class="nc-hero">
   <div class="container" style="position:relative;z-index:1;">
     <div class="nc-breadcrumb"><a href="index.html">Home</a><span>›</span><span>NEET Counselling 2026</span></div>
     <h1>NEET UG Counselling 2026<br/>— Complete Guide</h1>
-    <p>Complete guide for All India Quota (MCC / AACCC / VCC) and State Quota — schedule, dates, seat matrix and state-wise counselling</p>
+    <p>Complete guide for All India Quota (MCC / AACCC / VCI) and State Quota — schedule, dates, seat matrix and state-wise counselling</p>
     <div class="nc-badges">
       <span class="nc-badge">🏛️ AIQ — 15%</span>
       <span class="nc-badge">🗺️ State Quota — 85%</span>
@@ -187,7 +189,7 @@
           <div class="nc-tab-pct">15%</div>
           <div>
             <div class="nc-tab-label">All India Quota</div>
-            <div class="nc-tab-sub">MCC / AACCC / VCC centralized counselling</div>
+            <div class="nc-tab-sub">MCC / AACCC / VCI centralized counselling</div>
           </div>
         </button>
         <button class="nc-tab" id="nc-tab-state" onclick="ncSwitch('state')">
@@ -225,11 +227,11 @@
                 </div>
                 <div class="aiq-arrow">→</div>
               </a>
-              <a href="vcc-counselling.html" class="aiq-card">
+              <a href="vci-counselling.html" class="aiq-card">
                 <div class="aiq-icon">🐾</div>
                 <div class="aiq-body">
                   <div class="aiq-tag">Veterinary</div>
-                  <div class="aiq-title">VCC Counselling</div>
+                  <div class="aiq-title">VCI Counselling</div>
                   <div class="aiq-desc">BVSc &amp; AH — All India Quota seats</div>
                 </div>
                 <div class="aiq-arrow">→</div>
@@ -540,10 +542,7 @@
   }
 
   // ── Navbar / back to top ──
-  document.getElementById('hamburger').addEventListener('click', function() {
-    this.classList.toggle('active');
-    document.getElementById('navLinks').classList.toggle('open');
-  });
+  (function(){var h=document.getElementById('hamburger'),n=document.getElementById('navLinks'),o=document.getElementById('navOverlay'),c=document.getElementById('navCloseBtn');function close(){h.classList.remove('active');n.classList.remove('open');if(o)o.classList.remove('active');document.body.style.overflow='';}h.addEventListener('click',function(){var open=n.classList.toggle('open');h.classList.toggle('active',open);if(o)o.classList.toggle('active',open);document.body.style.overflow=open?'hidden':'';});if(c)c.addEventListener('click',close);if(o)o.addEventListener('click',close);n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});})();
   window.addEventListener('scroll', function() {
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';

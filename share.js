@@ -7,12 +7,14 @@
   function injectShareBar() {
     const hero = document.querySelector('.state-hero, .article-hero, .nc-hero');
     if (!hero) return;
+    if (document.querySelector('.share-bar-wrap[data-auto-share-bar="true"]')) return;
 
     const pageUrl   = encodeURIComponent(window.location.href);
     const pageTitle = encodeURIComponent(document.title.split('|')[0].trim());
 
     const wrap = document.createElement('div');
     wrap.className = 'share-bar-wrap';
+    wrap.setAttribute('data-auto-share-bar', 'true');
     wrap.innerHTML =
       '<div class="container">' +
         '<div class="share-bar">' +

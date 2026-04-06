@@ -864,7 +864,7 @@ function generatePageHtml(d) {
 <body>
 <nav class="navbar scrolled" id="navbar">
   <div class="container nav-inner">
-    <a href="../index.html" class="nav-logo"><img src="../logo.png" height="45" alt="${siteInfo.name}" style="display:block;max-height:45px;width:auto;" /></a>
+    <a href="../index.html" class="nav-logo"><img src="../logo.png" height="45" alt="${siteInfo.name}" style="display:block;max-height:45px;width:auto;max-width:100%;object-fit:contain;" /></a>
     <ul class="nav-links" id="navLinks">
       <li><a href="../index.html#about">About</a></li>
       <li><a href="../index.html#tools">Tools</a></li>

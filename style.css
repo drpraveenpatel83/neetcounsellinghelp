@@ -136,6 +136,9 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   padding: 8px 12px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, .18);
   overflow: hidden;
+  max-height: 62px;
+  max-width: 280px;
+  min-width: 0;
 }
 .navbar.scrolled .nav-logo { color: var(--gray-900); }
 .logo-icon { width: 36px; height: 36px; flex-shrink: 0; }
@@ -147,6 +150,7 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   display: block;
   height: 45px;
   width: auto;
+  max-width: 100%;
   max-height: 45px;
   object-fit: contain;
   mix-blend-mode: multiply;
@@ -1076,6 +1080,8 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .nav-logo {
     padding: 5px 8px;
     border-radius: 10px;
+    max-width: 220px;
+    max-height: 50px;
   }
   .nav-logo img {
     height: 36px;
@@ -1129,6 +1135,9 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .team-grid { grid-template-columns: 1fr; }
   .video-wrap-shorts { max-width: 220px; }
   .news-tabs { flex-wrap: wrap; }
+  .nav-logo {
+    max-width: 180px;
+  }
   .nav-logo img {
     height: 34px;
     max-height: 34px;

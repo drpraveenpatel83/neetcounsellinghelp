@@ -150,8 +150,6 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   max-height: 45px;
   object-fit: contain;
   mix-blend-mode: multiply;
-  transform: scale(1.55);
-  transform-origin: center;
 }
 .navbar:not(.scrolled) .nav-logo img,
 .navbar.scrolled .nav-logo img { filter: none; }
@@ -1082,7 +1080,6 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .nav-logo img {
     height: 36px;
     max-height: 36px;
-    transform: scale(1.5);
   }
   .hero-play-img { width: min(72vw, 250px); }
   .cta-play-img { width: min(66vw, 220px); }
@@ -1135,7 +1132,6 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .nav-logo img {
     height: 34px;
     max-height: 34px;
-    transform: scale(1.5);
   }
   .hero-play-img { width: min(68vw, 230px); }
   .cta-play-img { width: min(62vw, 200px); }

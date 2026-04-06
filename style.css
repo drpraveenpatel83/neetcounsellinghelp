@@ -118,12 +118,12 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 /* ===== NAVBAR ===== */
 .navbar {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  padding: 18px 0; transition: var(--ease-md);
+  padding: 10px 0; transition: var(--ease-md);
 }
 .navbar.scrolled {
   background: rgba(255,255,255,.97);
   backdrop-filter: blur(12px);
-  padding: 12px 0;
+  padding: 8px 0;
   box-shadow: 0 2px 24px rgba(0,0,0,.08);
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
@@ -132,12 +132,12 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   font-size: 18px; font-weight: 800; color: #fff; transition: var(--ease);
   background: rgba(255,255,255,.94);
   border: 1px solid rgba(255,255,255,.55);
-  border-radius: 14px;
-  padding: 8px 12px;
+  border-radius: 12px;
+  padding: 5px 10px;
   box-shadow: 0 10px 30px rgba(15, 23, 42, .18);
   overflow: hidden;
-  max-height: 62px;
-  max-width: 280px;
+  max-height: 52px;
+  max-width: 260px;
   min-width: 0;
 }
 .navbar.scrolled .nav-logo { color: var(--gray-900); }
@@ -148,10 +148,10 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
 /* Keep the original logo visible in both transparent and scrolled states */
 .nav-logo img {
   display: block;
-  height: 45px;
+  height: 38px;
   width: auto;
   max-width: 100%;
-  max-height: 45px;
+  max-height: 38px;
   object-fit: contain;
   mix-blend-mode: multiply;
 }

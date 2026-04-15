@@ -368,6 +368,11 @@ const STATE_PAGES = [
         "live": true
       },
       {
+        "type": "AYUSH",
+        "url": "delhi-ayush-counselling.html",
+        "live": true
+      },
+      {
         "type": "BDS",
         "url": "#",
         "live": false
@@ -403,8 +408,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "tamil-nadu-ayush-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -702,8 +707,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "bihar-ayush-counselling.html",
+        "live": true
       }
     ]
   },

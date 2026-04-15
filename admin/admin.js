@@ -10,7 +10,8 @@ let ayushData    = JSON.parse(localStorage.getItem('ayushData') || '[]');
 let adsConfig    = JSON.parse(localStorage.getItem('adsConfig') || '{}');
 let siteInfo     = JSON.parse(localStorage.getItem('siteInfo') || '{"url":"https://neetcounsellinghelp.in","name":"NEET Counselling Help","author":"Dr. Praveen Patel"}');
 let docsItems    = ['NEET UG 2026 Admit Card','NEET UG 2026 Score Card','Class 10 Certificate (DOB Proof)','Class 12 Marksheet','Class 12 Pass Certificate','Domicile Certificate','Category Certificate (SC/ST/OBC/EWS)','Aadhaar Card','Passport Size Photographs (10)','Character Certificate'];
-const ADMIN_PW_HASH_KEY = 'adminPwHash';
+const LEGACY_ADMIN_PW_HASH_KEY = 'adminPwHash';
+const ADMIN_PW_HASH_KEY = 'adminPwHash_v2';
 
 // ── AUTH ──
 function isSetupMode() {
@@ -24,6 +25,7 @@ function updateLoginUi() {
   const pwInput = document.getElementById('pwInput');
   const pwConfirm = document.getElementById('pwConfirm');
   const loginBtn = document.getElementById('loginBtn');
+  const resetWrap = document.getElementById('resetPwWrap');
 
   if (titleEl) titleEl.textContent = setup ? 'Set Admin Password' : 'NCH Admin';
   if (subEl) subEl.textContent = setup
@@ -35,6 +37,7 @@ function updateLoginUi() {
     if (!setup) pwConfirm.value = '';
   }
   if (loginBtn) loginBtn.textContent = setup ? 'Set Password →' : 'Login →';
+  if (resetWrap) resetWrap.style.display = setup ? 'none' : 'block';
 }
 
 async function sha256(text) {
@@ -64,11 +67,13 @@ async function doLogin() {
       return;
     }
     localStorage.setItem(ADMIN_PW_HASH_KEY, await sha256(pw));
+    localStorage.removeItem(LEGACY_ADMIN_PW_HASH_KEY);
+    localStorage.setItem('adminLoggedIn','1');
     pwInput.value = '';
     pwConfirm.value = '';
     errEl.textContent = '';
-    updateLoginUi();
-    showToast('Password created. Login now.', 'success');
+    showAdminApp();
+    showToast('Password created and logged in.', 'success');
     return;
   }
 
@@ -76,11 +81,21 @@ async function doLogin() {
   const inputHash = await sha256(pw);
   if (storedHash && inputHash === storedHash) {
     localStorage.setItem('adminLoggedIn','1');
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('adminApp').style.display    = 'flex';
-    initApp();
+    errEl.textContent = '';
+    showAdminApp();
   } else {
     errEl.textContent = '❌ Wrong password';
+  }
+}
+
+function showAdminApp() {
+  document.getElementById('loginScreen').style.display = 'none';
+  document.getElementById('adminApp').style.display    = 'flex';
+  try {
+    initApp();
+  } catch (err) {
+    console.error('Admin init failed:', err);
+    showToast('Login ho gaya, but dashboard init failed. Console check karo.', 'error');
   }
 }
 
@@ -89,17 +104,28 @@ function doLogout() {
   location.reload();
 }
 
+function resetAdminPassword() {
+  if (confirm("Are you sure you want to reset the admin password? You will need to set up a new one.")) {
+    localStorage.removeItem(ADMIN_PW_HASH_KEY);
+    localStorage.removeItem('adminLoggedIn');
+    location.reload();
+  }
+}
+
 async function checkLogin() {
+  const legacyHash = localStorage.getItem(LEGACY_ADMIN_PW_HASH_KEY);
   const legacyPw = localStorage.getItem('adminPw');
+  if (!localStorage.getItem(ADMIN_PW_HASH_KEY) && legacyHash) {
+    localStorage.setItem(ADMIN_PW_HASH_KEY, legacyHash);
+  }
   if (!localStorage.getItem(ADMIN_PW_HASH_KEY) && legacyPw) {
     localStorage.setItem(ADMIN_PW_HASH_KEY, await sha256(legacyPw));
     localStorage.removeItem('adminPw');
   }
+
   updateLoginUi();
   if (localStorage.getItem('adminLoggedIn') === '1') {
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('adminApp').style.display    = 'flex';
-    initApp();
+    showAdminApp();
   }
 }
 
@@ -437,7 +463,10 @@ function onPageTypeChange() {
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('b-state').addEventListener('change', onPageTypeChange);
+  const stateEl = document.getElementById('b-state');
+  const loginBtn = document.getElementById('loginBtn');
+  if (stateEl) stateEl.addEventListener('change', onPageTypeChange);
+  if (loginBtn) loginBtn.addEventListener('click', doLogin);
 });
 
 function toggleSection(headEl) {

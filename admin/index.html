@@ -221,8 +221,11 @@ body{font-family:'Segoe UI',sans-serif;background:#f1f5f9;color:#1e293b;height:1
     <div class="login-sub" id="loginSub">NEET Counselling Help — Content Manager</div>
     <input type="password" id="pwInput" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()" />
     <input type="password" id="pwConfirm" placeholder="Confirm password" style="display:none;" onkeydown="if(event.key==='Enter')doLogin()" />
-    <button class="login-btn" id="loginBtn" onclick="doLogin()">Login →</button>
+    <button type="button" class="login-btn" id="loginBtn" onclick="doLogin()">Login →</button>
     <div class="login-err" id="loginErr"></div>
+    <div id="resetPwWrap" style="margin-top:20px;font-size:13px;display:none;">
+      <a href="#" onclick="resetAdminPassword(); return false;" style="color:#64748b;text-decoration:underline;">Forgot Password? Reset</a>
+    </div>
   </div>
 </div>
 

@@ -347,8 +347,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "tamil-nadu-ayush-counselling.html",
+        "live": true
       },
       {
         "type": "BDS",
@@ -391,8 +391,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "bihar-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -408,7 +408,7 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "tamil-nadu-ayush-counselling.html",
+        "url": "west-bengal-ayush-counselling.html",
         "live": true
       },
       {
@@ -430,8 +430,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "andhra-pradesh-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -520,8 +520,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "uttarakhand-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -537,8 +537,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "jharkhand-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -554,8 +554,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "goa-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -571,8 +571,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "himachal-pradesh-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -588,8 +588,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "odisha-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -605,8 +605,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "assam-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -622,8 +622,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "jammu-kashmir-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -639,8 +639,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "tripura-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -656,8 +656,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "arunachal-pradesh-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -673,8 +673,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "manipur-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -690,8 +690,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "chhattisgarh-ayush-counselling.html",
+        "live": true
       }
     ]
   },
@@ -707,7 +707,7 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "bihar-ayush-counselling.html",
+        "url": "meghalaya-ayush-counselling.html",
         "live": true
       }
     ]
@@ -724,8 +724,8 @@ const STATE_PAGES = [
       },
       {
         "type": "AYUSH",
-        "url": "#",
-        "live": false
+        "url": "pondicherry-ayush-counselling.html",
+        "live": true
       }
     ]
   }

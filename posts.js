@@ -446,6 +446,11 @@ const STATE_PAGES = [
         "live": true
       },
       {
+        "type": "AYUSH",
+        "url": "telangana-ayush-counselling.html",
+        "live": true
+      },
+      {
         "type": "BDS",
         "url": "#",
         "live": false

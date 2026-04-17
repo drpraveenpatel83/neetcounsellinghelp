@@ -17,7 +17,7 @@ const collegeData = [
     "est": "2018",
     "seats": "125",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "andhra-pradesh-mbbs-counselling.html"
   },
   {
@@ -316,7 +316,7 @@ const collegeData = [
     "est": "2020",
     "seats": "100",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "assam-mbbs-counselling.html"
   },
   {
@@ -347,7 +347,7 @@ const collegeData = [
     "est": "2012",
     "seats": "125",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "bihar-mbbs-counselling.html"
   },
   {
@@ -826,7 +826,7 @@ const collegeData = [
     "est": "2012",
     "seats": "125",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "chhattisgarh-mbbs-counselling.html"
   },
   {
@@ -993,7 +993,7 @@ const collegeData = [
     "est": "1956",
     "seats": "132",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "delhi-mbbs-counselling.html"
   },
   {
@@ -1172,7 +1172,7 @@ const collegeData = [
     "est": "2019",
     "seats": "75",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "gujarat-mbbs-counselling.html"
   },
   {
@@ -2506,7 +2506,7 @@ const collegeData = [
     "est": "2019",
     "seats": "100",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "himachal-pradesh-mbbs-counselling.html"
   },
   {
@@ -2627,7 +2627,7 @@ const collegeData = [
     "est": "2021",
     "seats": "100",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "jammu-kashmir-mbbs-counselling.html"
   },
   {
@@ -2672,7 +2672,7 @@ const collegeData = [
     "est": "2019",
     "seats": "125",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "jharkhand-mbbs-counselling.html"
   },
   {
@@ -5457,7 +5457,7 @@ const collegeData = [
     "est": "2018",
     "seats": "125",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "maharashtra-mbbs-counselling.html"
   },
   {
@@ -7989,7 +7989,7 @@ const collegeData = [
     "est": "2012",
     "seats": "125",
     "type": "AIIMS Norms",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "mp-mbbs-counselling.html"
   },
   {
@@ -8177,7 +8177,7 @@ const collegeData = [
     "est": "2012",
     "seats": "125",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "odisha-mbbs-counselling.html"
   },
   {
@@ -8419,7 +8419,7 @@ const collegeData = [
     "est": "2019",
     "seats": "100",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "punjab-mbbs-counselling.html"
   },
   {
@@ -8683,7 +8683,7 @@ const collegeData = [
     "est": "150",
     "seats": "AIIMS Norms",
     "type": "Jodhpur",
-    "filterType": "Private",
+    "filterType": "AIIMS",
     "link": "rajasthan-mbbs-counselling.html"
   },
   {
@@ -9156,7 +9156,7 @@ const collegeData = [
     "est": "2021",
     "seats": "50",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "tamil-nadu-mbbs-counselling.html"
   },
   {
@@ -9945,7 +9945,7 @@ const collegeData = [
     "est": "2019",
     "seats": "125",
     "type": "AIIMS Norms",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "up-mbbs-counselling.html"
   },
   {
@@ -10105,7 +10105,7 @@ const collegeData = [
     "est": "1960",
     "seats": "100",
     "type": "Central Norms",
-    "filterType": "Govt",
+    "filterType": "Central University",
     "link": "up-mbbs-counselling.html"
   },
   {
@@ -11575,7 +11575,7 @@ const collegeData = [
     "est": "2021",
     "seats": "125",
     "type": "Central Govt.",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "uttarakhand-mbbs-counselling.html"
   },
   {
@@ -11961,7 +11961,7 @@ const collegeData = [
     "est": "Central Govt.",
     "seats": "2019",
     "type": "125",
-    "filterType": "Govt",
+    "filterType": "AIIMS",
     "link": "west-bengal-mbbs-counselling.html"
   },
   {

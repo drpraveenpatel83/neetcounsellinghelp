@@ -108,6 +108,8 @@ def import_legacy_data(db):
         if cid not in db:
             if c.get('course') == 'AYUSH':
                 c['sub_course'] = get_sub_course(c['name'])
+            elif c.get('course') == 'MBBS':
+                c['filterType'] = determine_mbbs_filter_type(c.get('type', ''), c.get('name', ''))
             db[cid] = c
             count += 1
     print(f"Imported {count} legacy colleges from colleges-data.js.")

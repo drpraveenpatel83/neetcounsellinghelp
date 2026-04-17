@@ -284,7 +284,7 @@ document.addEventListener('selectstart', e => e.preventDefault());
             <div class="td-name">${c.name}</div>
             <div style="font-size:11px;color:#64748b;">${c.city || '-'}</div>
           </td>
-          <td><span class="seat-pill" style="background:#f3e8ff;color:#7e22ce;">${c.course}</span></td>
+          <td><span class="seat-pill" style="background:#f3e8ff;color:#7e22ce;">${c.sub_course || c.course}</span></td>
           <td>${c.state}</td>
           <td class="${typeBadgeClass}">${c.type || c.filterType}</td>
           <td><span class="seat-pill">${c.seats || 'N/A'}</span></td>
@@ -313,7 +313,15 @@ document.addEventListener('selectstart', e => e.preventDefault());
         matchQ = (c.name.toLowerCase().includes(q) || (c.city && c.city.toLowerCase().includes(q)));
       }
       
-      let matchCrs = (crs === 'all') || (c.course === crs);
+      let matchCrs = true;
+      if (crs !== 'all') {
+        if (['BAMS', 'BHMS', 'BUMS', 'BSMS'].includes(crs)) {
+          matchCrs = (c.sub_course === crs);
+        } else {
+          matchCrs = (c.course === crs);
+        }
+      }
+      
       let matchSt = (st === 'all') || (c.state === st);
       let matchTyp = (typ === 'all') || (c.filterType === typ);
 

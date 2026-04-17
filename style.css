@@ -12,6 +12,9 @@ body {
   background: #fff;
   line-height: 1.6;
   overflow-x: hidden;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -1145,3 +1148,22 @@ h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
   .hero-play-img { width: min(68vw, 230px); }
   .cta-play-img { width: min(62vw, 200px); }
 }
+
+/* ===== COLLEGE SEARCH TOOL ===== */
+.cs-container { background: #fff; border-radius: 14px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,.05); padding: 24px; margin-top: 20px; }
+.cs-header { text-align: center; margin-bottom: 24px; }
+.cs-header h2 { font-size: 24px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+.cs-header p { font-size: 14px; color: #64748b; }
+.cs-filters { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.cs-input { width: 100%; padding: 10px 14px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-size: 14px; color: #334155; font-family: inherit; transition: var(--ease); outline: none; }
+.cs-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+.cs-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.cs-count-badge { display: inline-block; background: #eff6ff; color: #1d4ed8; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 999px; }
+.cs-table-wrap { max-height: 600px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; }
+.cs-pagination { display: flex; justify-content: center; align-items: center; gap: 16px; padding-top: 10px; }
+.cs-btn { background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; color: #475569; cursor: pointer; transition: var(--ease); }
+.cs-btn:hover:not(:disabled) { background: #e2e8f0; color: #0f172a; }
+.cs-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.cs-page-info { font-size: 13px; font-weight: 600; color: #64748b; }
+@media(max-width: 900px) { .cs-filters { grid-template-columns: 1fr 1fr; } }
+@media(max-width: 600px) { .cs-filters { grid-template-columns: 1fr; } }

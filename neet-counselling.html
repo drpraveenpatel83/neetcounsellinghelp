@@ -452,13 +452,55 @@
         </div>
       </div>
 
-      <!-- ══════════ COLLEGE SEARCH (Coming Soon) ══════════ -->
-      <div style="margin-top:20px;">
-        <div class="cs-placeholder">
-          <div style="font-size:40px;margin-bottom:12px;">🔍</div>
-          <h3>College Search Tool</h3>
-          <p>Filter colleges by state, course, type (Govt/Private), category and fee range — seat matrix and fees in one place</p>
-          <span class="cs-coming">🚧 Coming Soon</span>
+      <!-- ══════════ COLLEGE SEARCH TOOL ══════════ -->
+      <div class="cs-container" id="tools">
+        <div class="cs-header">
+          <div style="font-size:32px;margin-bottom:8px;">🔍</div>
+          <h2>College Search Tool</h2>
+          <p>Filter MBBS and AYUSH colleges by state, course, and institution type</p>
+        </div>
+        <div class="cs-filters">
+          <input type="text" id="cs-search" class="cs-input" placeholder="Search by college name or city..." />
+          <select id="cs-course" class="cs-input">
+            <option value="all">All Courses</option>
+            <option value="MBBS">MBBS</option>
+            <option value="AYUSH">AYUSH</option>
+          </select>
+          <select id="cs-state" class="cs-input">
+            <option value="all">All States</option>
+            <!-- Rendered by JS -->
+          </select>
+          <select id="cs-type" class="cs-input">
+            <option value="all">All Types</option>
+            <option value="Govt">Government / Govt. Aided</option>
+            <option value="Private">Private / Trust</option>
+            <option value="Deemed">Deemed University</option>
+          </select>
+        </div>
+        <div class="cs-meta">
+          <span id="cs-count" class="cs-count-badge">Loading...</span>
+        </div>
+        <div class="ctbl-wrap cs-table-wrap">
+          <table class="ctbl" id="cs-table">
+            <thead>
+              <tr>
+                <th>College Name & City</th>
+                <th>Course</th>
+                <th>State</th>
+                <th>Type</th>
+                <th>Seats</th>
+                <th>Info</th>
+              </tr>
+            </thead>
+            <tbody id="cs-tbody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+        <div id="cs-pagination" class="cs-pagination">
+          <button id="cs-prev" class="cs-btn" disabled>← Prev</button>
+          <span id="cs-page-info" class="cs-page-info">Page 1 of 1</span>
+          <button id="cs-next" class="cs-btn" disabled>Next →</button>
         </div>
       </div>
 
@@ -513,6 +555,7 @@
 <button id="backToTop" style="position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#1e3a8a,#2563eb);color:#fff;font-size:18px;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:999;">↑</button>
 
 <script src="posts.js"></script>
+<script src="colleges-data.js"></script>
 <script src="script.js"></script>
 <script>
   // ── Quota toggle ──

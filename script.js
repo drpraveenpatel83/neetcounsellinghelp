@@ -227,3 +227,118 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.scrollY > 60) navbar.classList.add('scrolled');
   if (window.scrollY > 400) document.getElementById('backToTop').classList.add('show');
 });
+
+// ===== PREVENT COPY & RIGHT CLICK =====
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('copy', e => e.preventDefault());
+document.addEventListener('selectstart', e => e.preventDefault());
+
+// ===== COLLEGE SEARCH TOOL LOGIC =====
+(function() {
+  const csTable = document.getElementById('cs-table');
+  if (!csTable || typeof collegeData === 'undefined') return;
+
+  const tbody = document.getElementById('cs-tbody');
+  const searchInput = document.getElementById('cs-search');
+  const courseSel = document.getElementById('cs-course');
+  const stateSel = document.getElementById('cs-state');
+  const typeSel = document.getElementById('cs-type');
+  const countBadge = document.getElementById('cs-count');
+  
+  const btnPrev = document.getElementById('cs-prev');
+  const btnNext = document.getElementById('cs-next');
+  const pageInfo = document.getElementById('cs-page-info');
+
+  let filtered = [];
+  let currentPage = 1;
+  const itemsPerPage = 50;
+
+  // Populate States dynamically
+  const states = [...new Set(collegeData.map(c => c.state))].sort();
+  states.forEach(st => {
+    const opt = document.createElement('option');
+    opt.value = st;
+    opt.textContent = st;
+    stateSel.appendChild(opt);
+  });
+
+  function renderTable() {
+    tbody.innerHTML = '';
+    const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageData = filtered.slice(start, end);
+
+    if (pageData.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;">No colleges found matching your criteria.</td></tr>';
+    } else {
+      pageData.forEach(c => {
+        const tr = document.createElement('tr');
+        
+        const typeBadgeClass = c.filterType === 'Govt' ? 'fee-govt' : (c.filterType === 'Deemed' ? 'fee-pvt' : 'fee-pvt');
+        
+        tr.innerHTML = `
+          <td>
+            <div class="td-name">${c.name}</div>
+            <div style="font-size:11px;color:#64748b;">${c.city || '-'}</div>
+          </td>
+          <td><span class="seat-pill" style="background:#f3e8ff;color:#7e22ce;">${c.course}</span></td>
+          <td>${c.state}</td>
+          <td class="${typeBadgeClass}">${c.type || c.filterType}</td>
+          <td><span class="seat-pill">${c.seats || 'N/A'}</span></td>
+          <td><a href="${c.link}" style="display:inline-block;padding:4px 10px;background:#eff6ff;color:#1d4ed8;border-radius:4px;font-size:11px;font-weight:700;text-decoration:none;">View Info</a></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    countBadge.textContent = `Showing ${filtered.length} College${filtered.length !== 1 ? 's' : ''}`;
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+    btnPrev.disabled = currentPage === 1;
+    btnNext.disabled = currentPage === totalPages;
+  }
+
+  function applyFilters() {
+    const q = searchInput.value.toLowerCase().trim();
+    const crs = courseSel.value;
+    const st = stateSel.value;
+    const typ = typeSel.value;
+
+    filtered = collegeData.filter(c => {
+      // Name or City match
+      let matchQ = true;
+      if (q) {
+        matchQ = (c.name.toLowerCase().includes(q) || (c.city && c.city.toLowerCase().includes(q)));
+      }
+      
+      let matchCrs = (crs === 'all') || (c.course === crs);
+      let matchSt = (st === 'all') || (c.state === st);
+      let matchTyp = (typ === 'all') || (c.filterType === typ);
+
+      return matchQ && matchCrs && matchSt && matchTyp;
+    });
+
+    currentPage = 1;
+    renderTable();
+  }
+
+  // Event Listeners
+  searchInput.addEventListener('input', applyFilters);
+  courseSel.addEventListener('change', applyFilters);
+  stateSel.addEventListener('change', applyFilters);
+  typeSel.addEventListener('change', applyFilters);
+
+  btnPrev.addEventListener('click', () => {
+    if (currentPage > 1) { currentPage--; renderTable(); }
+  });
+  btnNext.addEventListener('click', () => {
+    const totalPages = Math.ceil(filtered.length / itemsPerPage);
+    if (currentPage < totalPages) { currentPage++; renderTable(); }
+  });
+
+  // Initial Load
+  applyFilters();
+
+})();

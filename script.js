@@ -244,6 +244,7 @@ document.addEventListener('selectstart', e => e.preventDefault());
   const stateSel = document.getElementById('cs-state');
   const typeSel = document.getElementById('cs-type');
   const countBadge = document.getElementById('cs-count');
+  const resultLabel = document.getElementById('result-label');
   
   const btnPrev = document.getElementById('cs-prev');
   const btnNext = document.getElementById('cs-next');
@@ -262,6 +263,40 @@ document.addEventListener('selectstart', e => e.preventDefault());
     stateSel.appendChild(opt);
   });
 
+  function getCourseBadge(c) {
+    const sc = c.sub_course || c.course || '';
+    const classes = {
+      'MBBS': 'badge-mbbs', 'BAMS': 'badge-bams', 'BHMS': 'badge-bhms',
+      'BUMS': 'badge-bums', 'BSMS': 'badge-bsms', 'AYUSH': 'badge-ayush'
+    };
+    return `<span class="badge ${classes[sc] || 'badge-ayush'}">${sc}</span>`;
+  }
+
+  function getTypeTag(c) {
+    const ft = c.filterType || 'Private';
+    const classes = {
+      'AIIMS': 'type-aiims', 'Central University': 'type-central',
+      'Govt': 'type-govt', 'Govt. Aided': 'type-aided',
+      'Private': 'type-private', 'Deemed': 'type-deemed'
+    };
+    const labels = {
+      'AIIMS': '🔬 AIIMS', 'Central University': '🎓 Central',
+      'Govt': '🏛️ Govt', 'Govt. Aided': '🤝 Aided',
+      'Private': '🏢 Private', 'Deemed': '📖 Deemed'
+    };
+    return `<span class="type-tag ${classes[ft] || 'type-private'}">${labels[ft] || ft}</span>`;
+  }
+
+  function getFeeDisplay(c) {
+    const fee = c.fee;
+    if (!fee || fee === '' || fee === 'N/A' || fee === '-') {
+      return '<span style="font-size:11px;color:#94a3b8;">—</span>';
+    }
+    const isGovt = c.filterType === 'Govt' || c.filterType === 'AIIMS' || c.filterType === 'Central University' || c.filterType === 'Govt. Aided';
+    const cls = isGovt ? 'fee-display govt-fee' : 'fee-display pvt-fee';
+    return `<span class="${cls}">${fee}</span>`;
+  }
+
   function renderTable() {
     tbody.innerHTML = '';
     const totalPages = Math.ceil(filtered.length / itemsPerPage) || 1;
@@ -272,33 +307,36 @@ document.addEventListener('selectstart', e => e.preventDefault());
     const pageData = filtered.slice(start, end);
 
     if (pageData.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:24px;">No colleges found matching your criteria.</td></tr>';
+      tbody.innerHTML = `<tr><td colspan="8">
+        <div class="empty-state">
+          <div class="icon">🔍</div>
+          <h3>No colleges found</h3>
+          <p>Try adjusting your filters or search term.</p>
+        </div></td></tr>`;
     } else {
       pageData.forEach((c, index) => {
         const globalIndex = start + index + 1;
         const tr = document.createElement('tr');
-        
-        const typeBadgeClass = c.filterType === 'Govt' || c.filterType === 'AIIMS' ? 'fee-govt' : 'fee-pvt';
-        const feeText = c.fee && c.fee !== 'N/A' && c.fee !== '-' ? c.fee : '<span style="color:#94a3b8;font-size:11px;">Not Added</span>';
-        
         tr.innerHTML = `
           <td class="td-sn">${globalIndex}</td>
           <td>
-            <div class="td-name">${c.name}</div>
-            <div style="font-size:11px;color:#64748b;">${c.city || '-'}</div>
+            <div class="td-name-main">${c.name}</div>
+            ${c.city ? `<div class="td-city">📍 ${c.city}</div>` : ''}
           </td>
-          <td><span class="seat-pill" style="background:#f3e8ff;color:#7e22ce;">${c.sub_course || c.course}</span></td>
-          <td>${c.state}</td>
-          <td class="${typeBadgeClass}">${c.type || c.filterType}</td>
-          <td><span class="seat-pill">${c.seats || 'N/A'}</span></td>
-          <td style="font-weight:600;color:#334155;">${feeText}</td>
-          <td><a href="${c.link}" style="display:inline-block;padding:4px 10px;background:#eff6ff;color:#1d4ed8;border-radius:4px;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap;">View Info</a></td>
+          <td>${getCourseBadge(c)}</td>
+          <td style="font-size:12px;color:#475569;font-weight:600;">${c.state}</td>
+          <td>${getTypeTag(c)}</td>
+          <td><span class="seat-num">${c.seats || '—'}</span></td>
+          <td>${getFeeDisplay(c)}</td>
+          <td><a href="${c.link}" class="info-btn">View →</a></td>
         `;
         tbody.appendChild(tr);
       });
     }
 
-    countBadge.textContent = `Showing ${filtered.length} College${filtered.length !== 1 ? 's' : ''}`;
+    const label = `${filtered.length} College${filtered.length !== 1 ? 's' : ''}`;
+    if (countBadge) countBadge.textContent = label;
+    if (resultLabel) resultLabel.textContent = label;
     pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
     btnPrev.disabled = currentPage === 1;
     btnNext.disabled = currentPage === totalPages;
@@ -378,7 +416,24 @@ document.addEventListener('selectstart', e => e.preventDefault());
   });
 
   stateSel.addEventListener('change', applyFilters);
-  typeSel.addEventListener('change', applyFilters);
+  typeSel.addEventListener('change', () => {
+    // Sync chips with dropdown
+    document.querySelectorAll('#quick-chips .chip').forEach(ch => {
+      ch.classList.toggle('active', ch.dataset.type === typeSel.value);
+    });
+    applyFilters();
+  });
+
+  // Quick-filter chips
+  document.querySelectorAll('#quick-chips .chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('#quick-chips .chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const val = chip.dataset.type;
+      typeSel.value = val;
+      applyFilters();
+    });
+  });
 
   btnPrev.addEventListener('click', () => {
     if (currentPage > 1) { currentPage--; renderTable(); }

@@ -272,14 +272,17 @@ document.addEventListener('selectstart', e => e.preventDefault());
     const pageData = filtered.slice(start, end);
 
     if (pageData.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;">No colleges found matching your criteria.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:24px;">No colleges found matching your criteria.</td></tr>';
     } else {
-      pageData.forEach(c => {
+      pageData.forEach((c, index) => {
+        const globalIndex = start + index + 1;
         const tr = document.createElement('tr');
         
-        const typeBadgeClass = c.filterType === 'Govt' ? 'fee-govt' : (c.filterType === 'Deemed' ? 'fee-pvt' : 'fee-pvt');
+        const typeBadgeClass = c.filterType === 'Govt' || c.filterType === 'AIIMS' ? 'fee-govt' : 'fee-pvt';
+        const feeText = c.fee && c.fee !== 'N/A' && c.fee !== '-' ? c.fee : '<span style="color:#94a3b8;font-size:11px;">Not Added</span>';
         
         tr.innerHTML = `
+          <td class="td-sn">${globalIndex}</td>
           <td>
             <div class="td-name">${c.name}</div>
             <div style="font-size:11px;color:#64748b;">${c.city || '-'}</div>
@@ -288,7 +291,8 @@ document.addEventListener('selectstart', e => e.preventDefault());
           <td>${c.state}</td>
           <td class="${typeBadgeClass}">${c.type || c.filterType}</td>
           <td><span class="seat-pill">${c.seats || 'N/A'}</span></td>
-          <td><a href="${c.link}" style="display:inline-block;padding:4px 10px;background:#eff6ff;color:#1d4ed8;border-radius:4px;font-size:11px;font-weight:700;text-decoration:none;">View Info</a></td>
+          <td style="font-weight:600;color:#334155;">${feeText}</td>
+          <td><a href="${c.link}" style="display:inline-block;padding:4px 10px;background:#eff6ff;color:#1d4ed8;border-radius:4px;font-size:11px;font-weight:700;text-decoration:none;white-space:nowrap;">View Info</a></td>
         `;
         tbody.appendChild(tr);
       });
@@ -328,13 +332,51 @@ document.addEventListener('selectstart', e => e.preventDefault());
       return matchQ && matchCrs && matchSt && matchTyp;
     });
 
+    // Custom sorting: Government > AIIMS > Central University > Govt. Aided > Private > Deemed
+    const typeOrder = {
+      "Govt": 1,
+      "AIIMS": 2,
+      "Central University": 3,
+      "Govt. Aided": 4,
+      "Private": 5,
+      "Deemed": 6
+    };
+
+    filtered.sort((a, b) => {
+      let aOrder = typeOrder[a.filterType] || 99;
+      let bOrder = typeOrder[b.filterType] || 99;
+      
+      if (aOrder !== bOrder) return aOrder - bOrder;
+      
+      // Secondary sort: State Name ascending
+      return a.state.localeCompare(b.state) || a.name.localeCompare(b.name);
+    });
+
     currentPage = 1;
     renderTable();
   }
 
   // Event Listeners
   searchInput.addEventListener('input', applyFilters);
-  courseSel.addEventListener('change', applyFilters);
+  
+  courseSel.addEventListener('change', () => {
+    const crs = courseSel.value;
+    const aiimsOpt = Array.from(typeSel.options).find(o => o.value === 'AIIMS');
+    if (aiimsOpt) {
+      if (crs !== 'all' && crs !== 'MBBS') {
+        if (typeSel.value === 'AIIMS') typeSel.value = 'all';
+        aiimsOpt.disabled = true;
+        aiimsOpt.style.display = 'none'; // Works in some browsers
+        aiimsOpt.textContent = 'AIIMS (MBBS Only)';
+      } else {
+        aiimsOpt.disabled = false;
+        aiimsOpt.style.display = '';
+        aiimsOpt.textContent = 'AIIMS';
+      }
+    }
+    applyFilters();
+  });
+
   stateSel.addEventListener('change', applyFilters);
   typeSel.addEventListener('change', applyFilters);
 

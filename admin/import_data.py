@@ -257,19 +257,113 @@ def import_nmc_mbbs(db):
         count += 1
     print(f"Imported/Updated {count} MBBS colleges from NMC CSV.")
 
+STATE_MAP = {
+    "andhra-pradesh": "Andhra Pradesh",
+    "arunachal-pradesh": "Arunachal Pradesh",
+    "assam": "Assam",
+    "bihar": "Bihar",
+    "chhattisgarh": "Chhattisgarh",
+    "delhi": "Delhi",
+    "goa": "Goa",
+    "gujarat": "Gujarat",
+    "haryana": "Haryana",
+    "himachal-pradesh": "Himachal Pradesh",
+    "jammu-kashmir": "Jammu Kashmir",
+    "jharkhand": "Jharkhand",
+    "karnataka": "Karnataka",
+    "kerala": "Kerala",
+    "madhya-pradesh": "Madhya Pradesh",
+    "maharashtra": "Maharashtra",
+    "manipur": "Manipur",
+    "meghalaya": "Meghalaya",
+    "mizoram": "Mizoram",
+    "nagaland": "Nagaland",
+    "odisha": "Odisha",
+    "puducherry": "Puducherry",
+    "punjab": "Punjab",
+    "rajasthan": "Rajasthan",
+    "sikkim": "Sikkim",
+    "tamil-nadu": "Tamil Nadu",
+    "telangana": "Telangana",
+    "tripura": "Tripura",
+    "up": "Uttar Pradesh",
+    "uttar-pradesh": "Uttar Pradesh",
+    "uttarakhand": "Uttarakhand",
+    "west-bengal": "West Bengal",
+    "mp": "Madhya Pradesh",
+    "j-k": "Jammu Kashmir",
+}
+
+def import_mbbs_from_html(db):
+    base_dir = os.path.join(os.path.dirname(__file__), "..")
+    mbbs_files = [f for f in os.listdir(base_dir) if f.endswith("-mbbs-counselling.html")]
+    
+    # Matches full table row: Name (with optional span label), City, Est, Seats, Fee
+    row_pattern = re.compile(
+        r'<div class="td-name">([^<]+)(?:<span[^>]*>\(([^)]*)\)</span>)?\s*</div>'
+        r'.*?</td>'             # close name cell
+        r'\s*<td>([^<]*)</td>'  # city
+        r'\s*<td>([^<]*)</td>'  # est
+        r'\s*<td><span class="seat-pill">([^<]*)</span></td>'  # seats
+        r'\s*<td class="fee-(?:govt|pvt)">([^<]*)</td>',      # fee
+        re.DOTALL
+    )
+
+    count = 0
+    for fname in mbbs_files:
+        slug = fname.replace("-mbbs-counselling.html", "")
+        state = STATE_MAP.get(slug, slug.replace("-", " ").title())
+        link = fname
+
+        filepath = os.path.join(base_dir, fname)
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+
+        matches = row_pattern.findall(content)
+        for (name_raw, mgt_tag, city, est, seats, fee) in matches:
+            name = name_raw.strip()
+            if not name: continue
+
+            # Remove any parenthetical suffixes from name
+            clean_name = re.sub(r'\s*\(.*?\)', '', name).strip()
+            cid = generate_id(state, clean_name)
+
+            # Use management tag (e.g. "State Govt.", "AIIMS", "Central Govt.") for filter  
+            mgt_combined = f"{mgt_tag} {clean_name}"
+            filter_type = determine_mbbs_filter_type(mgt_combined, clean_name)
+
+            if cid not in db:
+                db[cid] = {}
+
+            db[cid].update({
+                'state': state,
+                'name': clean_name,
+                'course': 'MBBS',
+                'sub_course': 'MBBS',
+                'city': city.strip(),
+                'est': est.strip(),
+                'seats': seats.strip(),
+                'fee': fee.strip(),
+                'type': mgt_tag.strip() if mgt_tag else fee.strip(),
+                'filterType': filter_type,
+                'link': link,
+            })
+            count += 1
+
+    print(f"Imported/Updated {count} MBBS colleges from HTML pages.")
+
+
 if __name__ == "__main__":
     db = init_db()
-    # 1. Back up all existing data (MBBS + old AYUSH) since the NMC CSV was deleted
-    import_legacy_data(db)
-    # 2. Add/Overwrite MBBS with verified NMC data (if present)
-    import_nmc_mbbs(db)
-    # 3. Add/Overwrite BAMS with official NCISM data
+    # 1. Extract MBBS colleges from HTML state pages (clean, structured source of truth)
+    import_mbbs_from_html(db)
+    # 2. Add/Overwrite BAMS with official NCISM data
     import_bams(db)
-    # 4. Add/Overwrite BHMS with official data
+    # 3. Add/Overwrite BHMS with official data
     import_ayush_common(db, BHMS_CSV, "AYUSH", "BHMS")
-    # 5. Add/Overwrite BUMS with official data
+    # 4. Add/Overwrite BUMS with official data
     import_ayush_common(db, BUMS_CSV, "AYUSH", "BUMS")
-    # 6. Add/Overwrite BSMS with official data
+    # 5. Add/Overwrite BSMS with official data
     import_ayush_common(db, BSMS_CSV, "AYUSH", "BSMS")
     
     # Strip dupes in names just in case

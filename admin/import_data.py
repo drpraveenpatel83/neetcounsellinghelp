@@ -353,7 +353,8 @@ def import_mbbs_from_html(db):
             if not clean_name:
                 continue
 
-            cid = generate_id(state, clean_name)
+            # Include city in ID to avoid collisions for same-named colleges (e.g. "Govt Medical College" in 20 cities)
+            cid = generate_id(state, clean_name + city)
             mgt_combined = f"{mgt_tag} {clean_name}"
             filter_type = determine_mbbs_filter_type(mgt_combined, clean_name)
 

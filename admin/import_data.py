@@ -297,17 +297,17 @@ STATE_MAP = {
 def import_mbbs_from_html(db):
     base_dir = os.path.join(os.path.dirname(__file__), "..")
     mbbs_files = [f for f in os.listdir(base_dir) if f.endswith("-mbbs-counselling.html")]
-    
-    # Matches full table row: Name (with optional span label), City, Est, Seats, Fee
-    row_pattern = re.compile(
-        r'<div class="td-name">([^<]+)(?:<span[^>]*>\(([^)]*)\)</span>)?\s*</div>'
-        r'.*?</td>'             # close name cell
-        r'\s*<td>([^<]*)</td>'  # city
-        r'\s*<td>([^<]*)</td>'  # est
-        r'\s*<td><span class="seat-pill">([^<]*)</span></td>'  # seats
-        r'\s*<td class="fee-(?:govt|pvt)">([^<]*)</td>',      # fee
-        re.DOTALL
-    )
+
+    # Match the entire <tr>...</tr> block that contains td-name (i.e. data rows only)
+    tr_pattern = re.compile(r'<tr>(.*?)</tr>', re.DOTALL)
+    # Extract td-name and optional mgt tag
+    name_pattern = re.compile(r'<div class="td-name">([^<]+)(?:<span[^>]*>\(([^)]*)\)</span>)?\s*</div>', re.DOTALL)
+    # Extract the fee cell
+    fee_pattern = re.compile(r'<td class="fee-(?:govt|pvt)">([^<]*)</td>')
+    # Extract seat-pill
+    seat_pattern = re.compile(r'<span class="seat-pill">([^<]*)</span>')
+    # All plain td values (not the name cell or the seat pill cell)
+    plain_td_pattern = re.compile(r'<td>([^<]*)</td>')
 
     count = 0
     for fname in mbbs_files:
@@ -319,16 +319,41 @@ def import_mbbs_from_html(db):
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
 
-        matches = row_pattern.findall(content)
-        for (name_raw, mgt_tag, city, est, seats, fee) in matches:
-            name = name_raw.strip()
-            if not name: continue
+        for tr_match in tr_pattern.finditer(content):
+            row_html = tr_match.group(1)
 
-            # Remove any parenthetical suffixes from name
-            clean_name = re.sub(r'\s*\(.*?\)', '', name).strip()
+            # Must have td-name to be a data row
+            name_m = name_pattern.search(row_html)
+            if not name_m:
+                continue
+
+            fee_m = fee_pattern.search(row_html)
+            seat_m = seat_pattern.search(row_html)
+            if not fee_m or not seat_m:
+                continue
+
+            name_raw = name_m.group(1).strip()
+            mgt_tag = (name_m.group(2) or "").strip()
+            fee = fee_m.group(1).strip()
+            seats = seat_m.group(1).strip()
+
+            # Remaining plain <td> values (could be city, est, or city at end)
+            plain_tds = [v.strip() for v in plain_td_pattern.findall(row_html)]
+
+            # Guess city = longest non-numeric plain td; est = 4-digit year
+            city = ""
+            est = ""
+            for v in plain_tds:
+                if re.match(r'^\d{4}$', v):
+                    est = v
+                elif v and not re.match(r'^\d+$', v) and len(v) > 2:
+                    city = v
+
+            clean_name = re.sub(r'\s*\(.*?\)', '', name_raw).strip()
+            if not clean_name:
+                continue
+
             cid = generate_id(state, clean_name)
-
-            # Use management tag (e.g. "State Govt.", "AIIMS", "Central Govt.") for filter  
             mgt_combined = f"{mgt_tag} {clean_name}"
             filter_type = determine_mbbs_filter_type(mgt_combined, clean_name)
 
@@ -340,11 +365,11 @@ def import_mbbs_from_html(db):
                 'name': clean_name,
                 'course': 'MBBS',
                 'sub_course': 'MBBS',
-                'city': city.strip(),
-                'est': est.strip(),
-                'seats': seats.strip(),
-                'fee': fee.strip(),
-                'type': mgt_tag.strip() if mgt_tag else fee.strip(),
+                'city': city,
+                'est': est,
+                'seats': seats,
+                'fee': fee,
+                'type': mgt_tag if mgt_tag else fee,
                 'filterType': filter_type,
                 'link': link,
             })

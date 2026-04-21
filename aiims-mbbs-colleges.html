@@ -88,7 +88,53 @@ details.faq-item p{margin:12px 0 0;font-size:13px;color:#475569;line-height:1.6;
 .fee-row:last-child{border-bottom:none;font-weight:700;color:#0f172a;}
 .fee-row span:last-child{font-weight:600;color:#334155;}
 @media(max-width:900px){.state-layout{grid-template-columns:1fr;}.state-sidebar{position:static;}.fee-box{grid-template-columns:1fr;}}
-@media(max-width:600px){.overview-grid{grid-template-columns:1fr 1fr;}}
+
+/* ── Mobile ── */
+@media(max-width:640px){
+  .state-hero{padding:72px 0 36px;}
+  .state-hero::before{font-size:90px;right:10px;top:20px;}
+  .state-hero h1{font-size:20px;}
+  .state-hero p{font-size:13px;}
+  .state-badges{gap:5px;margin-top:12px;}
+  .state-badge{font-size:11px;padding:3px 9px;}
+  .state-body{padding:16px 0 60px;}
+  .state-layout{padding:0 12px;gap:18px;}
+  .info-card{padding:16px;border-radius:10px;margin-bottom:12px;}
+  .info-card h2{font-size:14px;margin-bottom:12px;padding-bottom:8px;}
+  .overview-grid{grid-template-columns:1fr 1fr;gap:8px;}
+  .ov-item{padding:10px 11px;border-radius:8px;}
+  .ov-label{font-size:9px;}
+  .ov-value{font-size:12px;}
+  .note-box,.note-box-warn{font-size:12px;padding:9px 11px;}
+  .college-section-header{font-size:13px;padding:11px 14px;}
+  .ctbl-wrap,.tbl-wrap{border-radius:6px;}
+  .ctbl{font-size:11px;min-width:520px;}
+  .ctbl thead th{padding:7px 9px;font-size:10px;}
+  .ctbl tbody td{padding:9px 9px;}
+  .mini-table{font-size:11px;}
+  .mini-table th{padding:7px 8px;font-size:10px;}
+  .mini-table td{padding:7px 8px;}
+  .fee-section{padding:12px;}
+  .fee-section h4{font-size:11px;}
+  .fee-row{font-size:12px;}
+  .fee-highlight{font-size:12px;padding:2px 8px;}
+  .sb-card{padding:14px;border-radius:10px;}
+  .sb-card h4{font-size:12px;}
+  .sb-link{font-size:12px;}
+  .sb-row{font-size:12px;}
+  details.faq-item{padding:12px 14px;}
+  details.faq-item summary{font-size:13px;}
+  details.faq-item p{font-size:12px;}
+  .sfn-inner a{font-size:13px;padding:7px 14px;}
+  .ad-unit{min-height:60px;}
+}
+
+/* Scroll hint for wide tables */
+.tbl-wrap,.ctbl-wrap{position:relative;}
+@media(max-width:640px){
+  .tbl-scroll-hint{display:block;font-size:10px;color:#94a3b8;text-align:right;margin-bottom:4px;}
+}
+.tbl-scroll-hint{display:none;}
 </style>
 </head>
 <body>
@@ -150,6 +196,7 @@ details.faq-item p{margin:12px 0 0;font-size:13px;color:#475569;line-height:1.6;
         <div style="padding:20px 22px 14px;border-bottom:2px solid #e2e8f0;"><h2 style="margin:0;padding:0;border:none;">🏥 List of All 20 AIIMS Colleges in India 2026</h2></div>
         <div style="padding:0 16px 16px;">
           <div class="college-section-header aiims-header">🔬 Operational AIIMS Colleges — Total Seats: 2,257</div>
+          <span class="tbl-scroll-hint">← Swipe to scroll →</span>
           <div class="ctbl-wrap">
             <table class="ctbl">
               <thead><tr><th>S.No</th><th>AIIMS Name</th><th>State / UT</th><th>Est. Year</th><th>MBBS Seats</th></tr></thead>
@@ -264,6 +311,7 @@ details.faq-item p{margin:12px 0 0;font-size:13px;color:#475569;line-height:1.6;
 
         <!-- Year-wise comparison -->
         <h3 style="font-size:14px;font-weight:800;color:#0f172a;margin:0 0 10px;">📅 Year-wise Cutoff Comparison (2022–2025)</h3>
+        <span class="tbl-scroll-hint">← Swipe to scroll →</span>
         <div class="tbl-wrap" style="margin-bottom:20px;">
           <table class="mini-table" style="min-width:700px;">
             <thead>
@@ -294,6 +342,7 @@ details.faq-item p{margin:12px 0 0;font-size:13px;color:#475569;line-height:1.6;
 
         <!-- Round-wise 2025 -->
         <h3 style="font-size:14px;font-weight:800;color:#0f172a;margin:0 0 10px;">🔄 Round-wise Cutoff 2025 (All 4 Rounds)</h3>
+        <span class="tbl-scroll-hint">← Swipe to scroll →</span>
         <div class="tbl-wrap" style="margin-bottom:20px;">
           <table class="mini-table" style="min-width:700px;">
             <thead>
@@ -324,7 +373,8 @@ details.faq-item p{margin:12px 0 0;font-size:13px;color:#475569;line-height:1.6;
 
         <!-- College-wise 2025 -->
         <h3 style="font-size:14px;font-weight:800;color:#0f172a;margin:0 0 10px;">🏥 College-wise Cutoff 2025 — All 20 AIIMS</h3>
-        <p style="font-size:12px;color:#64748b;margin:0 0 10px;">Final closing ranks after all rounds. FQ = Foreign Country Quota.</p>
+        <p style="font-size:12px;color:#64748b;margin:0 0 6px;">Final closing ranks after all rounds. FQ = Foreign Country Quota.</p>
+        <span class="tbl-scroll-hint">← Swipe to scroll →</span>
         <div class="tbl-wrap">
           <table class="mini-table" style="min-width:900px;">
             <thead>

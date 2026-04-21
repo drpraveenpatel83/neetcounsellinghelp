@@ -55,7 +55,55 @@
 .sfn{background:#fff;border-top:1px solid #e2e8f0;padding:18px 20px;}
 .sfn-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
 .sfn-inner a{font-size:14px;font-weight:600;color:#2563eb;background:#eff6ff;padding:8px 18px;border-radius:8px;border:1px solid #bfdbfe;}
-@media(max-width:600px){.co-chip{font-size:11px;padding:3px 9px;}}
+
+/* ── Table sub-header row ── */
+.mini-table thead tr.sub-hdr th{
+  background:#dbeafe;color:#1e3a8a;font-size:10px;font-weight:700;
+  text-align:center;padding:5px 8px;text-transform:uppercase;letter-spacing:.04em;
+  border-top:1px solid #bfdbfe;white-space:nowrap;
+}
+/* colspan-2 head cells */
+.mini-table thead tr:first-child th.cat-hdr{
+  text-align:center;background:#1e3a8a;color:#fff;
+}
+
+/* ── Accordion ── */
+.co-section-head{cursor:pointer;user-select:none;}
+.co-toggle{margin-left:auto;flex-shrink:0;width:28px;height:28px;border-radius:8px;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;font-size:13px;transition:transform .25s,background .15s;}
+.co-section.open .co-toggle{transform:rotate(180deg);background:rgba(37,99,235,.12);}
+.co-tables{display:none;}
+.co-section.open .co-tables{display:block;}
+
+/* ── Mobile ── */
+@media(max-width:640px){
+  .co-hero{padding:72px 0 36px;}
+  .co-hero h1{font-size:20px;}
+  .co-hero p{font-size:13px;}
+  .state-badges{gap:5px;margin-top:12px;}
+  .state-badge{font-size:11px;padding:3px 9px;}
+  .co-body{padding:20px 0 60px;}
+  .co-container{padding:0 12px;}
+  .co-nav{border-radius:10px;margin-bottom:16px;}
+  .co-nav-group{padding:10px 12px 8px;}
+  .co-nav-label{font-size:10px;margin-bottom:8px;}
+  .co-chips{gap:5px;}
+  .co-chip{font-size:11px;padding:3px 9px;}
+  .co-group-title{font-size:10px;margin:20px 0 8px;}
+  .co-section{border-radius:10px;margin-bottom:10px;}
+  .co-section-head{padding:13px 14px;gap:8px;}
+  .co-icon{font-size:16px;}
+  .co-section-head h3{font-size:13px;line-height:1.3;}
+  .co-badge{font-size:10px;padding:2px 8px;}
+  .co-toggle{width:24px;height:24px;font-size:11px;}
+  .co-tables{padding:10px;}
+  .tbl-wrap{border-radius:6px;margin-bottom:8px;}
+  .mini-table{font-size:11px;}
+  .mini-table th{padding:7px 8px;font-size:10px;}
+  .mini-table td{padding:6px 8px;}
+  .note-box{font-size:11px;padding:9px 11px;}
+  .ad-unit{min-height:60px;}
+  .sfn-inner a{font-size:13px;padding:7px 14px;}
+}
 </style>
 </head>
 <body>
@@ -152,29 +200,110 @@
           <span class="co-badge" style="background:#7c3aed20;color:#7c3aed">2025</span>
         </div>
         <div class="co-tables">
-          <div class="tbl-wrap"><table class="mini-table"><thead><tr><th></th><th>AIIMS MBBS Cutoff 2025</th><th>AIIMS MBBS Cutoff 2024</th><th>AIIMS MBBS Cutoff 2023</th><th>AIIMS MBBS Cutoff 2022</th></tr></thead><tbody><tr><td>Category</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td></tr><tr><td>GN</td><td>16728</td><td>541</td><td>25037</td><td>652</td><td>21289</td><td>614</td><td>11177</td><td>625</td></tr><tr><td>OBC</td><td>26016</td><td>527</td><td>9299</td><td>675</td><td>23606</td><td>610</td><td>14836</td><td>615</td></tr><tr><td>EWS</td><td>19825</td><td>536</td><td>28752</td><td>647</td><td>8472</td><td>645</td><td>12350</td><td>620</td></tr><tr><td>SC</td><td>51471</td><td>501</td><td>138065</td><td>550</td><td>52252</td><td>565</td><td>79328</td><td>506</td></tr><tr><td>ST</td><td>163006</td><td>425</td><td>168349</td><td>526</td><td>159677</td><td>453</td><td>118275</td><td>459</td></tr><tr><td>FQ</td><td>9332</td><td>557</td><td>3419</td><td>690</td><td>249584</td><td>388</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>R1</th><th>R2</th><th>R3 (Mopup Round)</th><th>R4 (Stray Round)</th></tr></thead><tbody><tr><td>Rank</td><td>Score</td><td>Rank</td><td>Score</td><td>Rank</td><td>Score</td><td>Rank</td><td>Score</td></tr><tr><td>UR</td><td>3590</td><td>580</td><td>5394</td><td>570</td><td>7143</td><td>564</td><td>16728</td><td>541</td></tr><tr><td>OBC</td><td>4627</td><td>574</td><td>6456</td><td>566</td><td>8617</td><td>560</td><td>26016</td><td>527</td></tr><tr><td>EWS</td><td>6467</td><td>566</td><td>7417</td><td>563</td><td>12057</td><td>550</td><td>19825</td><td>536</td></tr><tr><td>SC</td><td>33807</td><td>518</td><td>43997</td><td>507</td><td>51471</td><td>501</td><td>104477</td><td>461</td></tr><tr><td>ST</td><td>55735</td><td>497</td><td>63398</td><td>491</td><td>70969</td><td>485</td><td>163006</td><td>425</td></tr><tr><td>FQ</td><td>9332</td><td>557</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>S.No.</th><th>ALL 20 AIIMS</th><th>Estb</th><th>UR</th><th>OBC</th><th>EWS</th><th>SC</th><th>ST</th><th>FQ</th></tr></thead><tbody><tr><td>Rank</td><td>Score</td><td>Rank</td><td>Score</td><td>Rank</td><td>Score</td><td>Rank</td><td>Score</td><td>Rank</td><td>Score</td><td>Rank</td><td>Score</td></tr><tr><td>1</td><td>AIIMS Delhi</td><td>1956</td><td>47</td><td>656</td><td>207</td><td>633</td><td>254</td><td>644</td><td>644</td><td>614</td><td>1405</td><td>1405</td><td>9332</td><td>557</td></tr><tr><td>2</td><td>AIIMS Jodhpur</td><td>2012</td><td>392</td><td>623</td><td>766</td><td>612</td><td>1153</td><td>603</td><td>6920</td><td>565</td><td>7835</td><td>561</td><td>-</td></tr><tr><td>3</td><td>AIIMS Bhopal</td><td>2012</td><td>634</td><td>614</td><td>1142</td><td>603</td><td>1582</td><td>596</td><td>7030</td><td>564</td><td>11713</td><td>551</td><td>-</td></tr><tr><td>4</td><td>AIIMS Bhubaneshwar</td><td>2012</td><td>785</td><td>612</td><td>1481</td><td>599</td><td>2259</td><td>590</td><td>6034</td><td>567</td><td>14786</td><td>545</td><td>-</td></tr><tr><td>5</td><td>AIIMS Rishikesh</td><td>2012</td><td>816</td><td>611</td><td>1104</td><td>604</td><td>1715</td><td>595</td><td>8240</td><td>560</td><td>23884</td><td>530</td><td>-</td></tr><tr><td>6</td><td>AIIMS Nagpur</td><td>2018</td><td>1030</td><td>604</td><td>1520</td><td>598</td><td>2923</td><td>592</td><td>8697</td><td>559</td><td>16192</td><td>542</td><td>-</td></tr><tr><td>7</td><td>AIIMS Raipur</td><td>2012</td><td>1376</td><td>600</td><td>2016</td><td>592</td><td>2631</td><td>586</td><td>96012</td><td>467</td><td>22885</td><td>531</td><td>-</td></tr><tr><td>8</td><td>AIIMS Mangalagiri, Vijaywada</td><td>2020</td><td>1357</td><td>600</td><td>2575</td><td>586</td><td>4369</td><td>576</td><td>15552</td><td>543</td><td>31007</td><td>521</td><td>-</td></tr><tr><td>9</td><td>AIIMS Bhatinda</td><td>2019</td><td>1798</td><td>594</td><td>2482</td><td>588</td><td>3066</td><td>583</td><td>19371</td><td>537</td><td>42487</td><td>509</td><td>-</td></tr><tr><td>10</td><td>AIIMS Patna</td><td>2012</td><td>1939</td><td>592</td><td>2705</td><td>586</td><td>4952</td><td>572</td><td>17167</td><td>540</td><td>111319</td><td>457</td><td>-</td></tr><tr><td>11</td><td>AIIMS Bibi Nagar, Hyderabad</td><td>2019</td><td>1874</td><td>593</td><td>3464</td><td>581</td><td>4225</td><td>576</td><td>17480</td><td>540</td><td>45033</td><td>506</td><td>-</td></tr><tr><td>12</td><td>AIIMS Kalyani</td><td>2019</td><td>2276</td><td>590</td><td>3406</td><td>581</td><td>4292</td><td>575</td><td>17433</td><td>540</td><td>48654</td><td>503</td><td>-</td></tr><tr><td>13</td><td>AIIMS Gorakhpur</td><td>2019</td><td>2602</td><td>586</td><td>3595</td><td>579</td><td>3355</td><td>582</td><td>31853</td><td>520</td><td>46911</td><td>505</td><td>-</td></tr><tr><td>14</td><td>AIIMS Bilaspur</td><td>2020</td><td>2788</td><td>585</td><td>6483</td><td>566</td><td>3957</td><td>577</td><td>30304</td><td>522</td><td>41195</td><td>510</td><td>-</td></tr><tr><td>15</td><td>AIIMS Jammu</td><td>2020</td><td>3384</td><td>581</td><td>4085</td><td>577</td><td>4603</td><td>574</td><td>32194</td><td>520</td><td>43200</td><td>508</td><td>-</td></tr><tr><td>16</td><td>AIIMS Rae Bareli</td><td>2013</td><td>3724</td><td>579</td><td>4282</td><td>576</td><td>4501</td><td>574</td><td>34668</td><td>517</td><td>51396</td><td>501</td><td>-</td></tr><tr><td>17</td><td>AIIMS Rajkot</td><td>2020</td><td>7712</td><td>562</td><td>11574</td><td>552</td><td>3215</td><td>582</td><td>35068</td><td>516</td><td>48673</td><td>503</td><td>-</td></tr><tr><td>18</td><td>AIIMS Guwahati</td><td>2020</td><td>7686</td><td>562</td><td>14765</td><td>545</td><td>5873</td><td>568</td><td>32675</td><td>519</td><td>160051</td><td>427</td><td>-</td></tr><tr><td>19</td><td>AIIMS Deogarh</td><td>2019</td><td>9475</td><td>557</td><td>12393</td><td>550</td><td>19161</td><td>537</td><td>36880</td><td>515</td><td>60871</td><td>493</td><td>-</td></tr><tr><td>20</td><td>AIIMS Madurai</td><td>2021</td><td>16728</td><td>541</td><td>26016</td><td>527</td><td>19825</td><td>536</td><td>47357</td><td>504</td><td>163006</td><td>425</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>AIIMS MBBS Cutoff 2024</th><th>Click here</th></tr></thead><tbody><tr><td>AIIMS MBBS Cutoff 2023</td><td>Click here</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>Minimum Qualifying Percentage</th></tr></thead><tbody><tr><td>General (Gen)</td><td>50%</td></tr><tr><td>Other Backward Classes (OBC) (Non-Creamy Layer)</td><td>45%</td></tr><tr><td>Scheduled Castes/Scheduled Tribes (SC/ST)</td><td>40%</td></tr><tr><td>Orthopedically Physically Handicapped (OPH)</td><td>As per respective category cutoff</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>Percentile cut-off</th></tr></thead><tbody><tr><td>UR</td><td>98.1246748</td></tr><tr><td>UR PWBD</td><td>95.2939507</td></tr><tr><td>OBC (NCL)</td><td>95.2939507</td></tr><tr><td>OBC (NCL) PWBD</td><td>90.2036135</td></tr><tr><td>SC / ST</td><td>90.2036135</td></tr><tr><td>SC / ST PWBD</td><td>82.2825521</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>Cut-off Percentile Eligible</th><th>Overall Rank</th><th>Category Rank</th></tr></thead><tbody><tr><td>UR</td><td>99.3152787</td><td>2340</td><td>2340</td></tr><tr><td>UR-PWBD</td><td>95.3948306</td><td>15863</td><td>15863</td></tr><tr><td>OBC(NCL)</td><td>98.7410432</td><td>4312</td><td>1240</td></tr><tr><td>PWBD-OBC (NCL)</td><td>90.3963487</td><td>32709</td><td>12356</td></tr><tr><td>SC</td><td>92.1628908</td><td>26850</td><td>688</td></tr><tr><td>PWBD- SC</td><td>86.0098826</td><td>47809</td><td>1856</td></tr><tr><td>ST</td><td>90.3549199</td><td>33190</td><td>216</td></tr><tr><td>PWBD-ST</td><td>None qualified</td><td>None qualified</td><td>None qualified</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>Qualifying Cutoff Percentage</th></tr></thead><tbody><tr><td>General/UR</td><td>50%</td></tr><tr><td>OBC (NCL)</td><td>45%</td></tr><tr><td>SC/ST</td><td>40%</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>Merit Cutoff Percentile</th></tr></thead><tbody><tr><td>General/UR</td><td>98.8334496</td></tr><tr><td>OBC (NCL)</td><td>97.0117712</td></tr><tr><td>SC/ST</td><td>93.6505421</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>Qualifying Cutoff Percentage</th></tr></thead><tbody><tr><td>General/UR</td><td>50%</td></tr><tr><td>OBC (NCL)</td><td>45%</td></tr><tr><td>SC/ST</td><td>40%</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>Qualifying Cutoff Percentile</th></tr></thead><tbody><tr><td>General/UR</td><td>99.0014978</td></tr><tr><td>OBC (NCL)</td><td>97.4205359</td></tr><tr><td>SC/ST</td><td>94.1220114</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>Counseling  merit percentile</th><th>Corresponding AIIMS MBBS 2018 Rank</th></tr></thead><tbody><tr><td>General (Gen)</td><td>99.5794948</td><td>1600</td></tr><tr><td>General PwD</td><td>99.4051015</td><td>2270</td></tr><tr><td>OBC (NCL)</td><td>99.1600595</td><td>3221</td></tr><tr><td>OBC</td><td>97.3549899</td><td>9973</td></tr><tr><td>SC</td><td>94.5761745</td><td>20490</td></tr><tr><td>SC PwD</td><td>97.5871200</td><td>9254</td></tr><tr><td>ST</td><td>93.6505421</td><td>24151</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding Percentile</th><th>AIIMS MBBS 2017 Last Rank</th><th>Corresponding Percentile</th></tr></thead><tbody><tr><td>General</td><td>53</td><td>99.9829207</td><td>52</td><td>99.9829207</td></tr><tr><td>OBC</td><td>236</td><td>98.0550008</td><td>5590</td><td>98.0550008</td></tr><tr><td>SC</td><td>1081</td><td>99.6061463</td><td>1143</td><td>99.6061463</td></tr><tr><td>ST</td><td>2090</td><td>98.4429374</td><td>4478</td><td>98.4429374</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding Percentile</th><th>AIIMS MBBS 2017 Last Rank</th><th>Corresponding Percentile</th></tr></thead><tbody><tr><td>General</td><td>647</td><td>99.6520093</td><td>1003</td><td>99.6520093</td></tr><tr><td>OBC</td><td>1516</td><td>97.7173129</td><td>6596</td><td>97.7173129</td></tr><tr><td>SC</td><td>8657</td><td>94.1220114</td><td>17140</td><td>94.1220114</td></tr><tr><td>ST</td><td>22120</td><td>95.3772034</td><td>13311</td><td>95.3772034</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding  Percentile</th><th>AIIMS MBBS 2017 Last Rank</th><th>Corresponding  Percentile</th></tr></thead><tbody><tr><td>General</td><td>1222</td><td>99.4086293</td><td>1720</td><td>99.4086293</td></tr><tr><td>OBC</td><td>2048</td><td>99.1367116</td><td>2494</td><td>99.1367116</td></tr><tr><td>SC</td><td>14195</td><td>94.2734538</td><td>16342</td><td>94.2734538</td></tr><tr><td>ST</td><td>24045</td><td>–</td><td>–</td><td>–</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding Percentile</th><th>AIIMS MBBS 2017 Last Rank</th><th>Corresponding Percentile</th></tr></thead><tbody><tr><td>General</td><td>459</td><td>99.7482942</td><td>753</td><td>99.7482942</td></tr><tr><td>OBC</td><td>958</td><td>99.6643923</td><td>979</td><td>99.6643923</td></tr><tr><td>SC</td><td>5704</td><td>94.2606923</td><td>16536</td><td>94.2606923</td></tr><tr><td>ST</td><td>17468</td><td>95.7024217</td><td>12484</td><td>95.7024217</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding  Percentile</th><th>AIIMS MBBS 2017 Last Rank</th><th>Corresponding Percentile</th></tr></thead><tbody><tr><td>General</td><td>769</td><td>99.7997532</td><td>1,382</td><td>99.5270982</td></tr><tr><td>OBC</td><td>1664</td><td>99.5616219</td><td>6,768</td><td>97.6417318</td></tr><tr><td>SC</td><td>10471</td><td>97.2495192</td><td>12,159</td><td>95.8162837</td></tr><tr><td>ST</td><td>23966</td><td>93.6881413</td><td>14,906</td><td>94.8370706</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding Percentile</th><th>AIIMS MBBS 2017 Last Rank</th><th>Corresponding Percentile</th></tr></thead><tbody><tr><td>General</td><td>1145</td><td>99.4790814</td><td>1536</td><td>99.4790814</td></tr><tr><td>OBC</td><td>2074</td><td>99.1367116</td><td>2514</td><td>99.1367116</td></tr><tr><td>SC</td><td>13607</td><td>95.2405690</td><td>13741</td><td>95.2405690</td></tr><tr><td>ST</td><td>23579</td><td>95.2405690</td><td>13609</td><td>95.2405690</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding Percentile</th><th>AIIMS MBBS 2017 Last Rank</th><th>Corresponding Percentile</th></tr></thead><tbody><tr><td>General</td><td>542</td><td>99.8035881</td><td>571</td><td>99.8035881</td></tr><tr><td>OBC</td><td>1453</td><td>99.6061463</td><td>1142</td><td>99.6061463</td></tr><tr><td>SC</td><td>9038</td><td>97.7173129</td><td>6573</td><td>97.7173129</td></tr><tr><td>ST</td><td>19414</td><td>95.9287224</td><td>11833</td><td>95.9287224</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding Percentile</th></tr></thead><tbody><tr><td>General</td><td>1324</td><td>99.6547096</td></tr><tr><td>OBC</td><td>2168</td><td>99.4307664</td></tr><tr><td>SC</td><td>13638</td><td>96.3973507</td></tr><tr><td>ST</td><td>23875</td><td>93.6881413</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018 Last Rank</th><th>Corresponding Percentile</th></tr></thead><tbody><tr><td>General</td><td>1353</td><td>99.6469040</td></tr><tr><td>OBC</td><td>2212</td><td>99.4209514</td></tr><tr><td>SC</td><td>14510</td><td>96.1877341</td></tr><tr><td>ST</td><td>23232</td><td>93.8388933</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Name  of AIIMS Institution</th><th>General</th><th>OBC</th><th>SC</th><th>ST</th></tr></thead><tbody><tr><td>All India Institute of Medical Sciences, New Delhi</td><td>37</td><td>256</td><td>1,138</td><td>2,825</td></tr><tr><td>All India Institute of Medical Sciences, Bhopal</td><td>1,022</td><td>1,170</td><td>14,170</td><td>20,498</td></tr><tr><td>All India Institute of Medical Sciences, Bhubaneswar</td><td>1,078</td><td>1,034</td><td>16,865</td><td>13,905</td></tr><tr><td>All India Institute of Medical Sciences, Jodhpur</td><td>871</td><td>1,946</td><td>8,151</td><td>18,701</td></tr><tr><td>All India Institute of Medical Sciences, Patna</td><td>2,949</td><td>2,130</td><td>17,198</td><td>23,845</td></tr><tr><td>All India Institute of Medical Sciences, Raipur</td><td>1,099</td><td>1,991</td><td>16,297</td><td>23,929</td></tr><tr><td>All India Institute of Medical Sciences, Rishikesh</td><td>1,045</td><td>2,095</td><td>18,049</td><td>20,140</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>AIIMS MBBS 2018</th><th>AIIMS MBBS 2017</th><th>AIIMS MBBS 2016</th></tr></thead><tbody><tr><td></td><td>Candidates Qualified for First Counseling</td><td>Last Rank</td><td>Candidates Qualified for First Counseling</td><td>Last Rank</td><td>Candidates Qualified for First Counseling</td><td>Last Rank</td></tr><tr><td>General</td><td>1,189</td><td>1600</td><td>1,025</td><td>1400</td><td>1,014</td><td>2,949</td></tr><tr><td>OBC</td><td>863</td><td>3221</td><td>759</td><td>6768</td><td>724</td><td>2,690</td></tr><tr><td>SC</td><td>484</td><td>20490</td><td>361</td><td>17140</td><td>404</td><td>19,378</td></tr><tr><td>ST</td><td>113</td><td>24191</td><td>64</td><td>16,333</td><td>94</td><td>24,333</td></tr><tr><td>Total Candidates</td><td>2,649</td><td></td><td>2,209</td><td></td><td>2,236</td></tr></tbody></table></div>
+          <span class="tbl-scroll-hint">← Swipe to scroll →</span>
+          <div class="tbl-wrap" style="margin-bottom:20px;">
+            <table class="mini-table" style="min-width:700px;">
+              <thead>
+                <tr>
+                  <th rowspan="2">Category</th>
+                  <th colspan="2" style="text-align:center;background:#7c3aed;color:#fff;">2025</th>
+                  <th colspan="2" style="text-align:center;background:#1d4ed8;color:#fff;">2024</th>
+                  <th colspan="2" style="text-align:center;background:#0369a1;color:#fff;">2023</th>
+                  <th colspan="2" style="text-align:center;background:#0f172a;color:#fff;">2022</th>
+                </tr>
+                <tr>
+                  <th style="text-align:center;">AIR</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">AIR</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">AIR</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">AIR</th><th style="text-align:center;">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>General (UR)</strong></td><td style="text-align:center;font-weight:700;color:#7c3aed;">16,728</td><td style="text-align:center;font-weight:700;color:#7c3aed;">541</td><td style="text-align:center;">25,037</td><td style="text-align:center;">652</td><td style="text-align:center;">21,289</td><td style="text-align:center;">614</td><td style="text-align:center;">11,177</td><td style="text-align:center;">625</td></tr>
+                <tr><td><strong>OBC</strong></td><td style="text-align:center;font-weight:700;color:#7c3aed;">26,016</td><td style="text-align:center;font-weight:700;color:#7c3aed;">527</td><td style="text-align:center;">9,299</td><td style="text-align:center;">675</td><td style="text-align:center;">23,606</td><td style="text-align:center;">610</td><td style="text-align:center;">14,836</td><td style="text-align:center;">615</td></tr>
+                <tr><td><strong>EWS</strong></td><td style="text-align:center;font-weight:700;color:#7c3aed;">19,825</td><td style="text-align:center;font-weight:700;color:#7c3aed;">536</td><td style="text-align:center;">28,752</td><td style="text-align:center;">647</td><td style="text-align:center;">8,472</td><td style="text-align:center;">645</td><td style="text-align:center;">12,350</td><td style="text-align:center;">620</td></tr>
+                <tr><td><strong>SC</strong></td><td style="text-align:center;font-weight:700;color:#7c3aed;">51,471</td><td style="text-align:center;font-weight:700;color:#7c3aed;">501</td><td style="text-align:center;">1,38,065</td><td style="text-align:center;">550</td><td style="text-align:center;">52,252</td><td style="text-align:center;">565</td><td style="text-align:center;">79,328</td><td style="text-align:center;">506</td></tr>
+                <tr><td><strong>ST</strong></td><td style="text-align:center;font-weight:700;color:#7c3aed;">1,63,006</td><td style="text-align:center;font-weight:700;color:#7c3aed;">425</td><td style="text-align:center;">1,68,349</td><td style="text-align:center;">526</td><td style="text-align:center;">1,59,677</td><td style="text-align:center;">453</td><td style="text-align:center;">1,18,275</td><td style="text-align:center;">459</td></tr>
+                <tr><td><strong>FQ</strong></td><td style="text-align:center;font-weight:700;color:#7c3aed;">9,332</td><td style="text-align:center;font-weight:700;color:#7c3aed;">557</td><td style="text-align:center;">3,419</td><td style="text-align:center;">690</td><td style="text-align:center;">2,49,584</td><td style="text-align:center;">388</td><td style="text-align:center;" colspan="2">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <span class="tbl-scroll-hint">← Swipe to scroll →</span>
+          <div class="tbl-wrap" style="margin-bottom:20px;">
+            <table class="mini-table" style="min-width:700px;">
+              <thead>
+                <tr>
+                  <th rowspan="2">Category</th>
+                  <th colspan="2" style="text-align:center;background:#15803d;color:#fff;">Round 1</th>
+                  <th colspan="2" style="text-align:center;background:#0369a1;color:#fff;">Round 2</th>
+                  <th colspan="2" style="text-align:center;background:#b45309;color:#fff;">Round 3 (Mop-up)</th>
+                  <th colspan="2" style="text-align:center;background:#7c3aed;color:#fff;">Round 4 (Stray)</th>
+                </tr>
+                <tr>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>UR</strong></td><td style="text-align:center;">3,590</td><td style="text-align:center;">580</td><td style="text-align:center;">5,394</td><td style="text-align:center;">570</td><td style="text-align:center;">7,143</td><td style="text-align:center;">564</td><td style="text-align:center;font-weight:700;color:#7c3aed;">16,728</td><td style="text-align:center;font-weight:700;color:#7c3aed;">541</td></tr>
+                <tr><td><strong>OBC</strong></td><td style="text-align:center;">4,627</td><td style="text-align:center;">574</td><td style="text-align:center;">6,456</td><td style="text-align:center;">566</td><td style="text-align:center;">8,617</td><td style="text-align:center;">560</td><td style="text-align:center;font-weight:700;color:#7c3aed;">26,016</td><td style="text-align:center;font-weight:700;color:#7c3aed;">527</td></tr>
+                <tr><td><strong>EWS</strong></td><td style="text-align:center;">6,467</td><td style="text-align:center;">566</td><td style="text-align:center;">7,417</td><td style="text-align:center;">563</td><td style="text-align:center;">12,057</td><td style="text-align:center;">550</td><td style="text-align:center;font-weight:700;color:#7c3aed;">19,825</td><td style="text-align:center;font-weight:700;color:#7c3aed;">536</td></tr>
+                <tr><td><strong>SC</strong></td><td style="text-align:center;">33,807</td><td style="text-align:center;">518</td><td style="text-align:center;">43,997</td><td style="text-align:center;">507</td><td style="text-align:center;">51,471</td><td style="text-align:center;">501</td><td style="text-align:center;font-weight:700;color:#7c3aed;">1,04,477</td><td style="text-align:center;font-weight:700;color:#7c3aed;">461</td></tr>
+                <tr><td><strong>ST</strong></td><td style="text-align:center;">55,735</td><td style="text-align:center;">497</td><td style="text-align:center;">63,398</td><td style="text-align:center;">491</td><td style="text-align:center;">70,969</td><td style="text-align:center;">485</td><td style="text-align:center;font-weight:700;color:#7c3aed;">1,63,006</td><td style="text-align:center;font-weight:700;color:#7c3aed;">425</td></tr>
+                <tr><td><strong>FQ</strong></td><td style="text-align:center;">9,332</td><td style="text-align:center;">557</td><td style="text-align:center;" colspan="2">—</td><td style="text-align:center;" colspan="2">—</td><td style="text-align:center;" colspan="2">—</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <span class="tbl-scroll-hint">← Swipe to scroll →</span>
+          <div class="tbl-wrap">
+            <table class="mini-table" style="min-width:900px;">
+              <thead>
+                <tr>
+                  <th rowspan="2">#</th>
+                  <th rowspan="2">AIIMS</th>
+                  <th rowspan="2">Est.</th>
+                  <th colspan="2" style="text-align:center;background:#0f172a;color:#fff;">UR</th>
+                  <th colspan="2" style="text-align:center;background:#1d4ed8;color:#fff;">OBC</th>
+                  <th colspan="2" style="text-align:center;background:#0369a1;color:#fff;">EWS</th>
+                  <th colspan="2" style="text-align:center;background:#15803d;color:#fff;">SC</th>
+                  <th colspan="2" style="text-align:center;background:#b45309;color:#fff;">ST</th>
+                  <th colspan="2" style="text-align:center;background:#7c3aed;color:#fff;">FQ</th>
+                </tr>
+                <tr>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                  <th style="text-align:center;">Rank</th><th style="text-align:center;">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="background:#faf5ff;"><td style="font-weight:700;color:#7c3aed;">1</td><td><strong>AIIMS Delhi</strong> ⭐</td><td>1956</td><td style="text-align:center;font-weight:700;">47</td><td style="text-align:center;">656</td><td style="text-align:center;font-weight:700;">207</td><td style="text-align:center;">633</td><td style="text-align:center;font-weight:700;">254</td><td style="text-align:center;">644</td><td style="text-align:center;font-weight:700;">644</td><td style="text-align:center;">614</td><td style="text-align:center;font-weight:700;">1,405</td><td style="text-align:center;">—</td><td style="text-align:center;font-weight:700;">9,332</td><td style="text-align:center;">557</td></tr>
+                <tr><td>2</td><td>AIIMS Jodhpur</td><td>2012</td><td style="text-align:center;">392</td><td style="text-align:center;">623</td><td style="text-align:center;">766</td><td style="text-align:center;">612</td><td style="text-align:center;">1,153</td><td style="text-align:center;">603</td><td style="text-align:center;">6,920</td><td style="text-align:center;">565</td><td style="text-align:center;">7,835</td><td style="text-align:center;">561</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>3</td><td>AIIMS Bhopal</td><td>2012</td><td style="text-align:center;">634</td><td style="text-align:center;">614</td><td style="text-align:center;">1,142</td><td style="text-align:center;">603</td><td style="text-align:center;">1,582</td><td style="text-align:center;">596</td><td style="text-align:center;">7,030</td><td style="text-align:center;">564</td><td style="text-align:center;">11,713</td><td style="text-align:center;">551</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>4</td><td>AIIMS Bhubaneswar</td><td>2012</td><td style="text-align:center;">785</td><td style="text-align:center;">612</td><td style="text-align:center;">1,481</td><td style="text-align:center;">599</td><td style="text-align:center;">2,259</td><td style="text-align:center;">590</td><td style="text-align:center;">6,034</td><td style="text-align:center;">567</td><td style="text-align:center;">14,786</td><td style="text-align:center;">545</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>5</td><td>AIIMS Rishikesh</td><td>2012</td><td style="text-align:center;">816</td><td style="text-align:center;">611</td><td style="text-align:center;">1,104</td><td style="text-align:center;">604</td><td style="text-align:center;">1,715</td><td style="text-align:center;">595</td><td style="text-align:center;">8,240</td><td style="text-align:center;">560</td><td style="text-align:center;">23,884</td><td style="text-align:center;">530</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>6</td><td>AIIMS Nagpur</td><td>2018</td><td style="text-align:center;">1,030</td><td style="text-align:center;">604</td><td style="text-align:center;">1,520</td><td style="text-align:center;">598</td><td style="text-align:center;">2,923</td><td style="text-align:center;">592</td><td style="text-align:center;">8,697</td><td style="text-align:center;">559</td><td style="text-align:center;">16,192</td><td style="text-align:center;">542</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>7</td><td>AIIMS Raipur</td><td>2012</td><td style="text-align:center;">1,376</td><td style="text-align:center;">600</td><td style="text-align:center;">2,016</td><td style="text-align:center;">592</td><td style="text-align:center;">2,631</td><td style="text-align:center;">586</td><td style="text-align:center;">96,012</td><td style="text-align:center;">467</td><td style="text-align:center;">22,885</td><td style="text-align:center;">531</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>8</td><td>AIIMS Mangalagiri</td><td>2020</td><td style="text-align:center;">1,357</td><td style="text-align:center;">600</td><td style="text-align:center;">2,575</td><td style="text-align:center;">586</td><td style="text-align:center;">4,369</td><td style="text-align:center;">576</td><td style="text-align:center;">15,552</td><td style="text-align:center;">543</td><td style="text-align:center;">31,007</td><td style="text-align:center;">521</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>9</td><td>AIIMS Bathinda</td><td>2019</td><td style="text-align:center;">1,798</td><td style="text-align:center;">594</td><td style="text-align:center;">2,482</td><td style="text-align:center;">588</td><td style="text-align:center;">3,066</td><td style="text-align:center;">583</td><td style="text-align:center;">19,371</td><td style="text-align:center;">537</td><td style="text-align:center;">42,487</td><td style="text-align:center;">509</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>10</td><td>AIIMS Patna</td><td>2012</td><td style="text-align:center;">1,939</td><td style="text-align:center;">592</td><td style="text-align:center;">2,705</td><td style="text-align:center;">586</td><td style="text-align:center;">4,952</td><td style="text-align:center;">572</td><td style="text-align:center;">17,167</td><td style="text-align:center;">540</td><td style="text-align:center;">1,11,319</td><td style="text-align:center;">457</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>11</td><td>AIIMS Bibinagar</td><td>2019</td><td style="text-align:center;">1,874</td><td style="text-align:center;">593</td><td style="text-align:center;">3,464</td><td style="text-align:center;">581</td><td style="text-align:center;">4,225</td><td style="text-align:center;">576</td><td style="text-align:center;">17,480</td><td style="text-align:center;">540</td><td style="text-align:center;">45,033</td><td style="text-align:center;">506</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>12</td><td>AIIMS Kalyani</td><td>2019</td><td style="text-align:center;">2,276</td><td style="text-align:center;">590</td><td style="text-align:center;">3,406</td><td style="text-align:center;">581</td><td style="text-align:center;">4,292</td><td style="text-align:center;">575</td><td style="text-align:center;">17,433</td><td style="text-align:center;">540</td><td style="text-align:center;">48,654</td><td style="text-align:center;">503</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>13</td><td>AIIMS Gorakhpur</td><td>2019</td><td style="text-align:center;">2,602</td><td style="text-align:center;">586</td><td style="text-align:center;">3,595</td><td style="text-align:center;">579</td><td style="text-align:center;">3,355</td><td style="text-align:center;">582</td><td style="text-align:center;">31,853</td><td style="text-align:center;">520</td><td style="text-align:center;">46,911</td><td style="text-align:center;">505</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>14</td><td>AIIMS Bilaspur</td><td>2020</td><td style="text-align:center;">2,788</td><td style="text-align:center;">585</td><td style="text-align:center;">6,483</td><td style="text-align:center;">566</td><td style="text-align:center;">3,957</td><td style="text-align:center;">577</td><td style="text-align:center;">30,304</td><td style="text-align:center;">522</td><td style="text-align:center;">41,195</td><td style="text-align:center;">510</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>15</td><td>AIIMS Jammu</td><td>2020</td><td style="text-align:center;">3,384</td><td style="text-align:center;">581</td><td style="text-align:center;">4,085</td><td style="text-align:center;">577</td><td style="text-align:center;">4,603</td><td style="text-align:center;">574</td><td style="text-align:center;">32,194</td><td style="text-align:center;">520</td><td style="text-align:center;">43,200</td><td style="text-align:center;">508</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>16</td><td>AIIMS Rae Bareli</td><td>2013</td><td style="text-align:center;">3,724</td><td style="text-align:center;">579</td><td style="text-align:center;">4,282</td><td style="text-align:center;">576</td><td style="text-align:center;">4,501</td><td style="text-align:center;">574</td><td style="text-align:center;">34,668</td><td style="text-align:center;">517</td><td style="text-align:center;">51,396</td><td style="text-align:center;">501</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>17</td><td>AIIMS Rajkot</td><td>2020</td><td style="text-align:center;">7,712</td><td style="text-align:center;">562</td><td style="text-align:center;">11,574</td><td style="text-align:center;">552</td><td style="text-align:center;">3,215</td><td style="text-align:center;">582</td><td style="text-align:center;">35,068</td><td style="text-align:center;">516</td><td style="text-align:center;">48,673</td><td style="text-align:center;">503</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>18</td><td>AIIMS Guwahati</td><td>2020</td><td style="text-align:center;">7,686</td><td style="text-align:center;">562</td><td style="text-align:center;">14,765</td><td style="text-align:center;">545</td><td style="text-align:center;">5,873</td><td style="text-align:center;">568</td><td style="text-align:center;">32,675</td><td style="text-align:center;">519</td><td style="text-align:center;">1,60,051</td><td style="text-align:center;">427</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>19</td><td>AIIMS Deoghar</td><td>2019</td><td style="text-align:center;">9,475</td><td style="text-align:center;">557</td><td style="text-align:center;">12,393</td><td style="text-align:center;">550</td><td style="text-align:center;">19,161</td><td style="text-align:center;">537</td><td style="text-align:center;">36,880</td><td style="text-align:center;">515</td><td style="text-align:center;">60,871</td><td style="text-align:center;">493</td><td style="text-align:center;" colspan="2">—</td></tr>
+                <tr><td>20</td><td>AIIMS Madurai</td><td>2021</td><td style="text-align:center;">16,728</td><td style="text-align:center;">541</td><td style="text-align:center;">26,016</td><td style="text-align:center;">527</td><td style="text-align:center;">19,825</td><td style="text-align:center;">536</td><td style="text-align:center;">47,357</td><td style="text-align:center;">504</td><td style="text-align:center;">1,63,006</td><td style="text-align:center;">425</td><td style="text-align:center;" colspan="2">—</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -185,20 +314,102 @@
           <span class="co-badge" style="background:#7c3aed20;color:#7c3aed">2025</span>
         </div>
         <div class="co-tables">
-          <div class="tbl-wrap"><table class="mini-table"><thead><tr><th>C ategory</th><th>JIPMER Puducherry MBBS 2025   Last Rank</th><th>JIPMER Puducherry MBBS 2024    Last Rank</th><th>Score</th><th>JIPMER Puducherry MBBS 2023          Last Rank</th><th>Score</th><th>JIPMER Puducherry MBBS 2022         Last Rank</th><th>Score</th><th>JIPMER Puducherry MBBS 2021            Last Rank</th><th>JIPMER Puducherry  MBBS 2020         Last Rank</th></tr></thead><tbody><tr><td>AIR</td><td>Score</td></tr><tr><td>GN</td><td>260</td><td>629</td><td>350</td><td>710</td><td>269</td><td>700</td><td>302</td><td>690</td><td>231</td><td>239</td></tr><tr><td>OBC</td><td>748</td><td>610</td><td>867</td><td>701</td><td>592</td><td>693</td><td>5382</td><td>646</td><td>557</td><td>450</td></tr><tr><td>EWS</td><td>1624</td><td>596</td><td>1485</td><td>700</td><td>1576</td><td>680</td><td>1060</td><td>676</td><td>1061</td><td>1106</td></tr><tr><td>SC</td><td>3877</td><td>578</td><td>6617</td><td>681</td><td>3985</td><td>663</td><td>46025</td><td>554</td><td>6387</td><td>5023</td></tr><tr><td>ST</td><td>12503</td><td>549</td><td>8697</td><td>676</td><td>11584</td><td>635</td><td>111680</td><td>466</td><td>12566</td><td>12551</td></tr><tr><td>NRI</td><td>-</td><td>-</td><td></td><td>-</td><td></td><td>-</td><td></td><td>8614</td><td>5299</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>JIPMER Karaikal MBBS 2025 Last Rank</th><th>JIPMER Karaikal MBBS 2024 Last Rank</th><th>Score</th><th>JIPMER Karaikal    MBBS 2023 Last Rank</th><th>Score</th><th>JIPMER Karaikal MBBS 2022 Last Rank</th><th>JIPMER Karaikal MBBS 2021 Last Rank</th><th>JIPMER Karaikal MBBS 2020 Last Rank</th></tr></thead><tbody><tr><td>AIR</td><td>Score</td></tr><tr><td>GN</td><td>5731</td><td>569</td><td>11154</td><td>672</td><td>17588</td><td>621</td><td>11334</td><td>6492</td><td>4563</td></tr><tr><td>OBC</td><td>7700</td><td>562</td><td>25087</td><td>652</td><td>20160</td><td>616</td><td>22195</td><td>10345</td><td>5698</td></tr><tr><td>EWS</td><td>8126</td><td>561</td><td>7009</td><td>680</td><td>17804</td><td>621</td><td>22980</td><td>8667</td><td>7146</td></tr><tr><td>SC</td><td>46346/120433</td><td>505(R3)/451(R4)</td><td>120894</td><td>563</td><td>102086</td><td>507</td><td>80764</td><td>58553</td><td>37879</td></tr><tr><td>ST</td><td>71488</td><td>484</td><td>67022</td><td>609</td><td>61566</td><td>553</td><td>57759</td><td>81435</td><td>28839</td></tr><tr><td>NRI</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>19728</td><td>20610</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th></tr></thead><tbody><tr><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td></tr><tr><td>UR</td><td>258</td><td>630</td><td>260</td><td>629</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>738</td><td>611</td><td>748</td><td>610</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>1362</td><td>600</td><td>1624</td><td>596</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>3877</td><td>578</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>6283</td><td>567</td><td>5102</td><td>571</td><td>12503</td><td>549</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th></tr></thead><tbody><tr><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td></tr><tr><td>UR</td><td>2633</td><td>586</td><td>4203</td><td>576</td><td>5731</td><td>569</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>3452</td><td>580</td><td>5727</td><td>569</td><td>7700</td><td>562</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>5105</td><td>571</td><td>6616</td><td>565</td><td>8126</td><td>561</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>18865</td><td>537</td><td>35487</td><td>516</td><td>46346</td><td>505</td><td>120433</td><td>451</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>43757</td><td>508</td><td>56546</td><td>496</td><td>71488</td><td>484</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th></tr></thead><tbody><tr><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td><td>AIR</td><td>Score</td></tr><tr><td>GN</td><td>20667</td><td>535</td><td>-</td><td>-</td><td>22390</td><td>532</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>41317</td><td>508</td><td>-</td><td>-</td><td>41771</td><td>510</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>354130</td><td>334</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>125675</td><td>448</td><td>-</td><td>-</td><td>135577</td><td>441</td><td>-</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>599794</td><td>250</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRAY</th></tr></thead><tbody><tr><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td></tr><tr><td>GN</td><td>46006</td><td>505</td><td>47252</td><td>504</td><td>48316</td><td>503</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>50152</td><td>502</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>449518</td><td>298</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>129645</td><td>445</td><td>-</td><td>-</td><td>46346</td><td>505</td><td>-</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>46911</td><td>505</td><td>-</td><td>-</td><td>163196</td><td>425</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRA Y</th></tr></thead><tbody><tr><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td></tr><tr><td>UR</td><td>350</td><td>710</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>807</td><td>705</td><td>867</td><td>701</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>1464</td><td>700</td><td>1485</td><td>700</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>6617</td><td>681</td><td>1358</td><td>700</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>8697</td><td>676</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRAY</th></tr></thead><tbody><tr><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td></tr><tr><td>UR</td><td>2949</td><td>691</td><td>4558</td><td>686</td><td>5668</td><td>685</td><td>11154</td><td>672</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>4175</td><td>687</td><td>5610</td><td>685</td><td>7747</td><td>680</td><td>12863</td><td>670</td><td>25087</td><td>652</td></tr><tr><td>EWS</td><td>6130</td><td>682</td><td>7009</td><td>680</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>24789</td><td>652</td><td>39083</td><td>636</td><td>50319</td><td>625</td><td>120894</td><td>563</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>62372</td><td>613</td><td>67022</td><td>609</td><td>63527</td><td>612</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRAY</th></tr></thead><tbody><tr><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td></tr><tr><td>GN</td><td>22602</td><td>655</td><td>28676</td><td>647</td><td>11260</td><td>671</td><td>87672</td><td>591</td><td>-</td></tr><tr><td>OBC</td><td>36804</td><td>639</td><td>38596</td><td>636</td><td>38734</td><td>636</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>155189</td><td>536</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>702405</td><td>270</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRAY</th></tr></thead><tbody><tr><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td><td>AIR</td><td>SCORE</td></tr><tr><td>GN</td><td>38742</td><td>636</td><td>44403</td><td>630</td><td>46213</td><td>629</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>41862</td><td>633</td><td>45855</td><td>629</td><td>47349</td><td>627</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>248038</td><td>472</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>89312</td><td>590</td><td>151839</td><td>539</td><td>176249</td><td>520</td><td>-</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRAY</th><th>SCORE</th></tr></thead><tbody><tr><td>GN</td><td>269</td><td>60</td><td>-</td><td>-</td><td>-</td><td>700</td></tr><tr><td>OBC</td><td>591</td><td>592</td><td>-</td><td>-</td><td>-</td><td>693</td></tr><tr><td>EWS</td><td>1350</td><td>1576</td><td>-</td><td>-</td><td>-</td><td>680</td></tr><tr><td>SC</td><td>3630</td><td>3985</td><td>-</td><td>-</td><td>-</td><td>663</td></tr><tr><td>ST</td><td>11584</td><td>11584</td><td>-</td><td>-</td><td>-</td><td>635</td></tr><tr><td>GN PwD</td><td>302502</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC PwD</td><td>374476</td><td>138310</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS PwD</td><td>420487</td><td>634187</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC PwD</td><td>194647</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>ST PwD</td><td>708335</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRA Y</th><th>SCORE</th></tr></thead><tbody><tr><td>GN</td><td>2679</td><td>4039</td><td>-</td><td>17588</td><td>-</td><td>621</td></tr><tr><td>OBC</td><td>3912</td><td>5370</td><td>-</td><td>20160</td><td>-</td><td>616</td></tr><tr><td>EWS</td><td>5707</td><td>7269</td><td>-</td><td>17804</td><td>-</td><td>621</td></tr><tr><td>SC</td><td>29840</td><td>41019</td><td>-</td><td>102086</td><td>-</td><td>507</td></tr><tr><td>ST</td><td>47860</td><td>61566</td><td>-</td><td>-</td><td>-</td><td>553</td></tr><tr><td>GN PwD</td><td>302502</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC PwD</td><td>374476</td><td>535613</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS PwD</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRAY</th></tr></thead><tbody><tr><td>GN</td><td>8483</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>29723</td><td>31906</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>245025</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>135427</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>GN PwD</td><td>805855</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC PwD</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS PwD</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
-<div class="tbl-wrap"><table class="mini-table"><thead><tr><th>Category</th><th>ROUND 1</th><th>ROUND 2</th><th>MOPUP ROUND</th><th>STRAY ROUND</th><th>SPECIAL STRAY</th></tr></thead><tbody><tr><td>GN</td><td>25786</td><td>26208</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC</td><td>37519</td><td>38930</td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>SC</td><td>141853</td><td>145304</td><td>-</td><td>-</td><td>-</td></tr><tr><td>ST</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>GN PwD</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr><tr><td>OBC PwD</td><td>-</td><td></td><td>-</td><td>-</td><td>-</td></tr><tr><td>EWS PwD</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td></tr></tbody></table></div>
+          <div class="tbl-wrap" style="margin-bottom:20px;">
+            <table class="mini-table" style="min-width:500px;">
+              <thead>
+                <tr>
+                  <th style="background:#7c3aed;color:#fff;padding:8px 12px;">JIPMER Puducherry MBBS 2025 — Closing Rank</th>
+                  <th colspan="2" style="background:#7c3aed;color:#fff;padding:8px 12px;text-align:center;">Final Round</th>
+                </tr>
+                <tr>
+                  <th style="background:#ede9fe;color:#5b21b6;">Category</th>
+                  <th style="background:#ede9fe;color:#5b21b6;">AIR</th>
+                  <th style="background:#ede9fe;color:#5b21b6;">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>UR</td><td>260</td><td>629</td></tr>
+                <tr><td>OBC</td><td>748</td><td>610</td></tr>
+                <tr><td>EWS</td><td>1624</td><td>596</td></tr>
+                <tr><td>SC</td><td>3877</td><td>578</td></tr>
+                <tr><td>ST</td><td>12503</td><td>549</td></tr>
+                <tr><td>NRI</td><td>-</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tbl-wrap" style="margin-bottom:20px;">
+            <table class="mini-table" style="min-width:700px;">
+              <thead>
+                <tr>
+                  <th rowspan="2" style="background:#0369a1;color:#fff;padding:8px 12px;">Category</th>
+                  <th colspan="2" style="background:#0369a1;color:#fff;padding:8px 12px;text-align:center;">Round 1</th>
+                  <th colspan="2" style="background:#0284c7;color:#fff;padding:8px 12px;text-align:center;">Round 2</th>
+                  <th colspan="2" style="background:#0ea5e9;color:#fff;padding:8px 12px;text-align:center;">Round 3</th>
+                </tr>
+                <tr>
+                  <th style="background:#e0f2fe;color:#0369a1;">AIR</th><th style="background:#e0f2fe;color:#0369a1;">Score</th>
+                  <th style="background:#bae6fd;color:#0369a1;">AIR</th><th style="background:#bae6fd;color:#0369a1;">Score</th>
+                  <th style="background:#7dd3fc;color:#0369a1;">AIR</th><th style="background:#7dd3fc;color:#0369a1;">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>UR</td><td>258</td><td>630</td><td>260</td><td>629</td><td>-</td><td>-</td></tr>
+                <tr><td>OBC</td><td>738</td><td>611</td><td>748</td><td>610</td><td>-</td><td>-</td></tr>
+                <tr><td>EWS</td><td>1362</td><td>600</td><td>1624</td><td>596</td><td>-</td><td>-</td></tr>
+                <tr><td>SC</td><td>3877</td><td>578</td><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr><td>ST</td><td>6283</td><td>567</td><td>5102</td><td>571</td><td>12503</td><td>549</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tbl-wrap" style="margin-bottom:20px;">
+            <table class="mini-table" style="min-width:500px;">
+              <thead>
+                <tr>
+                  <th style="background:#7c3aed;color:#fff;padding:8px 12px;">JIPMER Karaikal MBBS 2025 — Closing Rank</th>
+                  <th colspan="2" style="background:#7c3aed;color:#fff;padding:8px 12px;text-align:center;">Final Round</th>
+                </tr>
+                <tr>
+                  <th style="background:#ede9fe;color:#5b21b6;">Category</th>
+                  <th style="background:#ede9fe;color:#5b21b6;">AIR</th>
+                  <th style="background:#ede9fe;color:#5b21b6;">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>UR</td><td>5731</td><td>569</td></tr>
+                <tr><td>OBC</td><td>7700</td><td>562</td></tr>
+                <tr><td>EWS</td><td>8126</td><td>561</td></tr>
+                <tr><td>SC</td><td>46346 / 120433</td><td>505 / 451</td></tr>
+                <tr><td>ST</td><td>71488</td><td>484</td></tr>
+                <tr><td>NRI</td><td>-</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tbl-wrap" style="margin-bottom:20px;">
+            <table class="mini-table" style="min-width:800px;">
+              <thead>
+                <tr>
+                  <th rowspan="2" style="background:#0369a1;color:#fff;padding:8px 12px;">Category</th>
+                  <th colspan="2" style="background:#0369a1;color:#fff;padding:8px 12px;text-align:center;">Round 1</th>
+                  <th colspan="2" style="background:#0284c7;color:#fff;padding:8px 12px;text-align:center;">Round 2</th>
+                  <th colspan="2" style="background:#0ea5e9;color:#fff;padding:8px 12px;text-align:center;">Round 3</th>
+                  <th colspan="2" style="background:#38bdf8;color:#fff;padding:8px 12px;text-align:center;">Round 4</th>
+                </tr>
+                <tr>
+                  <th style="background:#e0f2fe;color:#0369a1;">AIR</th><th style="background:#e0f2fe;color:#0369a1;">Score</th>
+                  <th style="background:#bae6fd;color:#0369a1;">AIR</th><th style="background:#bae6fd;color:#0369a1;">Score</th>
+                  <th style="background:#7dd3fc;color:#0369a1;">AIR</th><th style="background:#7dd3fc;color:#0369a1;">Score</th>
+                  <th style="background:#38bdf8;color:#0369a1;">AIR</th><th style="background:#38bdf8;color:#0369a1;">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>UR</td><td>2633</td><td>586</td><td>4203</td><td>576</td><td>5731</td><td>569</td><td>-</td><td>-</td></tr>
+                <tr><td>OBC</td><td>3452</td><td>580</td><td>5727</td><td>569</td><td>7700</td><td>562</td><td>-</td><td>-</td></tr>
+                <tr><td>EWS</td><td>5105</td><td>571</td><td>6616</td><td>565</td><td>8126</td><td>561</td><td>-</td><td>-</td></tr>
+                <tr><td>SC</td><td>18865</td><td>537</td><td>35487</td><td>516</td><td>46346</td><td>505</td><td>120433</td><td>451</td></tr>
+                <tr><td>ST</td><td>43757</td><td>508</td><td>56546</td><td>496</td><td>71488</td><td>484</td><td>-</td><td>-</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
@@ -725,6 +936,158 @@
 (function(){var h=document.getElementById('hamburger'),n=document.getElementById('navLinks'),o=document.getElementById('navOverlay'),c=document.getElementById('navCloseBtn');function cls(){h.classList.remove('active');n.classList.remove('open');if(o)o.classList.remove('active');document.body.style.overflow='';}h.addEventListener('click',function(){var open=n.classList.toggle('open');h.classList.toggle('active',open);if(o)o.classList.toggle('active',open);document.body.style.overflow=open?'hidden':'';}); if(c)c.addEventListener('click',cls);if(o)o.addEventListener('click',cls);n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',cls);});})();
 window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);document.getElementById('backToTop').style.display=window.scrollY>300?'flex':'none';});
 document.getElementById('backToTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* ── Table: remove old years + fix headers ── */
+(function(){
+  var OLD = ['2024','2023','2022','2021','2020','2019','2018','2017','2016','2015'];
+  var SUB = ['AIR','SCORE','NEET RANK','NEET MARKS','RANK','MARKS'];
+  var FIX = ['S.NO','S.NO.','SL.NO','COLLEGE NAME','NAME','ESTB','SEATS',
+             'QUOTA','ROUND','CATEGORY','SCHOLARSHIP',''];
+
+  document.querySelectorAll('.mini-table').forEach(function(tbl){
+    var thead = tbl.querySelector('thead');
+    var tbody = tbl.querySelector('tbody');
+    if(!thead || !tbody) return;
+
+    /* ── STEP 1: Detect & remove old-year columns ── */
+    var topRow = thead.querySelector('tr');
+    if(!topRow) return;
+    var ths = Array.from(topRow.children);
+
+    // Build removal list (column positions considering colspan)
+    var killCols = [];
+    var pos = 0;
+    var prevKilled = false;
+    ths.forEach(function(th){
+      var sp = parseInt(th.getAttribute('colspan')||'1');
+      var txt = th.textContent.trim();
+      var hasOld = OLD.some(function(y){ return txt.indexOf(y)>-1; });
+      if(hasOld){
+        for(var i=0;i<sp;i++) killCols.push(pos+i);
+        prevKilled = true;
+      } else if(prevKilled && (txt.toUpperCase()==='SCORE'||txt==='')){
+        // orphaned Score column after old-year rank column
+        for(var i=0;i<sp;i++) killCols.push(pos+i);
+        prevKilled = false;
+      } else { prevKilled = false; }
+      pos += sp;
+    });
+
+    if(killCols.length){
+      var allRows = [].concat(
+        Array.from(thead.querySelectorAll('tr')),
+        Array.from(tbody.querySelectorAll('tr'))
+      );
+      allRows.forEach(function(row){
+        var p2 = 0;
+        Array.from(row.children).forEach(function(cell){
+          var sp2 = parseInt(cell.getAttribute('colspan')||'1');
+          var cols = [];
+          for(var i=0;i<sp2;i++) cols.push(p2+i);
+          p2 += sp2;
+          if(cols.some(function(c){ return killCols.indexOf(c)>-1; }))
+            row.removeChild(cell);
+        });
+      });
+
+      /* Post-removal: hide table if empty, click-here-only, or column-misaligned */
+      var topRowNow = thead.querySelector('tr');
+      var thsNow = topRowNow ? Array.from(topRowNow.children) : [];
+      var doHide = false;
+      if(thsNow.length === 0){
+        doHide = true;
+      } else {
+        var hasRealHdr = thsNow.some(function(th){
+          var t = th.textContent.trim().toUpperCase();
+          return FIX.indexOf(t)===-1 && t.indexOf('CLICK')===-1 && t!=='';
+        });
+        if(!hasRealHdr){ doHide = true; }
+      }
+      if(!doHide){
+        var checkRow = tbody.querySelector('tr:nth-child(2)') || tbody.querySelector('tr:first-child');
+        var totalHdrCols = thsNow.reduce(function(s,th){ return s+parseInt(th.getAttribute('colspan')||'1'); }, 0);
+        if(checkRow && checkRow.children.length > totalHdrCols){ doHide = true; }
+      }
+      if(doHide){
+        var wrap = tbl.closest ? tbl.closest('.tbl-wrap') : tbl.parentNode;
+        if(wrap) wrap.style.display='none';
+        return;
+      }
+    }
+
+    /* ── STEP 2: Move first-tbody sub-header row → thead ── */
+    var firstBodyRow = tbody.querySelector('tr:first-child');
+    if(!firstBodyRow) return;
+    var fCells = Array.from(firstBodyRow.querySelectorAll('td'));
+    var isSubHdr = fCells.some(function(td){
+      return SUB.indexOf(td.textContent.trim().toUpperCase())>-1;
+    });
+    if(!isSubHdr) return;
+
+    // Re-read top ths after column removal
+    topRow = thead.querySelector('tr');
+    if(!topRow) return;
+    ths = Array.from(topRow.querySelectorAll('th'));
+
+    // Build sub-header row with <th>
+    var subTr = document.createElement('tr');
+    subTr.className = 'sub-hdr';
+    fCells.forEach(function(td){
+      var th = document.createElement('th');
+      th.textContent = td.textContent.trim();
+      subTr.appendChild(th);
+    });
+    thead.appendChild(subTr);
+
+    // Apply colspan to category columns in top row
+    var fixedCount = 0;
+    for(var i=0;i<ths.length;i++){
+      if(FIX.indexOf(ths[i].textContent.trim().toUpperCase())>-1) fixedCount++;
+      else break;
+    }
+    var catCount = ths.length - fixedCount;
+    var subExtra = fCells.length - fixedCount;
+    if(catCount>0 && subExtra>0 && subExtra%catCount===0){
+      var colSpan = subExtra/catCount;
+      if(colSpan>=2){
+        ths.forEach(function(th,i){
+          if(i>=fixedCount){ th.setAttribute('colspan',colSpan); th.className='cat-hdr'; }
+        });
+      }
+    }
+    tbody.removeChild(firstBodyRow);
+  });
+})();
+
+/* ── Accordion setup ── */
+(function(){
+  document.querySelectorAll('.co-section').forEach(function(sec){
+    var head = sec.querySelector('.co-section-head');
+    if(!head) return;
+    // Add chevron
+    var tog = document.createElement('span');
+    tog.className = 'co-toggle';
+    tog.innerHTML = '&#8964;';
+    head.appendChild(tog);
+    // Toggle on click
+    head.addEventListener('click', function(){
+      sec.classList.toggle('open');
+    });
+  });
+  // Hash anchor: open matching section on page load
+  if(location.hash){
+    var target = document.querySelector(location.hash);
+    if(target && target.classList.contains('co-section')) target.classList.add('open');
+  }
+  // Nav chips: open section when clicked
+  document.querySelectorAll('.co-chip[href^="#"]').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var id = chip.getAttribute('href');
+      var sec = document.querySelector(id);
+      if(sec && sec.classList.contains('co-section')) sec.classList.add('open');
+    });
+  });
+})();
 </script>
 <script src="share.js"></script>
 </body>

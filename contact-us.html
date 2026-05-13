@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-adsense-account" content="ca-pub-1300049746675872" />
+  <title>Contact Us – NEET Counselling Help</title>
+  <meta name="description" content="Get in touch with NEET Counselling Help. We are here to answer all your MBBS, AYUSH, and Veterinary counselling queries." />
+  <link rel="canonical" href="https://neetcounsellinghelp.in/contact-us.html" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    .pp-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      padding: 100px 0 48px;
+    }
+    .pp-hero h1 {
+      font-size: clamp(24px, 4vw, 40px);
+      color: #fff; font-weight: 800; margin-bottom: 10px;
+    }
+    .pp-hero p { color: rgba(255,255,255,.65); font-size: 14px; }
+    .pp-body {
+      background: #f8fafc; padding: 48px 0 80px;
+    }
+    .pp-inner {
+      max-width: 1000px; margin: 0 auto; padding: 0 24px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="logo.png" height="45" alt="NEET Counselling Help" style="display:block;max-height:45px;width:auto;" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+      <li class="nav-drawer-header"><img src="logo.png" alt="NEET Counselling Help" /><button class="nav-close-btn" id="navCloseBtn" aria-label="Close menu">✕</button></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#flowchart">Process</a></li>
+        <li><a href="index.html#tools">Tools</a></li>
+        <li><a href="index.html#news">News</a></li>
+        <li><a href="index.html#team">Team</a></li>
+        <li><a href="contact-us.html" class="nav-cta">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- HERO -->
+  <div class="pp-hero">
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>Have Questions? We're Here to Help with your NEET Counselling.</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="pp-body">
+    <div class="pp-inner">
+      
+      <section class="contact-section" style="padding: 0;">
+        <div class="contact-grid">
+          <div class="contact-left">
+            <span class="section-tag light-tag">Get in Touch</span>
+            <h2>Reach Out To Our Experts</h2>
+            <p data-nosnippet>Our counselling experts are available Mon–Sat, 9 AM – 7 PM IST to answer all your NEET counselling queries.</p>
+            <div class="contact-links">
+              <a href="mailto:neetcounsellinghelp@gmail.com" class="contact-link-item" data-nosnippet>
+                <div class="cli-icon">📧</div>
+                <span>neetcounsellinghelp@gmail.com</span>
+              </a>
+              <a href="https://www.youtube.com/@Neet_Counselling_Help" class="contact-link-item" target="_blank" rel="noopener">
+                <div class="cli-icon">▶️</div>
+                <span>YouTube: @Neet_Counselling_Help</span>
+              </a>
+              <a href="https://www.instagram.com/neet_counselling_help/" class="contact-link-item" target="_blank" rel="noopener">
+                <div class="cli-icon">📸</div>
+                <span>Instagram: @neet_counselling_help</span>
+              </a>
+            </div>
+            
+            <div style="margin-top: 30px; padding: 20px; background: #fff; border-radius: 12px; border: 1px solid #e2e8f0;">
+              <h3 style="font-size: 16px; margin-bottom: 10px; color: #0f172a;">Operating Hours</h3>
+              <p style="font-size: 14px; color: #475569; margin-bottom: 5px;"><strong>Mon - Sat:</strong> 9:00 AM - 7:00 PM (IST)</p>
+              <p style="font-size: 14px; color: #475569;"><strong>Sunday:</strong> Closed (Available for emergency counselling round queries)</p>
+            </div>
+          </div>
+          <div class="contact-right">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-row-2">
+                <div class="fg">
+                  <label>Your Name *</label>
+                  <input type="text" id="cName" placeholder="Full name" required />
+                  <span class="ferr" id="cNameErr"></span>
+                </div>
+                <div class="fg">
+                  <label>NEET Score</label>
+                  <input type="number" id="cScore" placeholder="e.g. 550" min="0" max="720" />
+                </div>
+              </div>
+              <div class="fg">
+                <label>Email / Phone *</label>
+                <input type="text" id="cContact" placeholder="email@example.com or 9XXXXXXXXX" required />
+                <span class="ferr" id="cContactErr"></span>
+              </div>
+              <div class="fg">
+                <label>Query Type *</label>
+                <select id="cQuery" required>
+                  <option value="">Select your query type</option>
+                  <option>MCC MBBS Counselling</option>
+                  <option>AYUSH Counselling</option>
+                  <option>Veterinary (BVSc)</option>
+                  <option>State Counselling</option>
+                  <option>College Selection Help</option>
+                  <option>Documents &amp; Process</option>
+                  <option>Other</option>
+                </select>
+                <span class="ferr" id="cQueryErr"></span>
+              </div>
+              <div class="fg">
+                <label>Message *</label>
+                <textarea id="cMsg" rows="4" placeholder="Describe your question..." required></textarea>
+                <span class="ferr" id="cMsgErr"></span>
+              </div>
+              <button type="submit" class="btn btn-green" id="cSubmitBtn">
+                <span id="cBtnTxt">Send Message</span>
+                <span class="btn-spin" id="cBtnSpin" style="display:none;"></span>
+              </button>
+              <div class="form-ok" id="cFormOk">
+                ✅ Thank you! We'll reply within 24 hours.
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div style="margin-bottom:14px;">
+            <img src="logo.png" height="48" alt="NEET Counselling Help" style="max-height:48px;width:auto;" loading="lazy" />
+          </div>
+          <p>Complete NEET counselling guidance for MBBS, AYUSH, and Veterinary admissions across India.</p>
+          <div class="footer-socials">
+            <a href="https://www.youtube.com/@Neet_Counselling_Help" target="_blank" rel="noopener" aria-label="YouTube" class="fsocial yt">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2C0 8.1 0 12 0 12s0 3.9.6 5.8a3 3 0 002.1 2.1C4.5 20.5 12 20.5 12 20.5s7.5 0 9.4-.6a3 3 0 002.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="https://www.instagram.com/neet_counselling_help/" target="_blank" rel="noopener" aria-label="Instagram" class="fsocial ig">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html#flowchart">Counselling Process</a></li>
+            <li><a href="index.html#tools">Free Tools</a></li>
+            <li><a href="index.html#tools">Download App</a></li>
+            <li><a href="index.html#news">Latest News</a></li>
+            <li><a href="about-us.html">Our Team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Counselling</h4>
+          <ul>
+            <li><a href="mcc-neet-counselling.html">MCC Counselling</a></li>
+            <li><a href="aaccc-ayush-counselling.html">AYUSH (AACCC)</a></li>
+            <li><a href="vci-counselling.html">VCI Veterinary</a></li>
+            <li><a href="index.html#flowchart">State Quota</a></li>
+            <li><a href="index.html#flowchart">Deemed Universities</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="https://mcc.nic.in" target="_blank" rel="noopener">MCC Official</a></li>
+            <li><a href="https://aaccc.gov.in" target="_blank" rel="noopener">AACCC Official</a></li>
+            <li><a href="https://neet.nta.nic.in" target="_blank" rel="noopener">NTA NEET</a></li>
+            <li><a href="index.html#tools">College Info Tool</a></li>
+            <li><a href="index.html#tools">Cutoff Checker</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="fb-left">
+          <p>© 2026 NEET Counselling Help. Built with ❤️ by <strong>Dr. Praveen Patel</strong></p>
+          <p class="fb-disc">Informational website only. Not affiliated with MCC, NTA, or any government body. Always verify on official portals.</p>
+        </div>
+        <div class="fb-right">
+          <a href="about-us.html">About Us</a>
+          <a href="contact-us.html">Contact Us</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+          <a href="disclaimer.html">Disclaimer</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+  <script src="script.js"></script>
+  <script>
+    /* ── Contact Form → Google Sheets ── */
+    const FORM_URL = 'https://script.google.com/macros/s/AKfycbyjxUDMZ8Zg6jizpe1kGAu2MyfTU7pcRirlBi8m4Wn8ZjnDG0XITys8GpqcZ0V_jeuaBw/exec';
+
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Clear previous errors
+      ['cNameErr','cContactErr','cQueryErr','cMsgErr'].forEach(id => {
+        document.getElementById(id).textContent = '';
+      });
+
+      const name    = document.getElementById('cName').value.trim();
+      const score   = document.getElementById('cScore').value.trim();
+      const contact = document.getElementById('cContact').value.trim();
+      const query   = document.getElementById('cQuery').value;
+      const msg     = document.getElementById('cMsg').value.trim();
+
+      // Validation
+      let valid = true;
+      if (!name) { document.getElementById('cNameErr').textContent = 'Name is required'; valid = false; }
+      if (!contact) { document.getElementById('cContactErr').textContent = 'Email or phone is required'; valid = false; }
+      if (!query) { document.getElementById('cQueryErr').textContent = 'Please select a query type'; valid = false; }
+      if (!msg) { document.getElementById('cMsgErr').textContent = 'Message is required'; valid = false; }
+      if (!valid) return;
+
+      // Show spinner
+      const btn  = document.getElementById('cSubmitBtn');
+      const txt  = document.getElementById('cBtnTxt');
+      const spin = document.getElementById('cBtnSpin');
+      btn.disabled = true;
+      txt.textContent = 'Sending…';
+      spin.style.display = 'inline-block';
+
+      const params = new URLSearchParams({ name, score, contact, query, message: msg });
+
+      fetch(FORM_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      })
+      .then(function() {
+        document.getElementById('cFormOk').classList.add('show');
+        document.getElementById('contactForm').reset();
+        txt.textContent = 'Send Message';
+        spin.style.display = 'none';
+        btn.disabled = false;
+      })
+      .catch(function() {
+        txt.textContent = 'Send Message';
+        spin.style.display = 'none';
+        btn.disabled = false;
+        alert('Something went wrong. Please try WhatsApp or email us directly.');
+      });
+    });
+  </script>
+</body>
+</html>

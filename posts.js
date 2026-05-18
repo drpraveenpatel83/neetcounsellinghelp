@@ -47,17 +47,17 @@ const POSTS = [
   },
   {
     "id": "neet-2026-exam-details",
-    "title": "NEET UG 2026 Exam Date, Pattern & Important Dates — Official NTA Info",
+    "title": "NEET UG 2026 Re-Exam Date Confirmed: NTA to Conduct Re-Exam on June 21, 2026 due to Cancellation",
     "url": "neet-2026-exam-details.html",
     "category": "neet",
-    "subcategory": "Exam Date",
-    "date": "Mar 12, 2026",
+    "subcategory": "Re-Exam",
+    "date": "May 15, 2026",
     "readTime": "8 min read",
     "author": "Dr. Praveen Patel",
     "badges": [
-      "new"
+      "update"
     ],
-    "featured": false,
+    "featured": true,
     "live": true
   },
   {
